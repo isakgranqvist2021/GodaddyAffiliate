@@ -18,6 +18,7 @@ app.use(session({
         secure: false
     }
 }));
+app.use('/public', express.static('./public'));
 app.use('/', index);
 app.use('/users', users);
 app.use('/api', api);
