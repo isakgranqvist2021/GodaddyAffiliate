@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+<link rel="stylesheet" href="/public/css/auth.min.css">
+<body>
+    <%- include('../partials/nav') %>
+
+    <main>
+        <section class="container">
+            <form>
+                <h1>Register</h1>
+
+                <section>
+                    <label for="email">E-mail</label>
+                    <input type="text" id="email" name="email" placeholder="Email" />
+                </section>
+
+                <section>
+                    <label for="password">Password</label>
+                    <input type="text" id="password" name="password" placeholder="Password" />
+                </section>
+
+                <p>Already have an account? <a href="/login">Login</a></p>
+                <button>Create My Account</button>
+            </form>
+        </section>
+
+        <img class="waves" src="/public/img/wave.svg" alt="Waves">
+    </main>
+</body>
+</html>
