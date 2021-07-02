@@ -1,7 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <%- include('../partials/head') %>
+<link rel="stylesheet" href="/public/css/home.min.css">
 <body>
-    <h1>Index</h1>
+    <%- include('../partials/nav') %>
+
+    <main>
+        <section class="hero-section">
+            <h1>Lorem ipsum dolor sit amet.</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, deleniti repellat esse dolore id velit?</p>
+            <div class="actions">
+                <a href="/pick-logo">Build A Logo</a>
+                <a href="/pick-template">Build A Website</a>
+            </div>
+        </section>
+
+        <img class="waves" src="/public/img/wave.svg" alt="Waves">
+
+    </main>
+
+    <%- include('../partials/scripts') %>
 </body>
 </html>

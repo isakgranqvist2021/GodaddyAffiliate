@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../../assets/scss/pages/pick-template.scss"
+    ],
+    "names": [],
+    "file": "pick-template.min.css"
+}
