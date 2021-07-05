@@ -1,10 +1,43 @@
-<nav>
-    <div class="container">
+<div class="toolbar">
+    <span class="material-icons-outlined">menu</span>
+    <a href="/">
+        <img src="/public/img/logo.svg" alt="">
+    </a>
+</div>
+
+<div class="sidenav">
+    <div class="sidenav-content">
         <div class="links-group">
+            <h3>Useful Links</h3>
             <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
         </div>
+
         <div class="links-group">
-            <img src="/public/img/logo.png" alt="">
+            <h3>Services</h3>
+            <a href="/pick-tag">Build A Website</a>
+            <a href="/pick-domain">Pick A Domain</a>
+            <a href="/pick-template">Pick A Template</a>
+            <a href="/pick-logo">Build A Logo</a>
+        </div>
+    
+        <div class="links-group">
+            <h3>Account</h3>
+            <% if(!user) { %>
+                <a href="/login">Login</a>
+            <% } %>
+        
+            <% if(user && user.admin) { %>
+                <a href="/admin/home">Administration</a>
+            <% } %>
+        
+            <% if(user) { %>
+                <a href="/users/account"><%= user.email.split('@')[0] %></a>
+                <a href="/users/logout">Logout</a>
+            <% } %>
         </div>
     </div>
-</nav>
+</div>
+
+<div class="filler"></div>

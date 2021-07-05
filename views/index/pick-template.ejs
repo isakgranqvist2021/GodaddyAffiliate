@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('../partials/head') %>'
-<link rel="stylesheet" href="/public/css/pick-template.min.css">
+<%- include('../partials/head') %>
+<link rel="stylesheet" href="/public/css/default-layout.min.css"/>
+<style>
+    #PickComponent {
+        width: 100%;
+    }
+</style>
 <body>
     <%- include('../partials/nav') %>
 
-    <main>
-        <div class="container">
-            <div id="pick-template"></div>
-        </div>
+    <% if(user && user.admin) { %>
+        <a class="create-template" href="/admin/create-template">Create Template</a>
+    <% } %>
+
+    <main class="container">
+        <section>
+            <div id="PickComponent"></div>
+        </section>
     </main>
 
     <%- include('../partials/scripts') %>

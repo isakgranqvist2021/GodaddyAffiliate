@@ -1,6 +1,7 @@
 @import './layout';
 @import './components/nav';
 @import './colors';
+@import './components/admin-nav';
 
 *,
 *::before,
@@ -8,7 +9,8 @@
     box-sizing: border-box;
 }
 
-body, html {
+body,
+html {
     width: 100%;
 }
 
@@ -17,20 +19,6 @@ body {
     height: 100vh;
     font-family: 'Roboto', sans-serif;
     background-color: $white;
-}
-
-main {
-    padding-top: 150px;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-a {
-    font-family: 'Oswald', sans-serif;
 }
 
 p {

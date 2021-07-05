@@ -1,8 +1,10 @@
 import express from 'express';
 const router = express.Router();
 
-import usersController from '../controllers/users/users.controller';
+import accountController from '../controllers/users/account.controller';
+import logoutController from '../controllers/users/logout.controller';
 
-router.get('/', usersController);
+router.get('/account', accountController.get);
+router.get('/logout', logoutController.get);
 
 export default router;

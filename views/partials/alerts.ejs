@@ -1,0 +1,6 @@
+<% if(alert) { %>
+    <div class="alert <%= alert.type %>">
+        <p><%= alert.message %></p>
+        <span class="material-icons-outlined" onclick="document.querySelector('.alert').style.display = 'none';">close</span>
+    </div>
+<% } %>

@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    entry: './index.jsx',
+    entry: './index.js',
     mode: 'development',
     output: {
         path: path.resolve(__dirname, '../../public/js'),
@@ -10,15 +10,23 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.jsx?$/,
+                test: /\.js?$/,
                 exclude: /node_modules/,
                 use: {
-                    loader: "babel-loader",
+                    loader: 'babel-loader',
                 }
+            },
+            {
+                test: /\.s[ac]ss$/i,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader',
+                ],
             }
         ]
     },
     resolve: {
-        extensions: [".js", ".jsx"]
+        extensions: ['.js', '.jsx', '.scss', '.css']
     }
 }

@@ -1,31 +1,102 @@
 @import '../colors';
 
-nav {
+.sidenav,
+.filler {
+    transition: all 315ms ease;
+}
+
+.toolbar {
+    height: 80px;
     position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
-    background-color: #fff;
-    
-    .container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #bdbdbd;
+    padding: 0 2rem;
+    z-index: 2;
+    background-color: $white;
+
+    span {
+        font-size: 3rem;
+        cursor: pointer;
+    }
+}
+
+.sidenav {
+    position: fixed;
+    left: 0;
+    top: 80px;
+    height: calc(100% - 80px);
+    background-color: $white;
+    width: 0;
+    overflow: hidden;
+    z-index: 2;
+
+    &.open {
+        border-right: 1px solid #bdbdbd;
+        width: 300px;
+    }
+
+    .sidenav-content {
+        width: 300px;
+        padding: 40px 0;
 
         .links-group {
+            width: 100%;
+            padding: 1.5rem 3rem;
 
-            img {
-                height: 100px;
+            &:not(:last-of-type) {
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            h3 {
+                font-size: 2rem;
+                color: rgb(99, 99, 99);
+                margin: 0 0 .5rem 0;
             }
 
             a {
-                color: $primary;
-                text-transform: uppercase;
+                padding: .6rem 0;
+                border-radius: .81rem;
+                color: $text;
                 text-decoration: none;
-                &:not(:last-of-type) {
-                    margin-right: 1rem;
+                transition: all 215ms ease;
+                text-transform: capitalize;
+                font-size: .75rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                &::after {
+                    font-family: 'Material Icons Outlined';
+                    content: '\e5cc';
+                    opacity: 0;
+                    transform: translateX(-50px);
+                    font-size: 1.5rem;
+                    transition: all 215ms ease;
+                }
+
+                &:hover {
+                    &::after {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
                 }
             }
         }
+    }
+}
+
+.filler {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 1;
+    pointer-events: none;
+
+    &.open {
+        pointer-events: auto;
+        background-color: rgba(0, 0, 0, 0.274);
     }
 }

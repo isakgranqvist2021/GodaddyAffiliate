@@ -4,11 +4,14 @@
 <link rel="stylesheet" href="/public/css/auth.min.css">
 <body>
     <%- include('../partials/nav') %>
-
+    <%- include('../partials/alerts') %>
+    
     <main>
         <section class="container">
-            <form>
+            <form method="POST" action="/login"> 
                 <h1>Login</h1>
+
+                <input type="hidden" name="token" value="<%= token %>">
 
                 <section>
                     <label for="email">E-mail</label>
@@ -17,7 +20,7 @@
 
                 <section>
                     <label for="password">Password</label>
-                    <input type="text" id="password" name="password" placeholder="Password" />
+                    <input type="password" id="password" name="password" placeholder="Password" />
                 </section>
 
                 <p>Don't have an account? <a href="/register">Register</a></p>
@@ -28,5 +31,7 @@
 
         <img class="waves" src="/public/img/wave.svg" alt="Waves">
     </main>
+
+    <%- include('../partials/scripts') %>
 </body>
 </html>

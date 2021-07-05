@@ -1,2 +1,1 @@
-main .filter{display:flex;flex-wrap:wrap}main .filter span{display:inline-block;padding:1rem;border-radius:1rem;color:#fff;transition:all 220ms ease-out;cursor:pointer;margin-bottom:1.5rem}main .filter span:hover{transform:scale(0.9)}main .filter span:nth-child(odd){background-color:#00CBA9}main .filter span:nth-child(even){background-color:#FA824C}main .filter span:not(:last-of-type){margin-right:1.5rem}main .templates{display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));grid-auto-rows:300px;gap:2rem}main .templates .template{background-color:#e6e6e6;border-radius:.5rem}
-/*# sourceMappingURL=pick-template.min.css.map */
+:root{--primary: #00CBA9;--accent: #FA824C;--white: #ffffff;--text: #342E37}/*# sourceMappingURL=pick-template.min.css.map */

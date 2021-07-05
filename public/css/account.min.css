@@ -1,0 +1,1 @@
+:root{--primary: #00CBA9;--accent: #FA824C;--white: #ffffff;--text: #342E37}.alert{position:fixed;top:0;left:0;width:100%;padding:1rem;display:flex;justify-content:space-between;align-items:center}.alert p{margin:0}.alert span{cursor:pointer}.alert.error{background-color:#f5c2c2}.alert.success{background-color:#00cba9}/*# sourceMappingURL=account.min.css.map */

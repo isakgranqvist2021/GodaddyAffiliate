@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+<link rel="stylesheet" href="/public/css/default-layout.min.css" />
+<link rel="stylesheet" href="/public/css/tags.min.css" />
+<body>
+    <%- include('../partials/nav') %>
+    
+    <form id="form" method="POST" action="/pick-tag"></form>
+
+    <main>
+        <section>
+            <h1>Which type of website will this be? </h1>
+            <div class="tags">
+                <% tags.forEach(tag => { %>
+                    <button type="button" onclick="appendToForm('<%= tag %>')"><%= tag %></button>
+                <% }) %>
+            </div>
+        </section>
+    </main>
+
+    <%- include('../partials/scripts') %>
+    <script src="/public/js/appendToForm.js"></script>
+</body>
+</html>
