@@ -2,6 +2,8 @@ import express from 'express';
 const router = express.Router();
 
 import indexController from '../controllers/index/index.controller';
+import aboutController from '../controllers/index/about.controller';
+import contactController from '../controllers/index/contact.controller';
 import loginController from '../controllers/index/login.controller';
 import registerController from '../controllers/index/register.controller';
 
@@ -10,7 +12,9 @@ import pickTemplateController from '../controllers/index/pick-template.controlle
 import pickDomainController from '../controllers/index/pick-domain.controller'
 import pickLogoController from '../controllers/index/pick-logo.controller';
 
-router.get('/', indexController);
+router.get('/', indexController.get);
+router.get('/contact', contactController.get);
+router.get('/about', aboutController.get);
 
 router.get('/pick-tag', pickTagController.get);
 router.post('/pick-tag', pickTagController.post);

@@ -6,13 +6,16 @@
     #PickComponent {
         width: 100%;
     }
+
+    section {
+        padding: 0 !important;
+    }
+
 </style>
 <body>
     <%- include('../partials/nav') %>
 
-    <% if(user && user.admin) { %>
-        <a class="create-template" href="/admin/create-template">Create Template</a>
-    <% } %>
+
 
     <main class="container">
         <section>

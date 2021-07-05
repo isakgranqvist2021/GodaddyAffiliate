@@ -30,7 +30,7 @@ function PickComponent(props) {
     }, []);
 
     return (
-        <div className="PickComponent">
+        <div className="PickComponent" style={{ alignItems: slices.length > 0 ? 'center' : 'unset' }}>
             <form ref={formRef} method="POST" action="/pick-template">
                 <input name="template" ref={inputRef} />
             </form>

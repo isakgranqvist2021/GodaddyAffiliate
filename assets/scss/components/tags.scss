@@ -1,12 +1,10 @@
 main {
-    height: calc(100% - 80px);
-
     section:first-of-type {
         display: flex;
         justify-content: center;
         flex-direction: column;
         align-items: center;
-        height: 100%;
+        padding-top: 10rem;
 
         .tags {
             display: flex;
@@ -38,21 +36,28 @@ main {
 
 @media only screen and(max-width: 850px) {
     main {
-        .tags {
-            width: 75%;
+
+        section:first-of-type {
+            padding-top: 0;
+
+            .tags {
+                width: 75%;
+            }
         }
     }
 }
 
 @media only screen and(max-width: 735px) {
     main {
-        h1 {
-            text-align: center;
-            font-size: 2.5rem;
-        }
+        section:first-of-type {
+            h1 {
+                text-align: center;
+                font-size: 2.5rem;
+            }
 
-        .tags {
-            width: 90%;
+            .tags {
+                width: 90%;
+            }
         }
     }
 }
@@ -63,18 +68,22 @@ main {
         padding-top: 100px;
         display: block;
 
-        h1 {
-            font-size: 2.2rem;
-        }
+        section:first-of-type {
+            h1 {
+                font-size: 2.2rem;
+                width: 90%;
+                margin: 3rem auto 1.5rem auto;
+            }
 
-        .tags {
-            width: 95%;
-            flex-direction: column;
-            margin: 0 auto;
+            .tags {
+                width: 95%;
+                flex-direction: column;
+                margin: 0 auto;
 
-            a {
-                text-align: center;
-                display: block;
+                a {
+                    text-align: center;
+                    display: block;
+                }
             }
         }
     }
