@@ -1,5 +1,6 @@
 export const tags = [
     'Business',
+    'Ecommerce',
     'Casual',
     'Portfolio',
     'Blog',
