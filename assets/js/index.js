@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 
 import PickComponent from './src/Components/Pick/PickComponent';
 import CreateComponent from './src/Components/Create/CreateComponent';
+import SearchComponent from './src/Components/Search/SearchComponent';
+import ResultsComponent from './src/Components/Results/ResultsComponent';
 
 const components = [
     {
@@ -13,6 +15,14 @@ const components = [
         selector: '#CreateComponent',
         Component: CreateComponent
     },
+    {
+        selector: '#SearchComponent',
+        Component: SearchComponent
+    },
+    {
+        selector: '#ResultsComponent',
+        Component: ResultsComponent
+    }
 ];
 
 (function main() {

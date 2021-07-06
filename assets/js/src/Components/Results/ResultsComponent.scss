@@ -1,0 +1,66 @@
+.ResultsComponent {
+    background-color: #fff;
+    position: relative;
+
+    .spinner-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        width: 100%;
+
+        .spinner {
+            border: 16px solid #f3f3f3;
+            border-top: 16px solid var(--primary);
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
+        }
+    }
+
+    .results-container {
+        .domain {
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            h3 {
+                margin: 0;
+            }
+
+            button {
+                padding: 1rem;
+                background-color: var(--accent);
+                color: var(--white);
+                border-radius: 1rem;
+                border: none;
+                cursor: pointer;
+
+                &:hover {
+                    opacity: .85;
+                }
+
+                &:disabled {
+                    opacity: .5 !important;
+                    cursor: not-allowed;
+                }
+            }
+
+            &:not(:last-of-type) {
+                border-bottom: 1px solid rgb(233, 233, 233);
+            }
+        }
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

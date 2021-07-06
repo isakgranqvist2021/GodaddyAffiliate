@@ -8,9 +8,12 @@ import tagsController from '../controllers/api/tags.controller';
 import uploadController from '../controllers/api/upload.controller';
 import createTemplateController from '../controllers/api/create-template.controller';
 import findTemplatesController from '../controllers/api/find-templates.controller';
+import searchController from '../controllers/api/search.controller';
+
 
 router.get('/tags', tagsController);
-router.get('/find-templates', findTemplatesController)
+router.get('/find-templates', findTemplatesController);
+router.get('/search/:q', searchController.get);
 
 router.post(
     '/upload',

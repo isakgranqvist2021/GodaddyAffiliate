@@ -9,4 +9,11 @@ export const initialCreateTemplateState = {
     active: false
 };
 
+export const initialSearchState = {
+    loading: false,
+    domain: null,
+    suggestions: null
+};
+
+
 export const initialTag = 'Business';
