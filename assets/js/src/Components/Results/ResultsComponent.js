@@ -2,10 +2,15 @@ import React from 'react';
 import searchStore from '../../Store/search.store';
 import { initialSearchState } from '../../Utils/initial-states';
 import PlaceholderComponent from '../Placeholder/PlaceholderComponent';
+import DomainComponent from './DomainComponent';
+
+import http from '../../Utils/http';
+
 import './ResultsComponent.scss';
 
 function ResultsComponent(props) {
     const [searchState, setSearchState] = React.useState(initialSearchState);
+    const formRef = React.useRef();
 
     searchStore.subscribe(() => {
         console.log(searchStore.getState());
@@ -13,22 +18,28 @@ function ResultsComponent(props) {
         setSearchState({ ...searchStore.getState() });
     });
 
+
+    const pickDomain = (domain) => {
+        let input = document.createElement('input');
+        input.setAttribute('name', 'domain');
+        input.setAttribute('value', domain);
+        formRef.current.appendChild(input);
+        formRef.current.submit();
+    }
+
     return (
         <div className="ResultsComponent">
+            <form ref={formRef} method="POST" action="/pick-domain"></form>
             {searchState.domain !== null && searchState.suggestions !== null && !searchState.loading && (
                 <div className="results-container">
-                    <div className="domain">
-                        {searchState.domain.domain && <h3>{searchState.domain.domain}</h3>}
-                        {!searchState.domain.domain && <h3>Domain Not Supported</h3>}
-                        <button disabled={!searchState.domain.available}>{searchState.domain.available ? 'Pick Domain' : 'Not Available'}</button>
+                    <div className="found">
+                        <DomainComponent {...searchState.domain} pickDomain={pickDomain} />
                     </div>
+
                     <div className="suggestions">
-                        {searchState.suggestions.map((domain, i) => {
-                            return <div className="domain" key={i}>
-                                <h3>{domain.domain}</h3>
-                                <button disabled={!domain.available}>{domain.available ? 'Pick Domain' : 'Not Available'}</button>
-                            </div>
-                        })}
+                        {searchState.suggestions.map((domain, i) =>
+                            <DomainComponent {...domain} pickDomain={pickDomain} key={i} />
+                        )}
                     </div>
                 </div>
             )}

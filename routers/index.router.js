@@ -11,6 +11,7 @@ import pickTagController from '../controllers/index/pick-tag.controller';
 import pickTemplateController from '../controllers/index/pick-template.controller';
 import pickDomainController from '../controllers/index/pick-domain.controller'
 import pickLogoController from '../controllers/index/pick-logo.controller';
+import checkoutController from '../controllers/index/checkout.controller';
 
 router.get('/', indexController.get);
 router.get('/contact', contactController.get);
@@ -27,6 +28,9 @@ router.post('/pick-domain', pickDomainController.post);
 
 router.get('/pick-logo', pickLogoController.get);
 router.post('/pick-logo', pickLogoController.post);
+
+router.get('/checkout', checkoutController.get);
+router.post('/checkout', checkoutController.post);
 
 router.get('/login', loginController.get);
 router.post('/login', loginController.post);

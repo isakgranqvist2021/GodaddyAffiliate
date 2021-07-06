@@ -15,7 +15,7 @@ main {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            width: 65%;
+            padding: 1rem;
 
             button {
                 box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
@@ -30,6 +30,7 @@ main {
                 background-color: #fff;
                 cursor: pointer;
                 flex-grow: .55;
+                border-radius: 1rem;
 
                 &:hover {
                     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
@@ -47,7 +48,9 @@ main {
             padding-top: 0;
 
             .tags {
-                width: 75%;
+                button {
+                    flex-grow: 1;
+                }
             }
         }
     }
@@ -59,10 +62,6 @@ main {
             h1 {
                 text-align: center;
                 font-size: 2.5rem;
-            }
-
-            .tags {
-                width: 90%;
             }
         }
     }
@@ -82,13 +81,12 @@ main {
             }
 
             .tags {
-                width: 95%;
+                width: 100%;
                 flex-direction: column;
                 margin: 0 auto;
 
-                a {
-                    text-align: center;
-                    display: block;
+                button {
+                    margin: 1rem 0;
                 }
             }
         }

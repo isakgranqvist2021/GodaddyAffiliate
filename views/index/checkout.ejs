@@ -1,0 +1,46 @@
+<% 
+    function checkMissing(fields) {
+        return fields.map(field => {
+            if(field.data === null) {
+                return `
+                <a href="${field.href}">
+                    ${field.href.replace('/', '').replace('-', ' ')}
+                </a>`
+            }
+        });
+    }
+%>
+
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+<link rel="stylesheet" href="/public/css/default-layout.min.css" />
+<link rel="stylesheet" href="/public/css/checkout.min.css" />
+
+<body>
+    <%- include('../partials/nav') %>
+
+    <main class="container">
+        <a href="/pick-domain" class="go-back">Go Back</a>
+        <section>
+            <h1>Checkout</h1>
+
+            <div class="missing-data">
+                <%- 
+                    checkMissing([
+                        { href: '/pick-tag', data: tag },
+                        { href: '/pick-template', data: template }, 
+                        { href: '/pick-domain', data: domain }
+                    ]).join('');
+                %>
+            </div>
+
+            <div class="inventory">
+
+            </div>
+        </section>
+    </main>
+
+    <%- include('../partials/scripts') %>
+</body>
+</html>

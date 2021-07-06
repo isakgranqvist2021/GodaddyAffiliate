@@ -9,7 +9,7 @@ function SearchComponent(props) {
     const [query, setQuery] = React.useState('');
     const [loading, setLoading] = React.useState(false);
     const [error, setError] = React.useState({ show: false, message: null });
-    const [hasSearched, setHasSearched] = React.useState(false);
+    const submitBtn = React.useRef();
 
     const search = async () => {
         setLoading(true);
@@ -17,7 +17,6 @@ function SearchComponent(props) {
         setError({ show: false, message: null });
 
         if (urlRegex.test(query)) {
-
             const response = await http.GET(`/search/${query}`);
 
             searchStore.dispatch({
@@ -31,10 +30,13 @@ function SearchComponent(props) {
             setLoading(false);
 
         } else {
+            if (query.trim().length === 0) {
+                setError({ show: true, message: `please enter a valid domain` });
+            } else {
+                setError({ show: true, message: `${query} is not a valid domain` });
+            }
 
-            setError({ show: true, message: `${query} is not a valid domain` });
             setLoading(false);
-
             searchStore.dispatch({
                 type: 'set-loading',
                 payload: false
@@ -42,6 +44,19 @@ function SearchComponent(props) {
 
         }
     }
+
+    const fetchMyInventory = React.useCallback(async () => {
+        const response = await http.GET('/my-inventory');
+        if (response.success && response.data.domain !== null) {
+            console.log(response.data);
+            setQuery(response.data.domain);
+            submitBtn.current.click();
+        }
+    }, []);
+
+    React.useEffect(() => {
+        fetchMyInventory();
+    }, [])
 
     const onKeyDown = (e) => {
         if (e.key === 'Enter') {
@@ -54,14 +69,14 @@ function SearchComponent(props) {
         <div className="SearchComponent">
             <form>
                 <input
-                    placeholder="my-domain.com"
+                    placeholder="Click To Search: domain.com"
                     value={query}
                     disabled={loading}
                     onKeyPress={onKeyDown}
                     onChange={(e) => setQuery(e.target.value)}
                 />
 
-                <button type="button" onClick={search} disabled={loading}>
+                <button type="button" ref={submitBtn} onClick={search} disabled={loading}>
                     <span className="material-icons-outlined">search</span>
                 </button>
             </form>
