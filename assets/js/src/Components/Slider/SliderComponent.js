@@ -35,7 +35,7 @@ function SliderComponent(props) {
                 <span className="material-icons-outlined">chevron_left</span>
             </div>}
             {!loading && props.images.map((img, i) => <img
-                src={`${http.serverAddr}/uploads/${img}`}
+                src={img}
                 key={i}
                 alt="Website Preview"
                 style={{ transform: `translateX(${calcMarginLeft(i)}px)` }}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../partials/head') %>
+<link rel="stylesheet" href="/public/css/default-layout.min.css" />
+
+<body>
+    <%- include('../partials/nav') %>
+
+    <main class="container">
+        <section>
+            <h1>Your checkout was successful!</h1>
+
+            <ul>
+                <li>Template: <%= template.title %></li>
+                <li>Domain: <%= domain.domain %></li>
+                <li>Cost: <%= domain.price + template.price %></li>
+            </ul>
+        </section>
+    </main>
+
+    <%- include('../partials/scripts') %>
+</body>
+</html>

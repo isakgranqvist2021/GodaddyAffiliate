@@ -162,14 +162,14 @@ function CreateComponent(props) {
                     </label>
                 </section>
 
-                <div className="images">
+                <div className="uploaded-files">
                     {
                         formData.images.map((img, i) =>
                             <img
                                 title="Remove Image"
                                 onClick={(e) => removeImage(img)}
                                 key={i}
-                                src={`${http.serverAddr}/uploads/${img}`}
+                                src={img}
                                 alt="Uploaded Image"
                             />)
                     }

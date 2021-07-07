@@ -13,6 +13,7 @@ import pickDomainController from '../controllers/index/pick-domain.controller'
 import pickLogoController from '../controllers/index/pick-logo.controller';
 import checkoutController from '../controllers/index/checkout.controller';
 
+
 router.get('/', indexController.get);
 router.get('/contact', contactController.get);
 router.get('/about', aboutController.get);
