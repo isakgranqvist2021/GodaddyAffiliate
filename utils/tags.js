@@ -1,12 +1,12 @@
 export const tags = [
-    'Business',
-    'Ecommerce',
-    'Casual',
-    'Portfolio',
-    'Blog',
-    'Music',
-    'Fitness',
-    'Beauty & Wellness',
-    'Restaurants & Food',
-    'Other'
+    'business',
+    'ecommerce',
+    'casual',
+    'portfolio',
+    'blog',
+    'music',
+    'fitness',
+    'beauty & wellness',
+    'restaurants & food',
+    'other'
 ];

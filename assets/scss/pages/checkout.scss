@@ -3,4 +3,44 @@ main {
     section:first-of-type {
         .missing-data {}
     }
+
+    form {
+
+        .form-group {
+            background-color: rgb(255, 255, 255);
+            padding: 2rem;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            border-radius: .5rem;
+        }
+
+        .form-footer,
+        .form-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 1rem 0;
+
+            h3,
+            p {
+                margin: 0;
+            }
+        }
+
+        .form-footer {
+            margin: 2rem 0;
+        }
+
+        button {
+            padding: 1rem;
+            background: var(--accent);
+            color: var(--white);
+            border-radius: 1rem;
+            border: none;
+            cursor: pointer;
+
+            &:hover {
+                opacity: .81;
+            }
+        }
+    }
 }

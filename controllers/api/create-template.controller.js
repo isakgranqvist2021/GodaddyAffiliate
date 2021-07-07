@@ -51,9 +51,9 @@ async function createTemplate(req, res) {
 
     let data = {
         addedBy: req.user._id,
+        tags: req.body.tags.map(tag => tag.toLowerCase()),
         ...req.body
     }
-
 
     try {
         const newTemplate = await templateModel.createTemplate(data);

@@ -1,3 +1,5 @@
+import domains from '../../utils/domains';
+
 async function get(req, res) {
     return res.render('index/pick-domain', {
         user: req.user
@@ -5,7 +7,12 @@ async function get(req, res) {
 }
 
 async function post(req, res) {
-    req.session.inventory.domain = req.body.domain;
+    const domain = await domains.isAvailable(req.body.domain);
+    req.session.inv.dom = {
+        ...domain,
+        price: Math.round(domain.price * 0.000001)
+    };
+
     return res.redirect('/checkout');
 }
 

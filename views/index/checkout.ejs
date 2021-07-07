@@ -37,17 +37,19 @@
 
             <div class="inventory">
                 <form method="POST" action="/checkout">
-                    <div>
-                        <h3><%= template.title %>:</h3>
+                    <div class="form-group">
+                        <h3><%= template.title %></h3>
                         <p>$<%= template.price %></p>
                     </div>
-                    <div>
-                        <h3><%= domain.domain %>:</h3>
+                    <div class="form-group">
+                        <h3><%= domain.domain %></h3>
                         <p>$<%= domain.price %></p>
                     </div>
 
-                    <p>Total Cost: $<%= template.price + domain.price %></p>
-                    <button type="submit">Checkout</button>
+                    <div class="form-footer">
+                        <p>Total Cost: $<%= template.price + domain.price %></p>
+                        <button type="submit">Continue To Checkout</button>
+                    </div>
                 </form>
             </div>
         </section>

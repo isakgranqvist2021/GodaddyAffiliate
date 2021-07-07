@@ -9,7 +9,7 @@ async function get(req, res) {
 }
 
 async function post(req, res) {
-    req.session.inventory.tag = req.body.tag;
+    req.session.inv.tag = req.body.tag;
 
     return res.redirect('/pick-template');
 }

@@ -3,11 +3,11 @@ function setInventory(req, res, next) {
         req.session.token = null;
     }
 
-    if (!req.session.inventory) {
-        req.session.inventory = {
+    if (!req.session.inv) {
+        req.session.inv = {
             tag: null,
-            template: null,
-            domain: null
+            temp: null,
+            dom: null
         }
     }
 

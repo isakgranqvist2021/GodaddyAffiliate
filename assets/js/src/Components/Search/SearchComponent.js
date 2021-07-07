@@ -47,9 +47,8 @@ function SearchComponent(props) {
 
     const fetchMyInventory = React.useCallback(async () => {
         const response = await http.GET('/my-inventory');
-        if (response.success && response.data.domain !== null) {
-            console.log(response.data);
-            setQuery(response.data.domain);
+        if (response.success && response.data.dom !== null) {
+            setQuery(response.data.dom.domain);
             submitBtn.current.click();
         }
     }, []);

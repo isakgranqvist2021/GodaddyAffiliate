@@ -32,6 +32,7 @@ router.post('/pick-logo', pickLogoController.post);
 
 router.get('/checkout', checkoutController.get);
 router.post('/checkout', checkoutController.post);
+router.get('/checkout-success', checkoutController.success);
 
 router.get('/login', loginController.get);
 router.post('/login', loginController.post);

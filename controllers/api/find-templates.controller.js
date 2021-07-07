@@ -5,7 +5,7 @@ async function findTemplates(req, res) {
 
     try {
         const templates = await templateModel.findTemplates({
-            tags: req.session.inventory.tag
+            tags: req.session.inv.tag
         });
 
         return res.json({
