@@ -6,11 +6,12 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     createdAt: { type: Date, default: new Date() },
     updatedAt: { type: Date, default: null },
-    email: { type: String, required: true, unique: true },
+    email: { type: String, required: false, unique: true },
+    phone: { type: String, required: false, unique: true },
     password: { type: String, required: true },
-    admin: { type: Boolean, default: false }
+    admin: { type: Boolean, default: false },
+    authType: { type: String, default: 'email' }
 });
-
 
 const UserModel = mongoose.model('User', userSchema);
 
@@ -20,16 +21,18 @@ async function register(data) {
         let hash = bcrypt.hashSync(data.password, salt);
 
         return await new UserModel({
-            email: data.email,
+            email: data.email || null,
+            phone: data.phone || null,
+            authType: data.authType,
             password: hash
         }).save();
     } catch (err) {
-        return Promise.reject('caught error');
+        console.log(err);
+        return Promise.reject(err.code === 11000 ? 'seems like you already have an account' : 'caught error');
     }
 }
 
 async function login(data) {
-
     try {
         let user = await UserModel.findOne({ email: data.email });
         let OK = bcrypt.compareSync(data.password, user.password);
@@ -40,7 +43,6 @@ async function login(data) {
 
         return Promise.reject('wrong password');
     } catch (err) {
-        console.log(err);
         return Promise.reject('caught error');
     }
 }

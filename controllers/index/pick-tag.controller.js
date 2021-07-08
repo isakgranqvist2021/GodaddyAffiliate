@@ -1,6 +1,8 @@
-import { tags } from '../../utils/tags';
+import fs from 'fs';
 
 async function get(req, res) {
+    let tags = JSON.parse(fs.readFileSync('./data/tags.json'));
+
     return res.render('index/pick-tag', {
         user: req.user,
         alert: req.consumeAlert(),

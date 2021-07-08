@@ -1,9 +1,22 @@
 import stripeLib from 'stripe';
 import env from '../../utils/env';
-import { constructItem } from '../../utils/price-converter';
 
 let stripe = stripeLib('sk_test_51HTkdqHXIuTmDhIWP9Fb31g4Yzs5fayq76KIddGGKkTf68o1ukvYSqIFXbQs7hMSn5jG8L92nmk1LXaXDwrrhaMW00HAlQDeOd');
 let wwwImage = 'https://res.cloudinary.com/isak-tech/image/upload/v1625666073/www-purchase.jpg';
+
+function constructItem(data) {
+    return {
+        quantity: 1,
+        price_data: {
+            currency: 'usd',
+            unit_amount: Math.round(data.price) * 100,
+            product_data: {
+                name: data.title,
+                images: data.images
+            }
+        }
+    }
+}
 
 async function get(req, res) {
     return res.render('index/checkout', {

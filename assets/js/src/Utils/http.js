@@ -31,5 +31,26 @@ async function POST(url, body, headers = { 'Content-Type': 'application/json' })
     }
 }
 
+async function PUT(url, body, headers = { 'Content-Type': 'application/json' }) {
+    try {
+        const response = await fetch(serverAddr + url, {
+            method: 'PUT',
+            body: body,
+            headers: headers
+        });
 
-export default { GET, POST, serverAddr };
+        console.log(response.status);
+
+        return await response.json();
+    } catch (err) {
+        console.log('error');
+        console.log(err);
+        return Promise.reject(err);
+    }
+}
+
+async function DELETE(url) {
+
+}
+
+export default { GET, POST, PUT, DELETE, serverAddr };

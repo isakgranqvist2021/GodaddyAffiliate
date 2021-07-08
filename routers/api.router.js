@@ -10,11 +10,14 @@ import createTemplateController from '../controllers/api/create-template.control
 import findTemplatesController from '../controllers/api/find-templates.controller';
 import searchController from '../controllers/api/search.controller';
 import inventoryController from '../controllers/api/inventory.controller';
+import phoneController from '../controllers/api/phone.controller';
 
 router.get('/tags', tagsController);
 router.get('/find-templates', findTemplatesController);
 router.get('/search/:q', searchController.get);
 router.get('/my-inventory', inventoryController.get);
+router.post('/verify-phone', phoneController.post);
+router.put('/verify-phone', phoneController.put);
 
 router.post(
     '/upload',

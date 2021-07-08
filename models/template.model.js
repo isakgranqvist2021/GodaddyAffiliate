@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
-import fs from 'fs';
-import cloud from '../utils/upload';
+import cloud from '../utils/cloud';
 
 const Schema = mongoose.Schema;
 
@@ -21,8 +20,6 @@ const templateSchema = new Schema({
 const TemplateModel = mongoose.model('Template', templateSchema);
 
 async function createTemplate(data) {
-    console.log(data);
-
     if (data.removedImages.length > 0) {
         await Promise.all(data.removedImages.map(async (img) => {
             return await cloud.remove(img);

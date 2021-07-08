@@ -1,4 +1,4 @@
-import cloud from '../../utils/upload';
+import cloud from '../../utils/cloud';
 
 async function upload(req, res) {
 

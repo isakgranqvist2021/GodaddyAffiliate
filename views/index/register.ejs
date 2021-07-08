@@ -8,27 +8,8 @@
 
     <main>
         <section class="container">
-            <form method="POST" action="/register">
-                <h1>Register</h1>
-
-                <input type="hidden" name="token" value="<%= token %>">
-
-                <section>
-                    <label for="email">E-mail</label>
-                    <input type="text" id="email" name="email" placeholder="Email" />
-                </section>
-
-                <section>
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" placeholder="Password" />
-                </section>
-
-                <p>Already have an account? <a href="/login">Login</a></p>
-
-                <button>Create My Account</button>
-            </form>
+            <div id="RegisterComponent"></div>
         </section>
-
         <img class="waves" src="/public/img/wave.svg" alt="Waves">
     </main>
 

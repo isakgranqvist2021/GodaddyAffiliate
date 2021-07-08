@@ -34,7 +34,15 @@
             <% } %>
         
             <% if(user) { %>
-                <a href="/users/account"><%= user.email.split('@')[0] %></a>
+
+                <% if(user.authType === 'email') { %>
+                    <a href="/users/account"><%= user.email.split('@')[0] %></a>
+                <% } else { %>
+                    <a href="/users/account"><%= user.phone %></a>
+                <% } %> 
+
+                <% console.log(user) %> 
+                
                 <a href="/users/logout">Logout</a>
             <% } %>
         </div>
