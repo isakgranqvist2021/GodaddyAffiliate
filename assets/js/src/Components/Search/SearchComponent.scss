@@ -10,38 +10,20 @@
     form {
         display: flex;
 
-        &:focus-within {
-            input {
-                border-color: var(--accent);
-            }
-
-            button {
-                border-color: transparent;
-            }
-        }
-
         input {
             flex-grow: 1;
-            padding: 1rem;
-            border: 1px solid rgb(219, 219, 219);
-            outline: none;
-            border-top-left-radius: 1rem;
-            border-bottom-left-radius: 1rem;
-            border-right: none;
-            transition: all 215ms ease;
+            margin-right: 1.5rem;
         }
 
         button {
             border: 1px solid rgb(219, 219, 219);
-            border-top-right-radius: 1rem;
-            border-bottom-right-radius: 1rem;
             padding: 1rem;
             cursor: pointer;
-            transition: all 215ms ease;
+            border-radius: 1rem;
+            transition: all 350ms ease;
             width: 5rem;
             background-color: var(--primary);
             color: var(--white);
-            border-left: none;
 
             &:disabled {
                 width: 5rem !important;

@@ -3,6 +3,8 @@
     width: 100%;
     flex-grow: 1;
     overflow: hidden;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
 
     .next,
     .previous {

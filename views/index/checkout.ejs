@@ -1,13 +1,14 @@
 <% 
-    function checkMissing(fields) {
-        return fields.map(field => {
-            if(field.data === null) {
-                return `
-                <a href="${field.href}">
-                    ${field.href.replace('/', '').replace('-', ' ')}
-                </a>`
-            }
-        });
+    function splitDomain(domain) {
+        return domain.split('.');
+    }
+
+    function getPrice(template, domain) {
+        if(template === null && domain === null) return 0;
+        if(template === null && domain !== null) return template.price;
+        if(domain === null && template !== null) return domain.price;
+
+        return template.price + domain.price;
     }
 %>
 
@@ -26,35 +27,55 @@
             <h1>Checkout</h1>
 
             <div class="missing-data">
-                <%- 
-                    checkMissing([
-                        { href: '/pick-tag', data: tag },
-                        { href: '/pick-template', data: template }, 
-                        { href: '/pick-domain', data: domain }
-                    ]).join('');
-                %>
+                <% if(tag === null) { %>
+                    <a href="/pick-tag">Pick a tag for your website</a>
+                <% } %>
+
+                <% if(template === null) { %>
+                    <a href="/pick-template">Pick a template for your website</a>
+                <% } %>
+
+                <% if(domain === null) { %>
+                    <a href="/pick-domain">Pick a domain for your website</a>
+                <% } %>
             </div>
 
             <div class="inventory">
                 <form method="POST" action="/checkout">
-                    <div class="form-group">
-                        <h3><%= template.title %></h3>
-                        <p>$<%= template.price %></p>
-                    </div>
-                    <div class="form-group">
-                        <h3><%= domain.domain %></h3>
-                        <p>$<%= domain.price %></p>
-                    </div>
+                    <section>
+                        <ul>
+                            <% if(template !== null) { %>
+                                <li>
+                                    <h3><%= template.title %></h3>
+                                    <p>$<%= template.price %></p>
+                                </li>
+                            <% } %> 
 
-                    <div class="form-footer">
-                        <p>Total Cost: $<%= template.price + domain.price %></p>
-                        <button type="submit">Continue To Checkout</button>
-                    </div>
+                            <% if(domain !== null) { %>
+                                <li>
+                                    <h3>
+                                        <%= splitDomain(domain.domain)[0] %><span>.<%= splitDomain(domain.domain)[1] %></span>    
+                                    </h3>
+                                    <p>$<%= domain.price %></p>
+                                </li>
+                            <% } %>
+                        </ul>
+                    </section>
+
+                    <% if(template !== null && domain !== null) { %>
+                        <div class="form-footer">
+                            <p>Total Cost: $<%= getPrice(template, domain) %></p>
+                            <% if(!user) { %>
+                                <div id="ModalComponent"></div>
+                            <% } else { %>
+                                <button type="submit">Continue To Checkout</button>
+                            <% } %>
+                        </div>
+                    <% } %>
                 </form>
             </div>
         </section>
     </main>
-
     <%- include('../partials/scripts') %>
 </body>
 </html>

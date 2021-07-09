@@ -14,7 +14,6 @@ export function alerts(req, res, next) {
 export async function user(req, res, next) {
     let user = await userModel.findUser({ _id: req.session.uid });
     req.user = user;
-
     return next();
 }
 

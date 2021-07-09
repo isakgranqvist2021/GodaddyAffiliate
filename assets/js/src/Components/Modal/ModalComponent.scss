@@ -1,0 +1,50 @@
+.ModalComponent {
+    .modal {
+        position: fixed;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        pointer-events: none;
+        transition: all 400ms ease;
+        width: 100%;
+        height: 100%;
+
+        &.open {
+            background-color: rgba(0, 0, 0, 0.363);
+            pointer-events: auto;
+
+            .modal-content {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background-color: #fff;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            padding: 2rem;
+            border-radius: 1rem;
+            transform: translateY(100%);
+            opacity: 0;
+            transition: inherit;
+            max-width: 90%;
+
+            form {
+                margin: 0 !important;
+                width: 100%;
+
+                h1 {
+                    color: var(--accent);
+                    margin-top: 0;
+                }
+
+                section {
+                    box-shadow: none !important;
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+}

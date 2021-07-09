@@ -38,6 +38,17 @@
         section {
             margin: 1.5rem 0;
             width: 100%;
+            padding: 0;
+
+            input[type=checkbox] {
+                width: unset;
+            }
+
+            input,
+            select,
+            textarea {
+                width: 100%;
+            }
 
             &.file-upload {
                 input {
@@ -99,18 +110,6 @@
             label {
                 margin-bottom: 17px;
                 display: flex;
-            }
-
-            input[type=text],
-            input[type=number],
-            select,
-            textarea {
-                padding: 1rem;
-                border-radius: .5rem;
-                outline: none;
-                border: none;
-                width: 100%;
-                display: block;
             }
         }
 

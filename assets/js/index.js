@@ -5,8 +5,8 @@ import PickComponent from './src/Components/Pick/PickComponent';
 import CreateComponent from './src/Components/Create/CreateComponent';
 import SearchComponent from './src/Components/Search/SearchComponent';
 import ResultsComponent from './src/Components/Results/ResultsComponent';
-
 import LoginComponent from './src/Components/Login/LoginComponent';
+import ModalComponent from './src/Components/Modal/ModalComponent';
 
 const components = [
     {
@@ -28,6 +28,10 @@ const components = [
     {
         selector: '#LoginComponent',
         Component: LoginComponent
+    },
+    {
+        selector: '#ModalComponent',
+        Component: ModalComponent
     }
 ];
 

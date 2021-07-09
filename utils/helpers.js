@@ -1,3 +1,5 @@
+export const wwwImage = 'https://res.cloudinary.com/isak-tech/image/upload/v1625666073/www-purchase.jpg';
+
 export function randStr(n = 10) {
     let runes = 'QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890_!'.split('');
     let val = '';
@@ -43,4 +45,19 @@ export function validatePhone(body) {
     }
 
     return { type: 'success' };
+}
+
+
+export function constructItem(data) {
+    return {
+        quantity: 1,
+        price_data: {
+            currency: 'usd',
+            unit_amount: Math.round(data.price) * 100,
+            product_data: {
+                name: data.title,
+                images: data.images
+            }
+        }
+    }
 }

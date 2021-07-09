@@ -12,6 +12,7 @@
             <a href="/">Home</a>
             <a href="/about">About</a>
             <a href="/contact">Contact</a>
+            <a href="/checkout">Checkout</a>
         </div>
 
         <div class="links-group">
@@ -34,7 +35,7 @@
             <% } %>
         
             <% if(user) { %>
-                <a href="/users/account"><%= user.country.dial_code %> <%= user.phone %></a>
+                <a href="/users/account"><%= user.phone %></a>
                 <a href="/users/logout">Logout</a>
             <% } %>
         </div>

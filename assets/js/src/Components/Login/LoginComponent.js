@@ -29,7 +29,7 @@ function LoginComponent(props) {
         const response = await http.POST('/login', JSON.stringify({
             phone: removeCode(formData.phone, formData.index),
             code: formData.code,
-            country: codes[formData.index].dial_code
+            country: codes[formData.index]
         }));
 
         window.alert(response.message);
@@ -94,6 +94,8 @@ function LoginComponent(props) {
                         onChange={(e) => setFormData({ ...formData, code: e.target.value })}
                     />
                 </section>
+
+                <p>If you don't have an account, an account will automatically be created for you.</p>
 
                 <div className="form-actions">
                     {!sent && <button type="button" onClick={verifyPhone}>Log In</button>}

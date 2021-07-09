@@ -2,6 +2,7 @@ import React from 'react';
 import { calcPrice, splitDomain } from './helpers';
 
 function DomainComponent(props) {
+    console.log(props);
     return (
         <div className="domain">
             <div>

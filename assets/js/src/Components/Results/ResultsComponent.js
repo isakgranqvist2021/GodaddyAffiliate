@@ -4,8 +4,6 @@ import { initialSearchState } from '../../Utils/initial-states';
 import PlaceholderComponent from '../Placeholder/PlaceholderComponent';
 import DomainComponent from './DomainComponent';
 
-import http from '../../Utils/http';
-
 import './ResultsComponent.scss';
 
 function ResultsComponent(props) {
@@ -13,8 +11,6 @@ function ResultsComponent(props) {
     const formRef = React.useRef();
 
     searchStore.subscribe(() => {
-        console.log(searchStore.getState());
-
         setSearchState({ ...searchStore.getState() });
     });
 
