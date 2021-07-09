@@ -11,11 +11,12 @@ import index from '../routers/index.router';
 import users from '../routers/users.router';
 import api from '../routers/api.router';
 import admin from '../routers/admin.router';
+import error from '../controllers/error';
 
-import consumeAlert from '../middleware/alert.middleware';
-import findUser from '../middleware/find.middleware';
-import setInventory from '../middleware/set-inventory.middleware';
-import adminMiddleware from '../middleware/admin.middleware';
+import { loggedIn } from '../middleware/auth.middleware';
+import { isAdmin_v1 } from '../middleware/admin.middleware';
+import { alerts, user, inv } from '../middleware/helpers.middleware';
+
 
 app.set('view engine', '.ejs');
 
@@ -33,19 +34,20 @@ app.use(session({
 
 app.use('/public', express.static('./public'));
 app.use('/uploads', express.static('./uploads'));
-app.use('/api/uploads', express.static('./uploads'));
 
 app.use(express.json({
     limit: '4MB'
 }));
+
 app.use(express.urlencoded({
     extended: false
 }));
 
-app.use('*', consumeAlert, findUser, setInventory);
+app.use('*', alerts, user, inv);
 app.use('/', index);
-app.use('/users', users);
+app.use('/users', loggedIn, users);
 app.use('/api', api);
-app.use('/admin', adminMiddleware.defaultProtection, admin);
+app.use('/admin', isAdmin_v1, admin);
+app.use('*', error);
 
 export default { app, server };

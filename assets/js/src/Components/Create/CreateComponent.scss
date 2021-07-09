@@ -111,21 +111,6 @@
                 border: none;
                 width: 100%;
                 display: block;
-                -webkit-box-shadow: 0px 0px 2px 1px rgba(214, 214, 214, 1);
-                -moz-box-shadow: 0px 0px 2px 1px rgba(214, 214, 214, 1);
-                box-shadow: 0px 0px 2px 1px rgba(214, 214, 214, 1);
-            }
-
-            input:not([type="file"]),
-            textarea {
-                transition: all 210ms ease;
-
-                &:focus {
-                    -webkit-box-shadow: 0px 0px 12px 3px rgba(214, 214, 214, 1);
-                    -moz-box-shadow: 0px 0px 12px 3px rgba(214, 214, 214, 1);
-                    box-shadow: 0px 0px 12px 3px rgba(214, 214, 214, 1);
-                    transform: scale(1.05);
-                }
             }
         }
 

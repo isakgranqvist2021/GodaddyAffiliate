@@ -6,8 +6,7 @@ import CreateComponent from './src/Components/Create/CreateComponent';
 import SearchComponent from './src/Components/Search/SearchComponent';
 import ResultsComponent from './src/Components/Results/ResultsComponent';
 
-import RegisterComponent from './src/Components/Auth/RegisterComponent';
-import LoginComponent from './src/Components/Auth/LoginComponent';
+import LoginComponent from './src/Components/Login/LoginComponent';
 
 const components = [
     {
@@ -25,10 +24,6 @@ const components = [
     {
         selector: '#ResultsComponent',
         Component: ResultsComponent
-    },
-    {
-        selector: '#RegisterComponent',
-        Component: RegisterComponent
     },
     {
         selector: '#LoginComponent',

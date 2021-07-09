@@ -1,12 +1,16 @@
-import { randStr, isPhoneValid } from '../../utils/helpers';
+import { isPhoneValid } from '../../utils/helpers';
 import texts from '../../utils/texts';
 
 async function post(req, res) {
+    req.body.phone = req.body.country.dial_code + req.body.phone;
+
     if (!req.body.phone) return res.json({
         message: 'please enter your phone number',
         success: false,
         data: null
     });
+
+    console.log(req.body);
 
     if (!isPhoneValid) return res.json({
         message: 'please enter a valid phone number',
@@ -15,7 +19,7 @@ async function post(req, res) {
     });
 
 
-    let textToken = (() => {
+    let code = (() => {
         const runes = '0123456789';
         runes.split('');
         let val = '';
@@ -27,8 +31,8 @@ async function post(req, res) {
         return val;
     })();
 
-    await texts.sendText(`Verification Code: ${textToken}`, req.body.phone);
-    req.session.textToken = textToken;
+    await texts.sendText(`Verification Code: ${code}`, req.body.phone);
+    req.session.code = code;
 
     return res.json({
         message: `a text message has been sent to ${req.body.phone} with a code`,
@@ -37,28 +41,4 @@ async function post(req, res) {
     });
 }
 
-async function put(req, res) {
-    if (!req.body.token) return res.json({
-        message: 'missing token',
-        success: false,
-        data: null
-    });
-
-    if (!req.session.textToken) return res.json({
-        message: 'invalid session',
-        success: false,
-        data: null
-    });
-
-
-    if (req.body.token === req.session.textToken) {
-        delete req.session.textToken;
-        return res.json({
-            message: 'phone has been verified',
-            success: true,
-            data: null
-        });
-    }
-}
-
-export default { post, put };
+export default { post };

@@ -1,4 +1,4 @@
-function defaultProtection(req, res, next) {
+export function isAdmin_v1(req, res, next) {
     if (!req.user.admin) {
         req.session.alert = { type: 'error', message: 'only authorized users can view that page' };
         return res.redirect('/');
@@ -7,7 +7,7 @@ function defaultProtection(req, res, next) {
     return next();
 }
 
-function apiProtection(req, res, next) {
+export function isAdmin_v2(req, res, next) {
     if (!req.user || !req.user.admin) {
         return res.json({
             message: 'you must be an administrator to perform that action',
@@ -18,5 +18,3 @@ function apiProtection(req, res, next) {
 
     return next();
 }
-
-export default { defaultProtection, apiProtection };

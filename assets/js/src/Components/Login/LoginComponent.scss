@@ -1,0 +1,57 @@
+.LoginComponent {
+    form {
+        margin: 10rem auto 0 auto;
+        width: 500px;
+        position: relative;
+
+        h1 {
+            font-size: 4rem;
+            color: var(--accent);
+        }
+
+        section {
+            margin: 1.5rem 0;
+
+            div {
+                display: flex;
+            }
+
+            label,
+            input {
+                display: block;
+                width: 100%;
+            }
+
+            label {
+                margin-bottom: 17px;
+            }
+
+            select {
+                margin-right: 1rem;
+            }
+        }
+
+        button {
+            display: block;
+            margin: 0 0 0 auto;
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: .7rem 1.4rem;
+            border-radius: .5rem;
+            cursor: pointer;
+
+            &:hover {
+                opacity: .81;
+            }
+        }
+    }
+}
+
+@media only screen and(max-width: 670px) {
+    .AuthComponent {
+        form {
+            width: 90%;
+        }
+    }
+}
