@@ -7,7 +7,7 @@ export function loggedIn(req, res, next) {
 
 export function loggedOut(req, res, next) {
     if (req.session.uid)
-        return res.redirect('/users/account');
+        return res.redirect('/users/orders');
 
     return next();
 }

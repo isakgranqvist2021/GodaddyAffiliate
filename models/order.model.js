@@ -16,7 +16,8 @@ const orderSchema = new Schema({
     currency: { type: String, required: true },
     customer: { type: String, required: true },
     email: { type: String, required: true },
-    status: { type: String, required: true }
+    status: { type: String, required: true },
+    completed: { type: Boolean, default: false }
 });
 
 const OrderModel = mongoose.model('Order', orderSchema);
@@ -29,4 +30,69 @@ async function createOrder(data) {
     }
 }
 
-export default { createOrder };
+async function findOrders(filter) {
+    try {
+        return await OrderModel.find(filter).populate([
+            { path: 'belongsTo', model: 'User' },
+            {
+                path: 'inv', populate: {
+                    path: 'temp', model: 'Template'
+                }
+            }
+        ]).exec();
+    } catch (err) {
+        return Promise.reject('caught error');
+    }
+}
+
+async function findOrder(filter) {
+    try {
+        return await OrderModel.findOne(filter).populate([
+            { path: 'belongsTo', model: 'User' },
+            {
+                path: 'inv', populate: {
+                    path: 'temp', model: 'Template'
+                }
+            }
+        ]).exec();
+    } catch (err) {
+        return Promise.reject('caught error');
+    }
+}
+
+async function addEvent(filter, event) {
+    try {
+        const order = await OrderModel.findOne(filter);
+        order.events.push(event);
+        return await order.save();
+    } catch (err) {
+        return Promise.reject('caught error');
+    }
+}
+
+async function removeEvent(filter, index) {
+    try {
+        const order = await OrderModel.findOne(filter);
+        order.events.splice(index, 1);
+        return await order.save();
+    } catch (err) {
+        return Promise.reject('caught error');
+    }
+}
+
+async function markOrder(filter, mark) {
+    try {
+        return await OrderModel.findOneAndUpdate(filter, { completed: mark });
+    } catch (err) {
+        return Promise.reject('caught error');
+    }
+}
+
+export default {
+    createOrder,
+    findOrders,
+    findOrder,
+    addEvent,
+    removeEvent,
+    markOrder
+};

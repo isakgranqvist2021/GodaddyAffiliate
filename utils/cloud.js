@@ -24,7 +24,6 @@ async function upload(file) {
         });
 
         fs.unlinkSync(filePath);
-
         return uploaded.secure_url;
     } catch (err) {
         return Promise.reject('caught error');

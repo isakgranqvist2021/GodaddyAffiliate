@@ -17,9 +17,14 @@
     z-index: 2;
     background-color: $white;
 
+    svg {
+        fill: $accent;
+    }
+
     span {
         font-size: 3rem;
         cursor: pointer;
+        color: $accent;
     }
 }
 

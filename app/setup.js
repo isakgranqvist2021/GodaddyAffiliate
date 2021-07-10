@@ -3,14 +3,17 @@ import express from 'express';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import env from '../utils/env';
+import { Server } from 'socket.io';
 
 const app = express();
 const server = http.createServer(app);
+const io = new Server(server);
 
 import index from '../routers/index.router';
 import users from '../routers/users.router';
 import api from '../routers/api.router';
 import admin from '../routers/admin.router';
+import socket from '../routers/io.router';
 import error from '../controllers/error';
 
 import { loggedIn } from '../middleware/auth.middleware';
@@ -43,6 +46,8 @@ app.use(express.urlencoded({
     extended: false
 }));
 
+io.on('connection', (connection) => socket(connection, io));
+
 app.use('*', alerts, user, inv);
 app.use('/', index);
 app.use('/users', loggedIn, users);
@@ -50,4 +55,4 @@ app.use('/api', api);
 app.use('/admin', isAdmin_v1, admin);
 app.use('*', error);
 
-export default { app, server };
+export default { app, server, io };

@@ -1,8 +1,6 @@
 import templateModel from '../../models/template.model';
 
 async function findTemplates(req, res) {
-    console.log(req.session);
-
     try {
         const templates = await templateModel.findTemplates({
             tags: req.session.inv.tag

@@ -1,7 +1,9 @@
 <div class="toolbar">
     <span class="material-icons-outlined">menu</span>
     <a href="/">
-        <img src="/public/img/logo.svg" alt="">
+        <svg width="200" height="50" viewBox="0 0 200 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="200" height="50" rx="21"/>
+        </svg>
     </a>
 </div>
 
@@ -10,8 +12,6 @@
         <div class="links-group">
             <h3>Useful Links</h3>
             <a href="/">Home</a>
-            <a href="/about">About</a>
-            <a href="/contact">Contact</a>
             <a href="/checkout">Checkout</a>
         </div>
 
@@ -25,8 +25,14 @@
     
         <div class="links-group">
             <h3>Account</h3>
+
+            <% if(user) { %>
+                <a href="/users/orders">My Orders</a>
+                <a href="/users/settings">Account Settings</a>
+            <% } %>
+
             <% if(!user) { %>
-                <a href="/login">Login</a>
+                <a href="/login">Log in</a>
             <% } %>
         
             <% if(user && user.admin) { %>
@@ -35,8 +41,7 @@
             <% } %>
         
             <% if(user) { %>
-                <a href="/users/account"><%= user.phone %></a>
-                <a href="/users/logout">Logout</a>
+                <a href="/users/logout">Log out</a>
             <% } %>
         </div>
     </div>

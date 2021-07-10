@@ -10,8 +10,6 @@ async function post(req, res) {
         data: null
     });
 
-    console.log(req.body);
-
     if (!isPhoneValid) return res.json({
         message: 'please enter a valid phone number',
         success: false,
@@ -31,14 +29,24 @@ async function post(req, res) {
         return val;
     })();
 
-    await texts.sendText(`Verification Code: ${code}`, req.body.phone);
-    req.session.code = code;
+    try {
+        await texts.sendText(`Verification Code: ${code}`, req.body.phone);
+        req.session.code = code;
 
-    return res.json({
-        message: `a text message has been sent to ${req.body.phone} with a code`,
-        success: true,
-        data: null
-    });
+        return res.json({
+            message: `a text message has been sent to ${req.body.phone} with a code`,
+            success: true,
+            data: null
+        });
+    } catch (err) {
+        console.log(err);
+
+        return res.json({
+            message: err.code === 21211 ? 'invalid phone number' : 'caught an error',
+            success: false,
+            data: null
+        });
+    }
 }
 
 export default { post };

@@ -1,12 +1,11 @@
 main {
-
     section:first-of-type {
         .missing-data {
             display: flex;
 
             a {
                 background-color: var(--white);
-                border: 1px solid var(--primary);
+                border: 1px solid var(--accent);
                 color: var(--text);
                 padding: 1rem;
                 text-decoration: none;

@@ -2,11 +2,25 @@
 @import './components/nav';
 @import './colors';
 @import './components/admin-nav';
+@import './components/alert';
 
 *,
 *::before,
 *::after {
     box-sizing: border-box;
+}
+
+* {
+
+    &::-webkit-scrollbar,
+    &::-webkit-scrollbar-track {
+        background-color: $white;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $primary;
+        border-radius: 1rem;
+    }
 }
 
 body,

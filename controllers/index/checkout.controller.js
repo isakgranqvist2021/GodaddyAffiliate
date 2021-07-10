@@ -40,7 +40,7 @@ async function success(req, res) {
         events: [
             {
                 message: 'Order Received',
-                date: new Date()
+                createdAt: new Date()
             }
         ]
     }

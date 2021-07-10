@@ -62,7 +62,7 @@ function LoginComponent(props) {
     return (
         <div className="LoginComponent">
             <form method="POST" action="/login">
-                <h1>Login</h1>
+                <h1>Log in</h1>
 
                 <section>
                     <label htmlFor="phone">Phone Number</label>
