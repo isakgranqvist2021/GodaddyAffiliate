@@ -3,6 +3,7 @@ import express from 'express';
 import session from 'express-session';
 import MongoStore from 'connect-mongo';
 import env from '../utils/env';
+import cors from 'cors';
 import { Server } from 'socket.io';
 
 const app = express();
@@ -34,6 +35,8 @@ app.use(session({
         secure: false,
     }
 }));
+
+app.use(cors());
 
 app.use('/public', express.static('./public'));
 app.use('/uploads', express.static('./uploads'));
