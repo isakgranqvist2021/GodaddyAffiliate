@@ -1,4 +1,5 @@
 import fs from 'fs';
+import path from 'path';
 
 async function get(req, res) {
     let tags = JSON.parse(fs.readFileSync(path.resolve('.', path.join('./data/tags.json'))));

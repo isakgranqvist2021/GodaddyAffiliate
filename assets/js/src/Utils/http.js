@@ -23,8 +23,6 @@ async function POST(url, body, headers = { 'Content-Type': 'application/json' })
             headers: headers
         });
 
-        console.log(response.status);
-
         return await response.json();
     } catch (err) {
         console.log('error');
