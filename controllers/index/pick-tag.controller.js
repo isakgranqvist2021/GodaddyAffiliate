@@ -1,7 +1,7 @@
 import fs from 'fs';
 
 async function get(req, res) {
-    let tags = JSON.parse(fs.readFileSync('./data/tags.json'));
+    let tags = JSON.parse(fs.readFileSync(path.resolve('.', path.join('./data/tags.json'))));
 
     return res.render('index/pick-tag', {
         title: 'Pick Tag',
@@ -18,7 +18,7 @@ function post(req, res) {
 }
 
 function set(req, res) {
-    let tags = JSON.parse(fs.readFileSync('./data/tags.json'));
+    let tags = JSON.parse(fs.readFileSync(path.resolve('.', path.join('./data/tags.json'))));
 
     console.log(req.query.tag.toLowerCase());
 

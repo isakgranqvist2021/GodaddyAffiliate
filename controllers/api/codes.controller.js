@@ -1,7 +1,8 @@
 import fs from 'fs';
+import path from 'path';
 
 function get(req, res) {
-    const codes = JSON.parse(fs.readFileSync('./data/codes.json'));
+    const codes = JSON.parse(fs.readFileSync(path.resolve('.', path.join('./data/codes.json'))));
 
     return res.json({
         message: 'found some codes',

@@ -1,4 +1,4 @@
-const env = 'production';
+const env = 'development';
 
 const serverAddr = env === 'development' ? 'http://localhost:8080/api' : 'https://marina-media.herokuapp.com';
 
