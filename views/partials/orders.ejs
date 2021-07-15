@@ -1,21 +1,22 @@
-<ul>
-    <% orders.forEach(order => { %>
-       <li>
-            <a href="/users/order/<%= order._id %>">
-                <div class="icon">
-                    <% if(order.completed) { %>
-                        <span class="material-icons-outlined done">done</span>
-                    <% } else { %>
-                        <span class="material-icons-outlined hourglass">hourglass_empty</span>
-                    <% } %>
-                </div>
-                <div class="meta">
-                    <p><%= order.inv.temp.title %></p>
-                    <p><%= order.inv.dom.split('.')[0] %><span>.<%= order.inv.dom.split('.')[1] %></span></p>
-                    <p><%= order.createdAt.toLocaleString() %></p>
-                    <p>$<%= order.amount / 100 %></p>
-                </div>
-            </a>
-       </li>
-    <% }) %>
-</ul>
+<table>
+    <thead>
+        <tr>
+            <th>Template</th>
+            <th>Domain</th>
+            <th>Created</th>
+            <th>Price</th>
+            <th>Completed</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% orders.forEach(order => { %>
+            <tr onclick="window.location.href  = '/users/order/<%= order._id %>'">
+                <td><%= order.inv.temp.title %></td>
+                <td><%= order.inv.dom.split('.')[0] %><span class="domain-ext">.<%= order.inv.dom.split('.')[1] %></span></td>
+                <td><%= order.createdAt.toLocaleString() %></td>
+                <td>$<%= order.amount / 100 %></td>
+                <td><%= order.completed %></td>
+            </tr>
+        <% }) %>
+    </tbody>
+</table>

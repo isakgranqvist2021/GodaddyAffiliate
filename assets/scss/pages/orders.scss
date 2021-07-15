@@ -1,72 +1,27 @@
-ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+table {
+    text-align: left;
+    border-collapse: collapse;
+    width: 100%;
 
-    li {
-        &:not(:last-of-type) {
-            margin-bottom: 2rem;
-        }
+    .domain-ext {
+        color: var(--accent);
+    }
 
-        a {
-            display: flex;
-            justify-content: space-between;
-            text-decoration: none;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-            padding: 1rem;
-            color: var(--text);
-            transition: all 215ms ease;
+    tbody {
+        font-size: .9rem;
+
+        tr {
             cursor: pointer;
-            position: relative;
-            border-radius: .5rem;
-
-            .icon {
-                box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-                background-color: #fff;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                position: absolute;
-                width: 50px;
-                height: 50px;
-                right: -25px;
-                top: -25px;
-                border-radius: 50%;
-
-                .done {
-                    color: green;
-                }
-
-                .hourglass {
-                    color: rgb(190, 190, 42);
-                }
-            }
-
-            p {
-                margin: 0;
-                text-transform: lowercase;
-                color: rgb(88, 88, 88);
-            }
-
-            .meta {
-                display: flex;
-                flex-wrap: wrap;
-
-                span {
-                    color: var(--primary);
-                }
-
-                p:not(:last-of-type) {
-                    &::after {
-                        content: '';
-                        margin: 0 2rem;
-                    }
-                }
-            }
 
             &:hover {
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+                background-color: rgb(245, 245, 245);
             }
         }
+    }
+
+    th,
+    td {
+        padding: 1rem;
+        border-bottom: 1px solid rgb(218, 218, 218);
     }
 }

@@ -1,5 +1,5 @@
 export function isAdmin_v1(req, res, next) {
-    if (!req.user.admin) {
+    if (!req.user || !req.user.admin) {
         req.session.alert = { type: 'error', message: 'only authorized users can view that page' };
         return res.redirect('/');
     }

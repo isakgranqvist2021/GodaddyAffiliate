@@ -1,6 +1,5 @@
 .env
 ```js
-
 PORT = 
 SERVER_URL = 
 NODE_ENV = 
@@ -25,5 +24,4 @@ GMAIL_EMAIL =
 GMAIL_PW = 
 
 STRIPE_KEY = 
-
 ```

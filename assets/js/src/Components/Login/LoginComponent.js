@@ -9,6 +9,7 @@ function LoginComponent(props) {
     const [sent, setSent] = React.useState(false);
     const [codes, setCodes] = React.useState([]);
     const [mode, setMode] = React.useState('phone');
+    const [loading, setLoading] = React.useState(false);
     const [formData, setFormData] = React.useState({
         index: 0,
         value: '',
@@ -27,6 +28,8 @@ function LoginComponent(props) {
     }, []);
 
     const submit = async () => {
+        setLoading(true);
+
         let data = {
             code: formData.code,
             country: codes[formData.index]
@@ -49,10 +52,12 @@ function LoginComponent(props) {
                 code: ''
             });
             setSent(false);
+            setLoading(false);
         }
     }
 
     const verifyPhone = async () => {
+        setLoading(true);
         const response = await http.POST('/verify-phone', JSON.stringify({
             phone: removeCode(formData.value, codes[formData.index].dial_code),
             country: codes[formData.index]
@@ -63,9 +68,12 @@ function LoginComponent(props) {
         if (response.success) {
             setSent(true);
         }
+
+        setLoading(false);
     }
 
     const verifyEmail = async () => {
+        setLoading(true);
         const response = await http.POST('/verify-email', JSON.stringify({
             email: formData.value
         }));
@@ -75,6 +83,8 @@ function LoginComponent(props) {
         if (response.success) {
             setSent(true);
         }
+
+        setLoading(false);
     }
 
     return (
@@ -134,8 +144,8 @@ function LoginComponent(props) {
                 <p>If you don't have an account, an account will automatically be created for you.</p>
 
                 <div className="form-actions">
-                    {!sent && <button type="button" onClick={mode === 'phone' ? verifyPhone : verifyEmail}>Log In</button>}
-                    {sent && <button type="button" onClick={submit}>Log In</button>}
+                    {!sent && <button disabled={loading} type="button" onClick={mode === 'phone' ? verifyPhone : verifyEmail}>Log In</button>}
+                    {sent && <button disabled={loading} type="button" onClick={submit}>Log In</button>}
                 </div>
             </form>
         </div >

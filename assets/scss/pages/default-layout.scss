@@ -1,17 +1,14 @@
 main {
     .go-back {
-        display: block;
-        width: 10rem;
-        background-color: var(--primary);
-        color: var(--white);
-        padding: 1rem;
-        border-radius: 1rem;
-        margin-top: 1rem;
-        text-align: center;
+        display: flex;
+        align-items: center;
+        margin-top: 4rem;
         text-decoration: none;
 
-        &:hover {
-            opacity: .81;
+        &::before {
+            font-family: 'Material Icons Outlined';
+            content: '\e5cb';
+            margin-right: .5rem;
         }
     }
 
