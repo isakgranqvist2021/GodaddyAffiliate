@@ -4,6 +4,9 @@ ul {
     list-style: none;
 
     li {
+        &:not(:last-of-type) {
+            margin-bottom: 2rem;
+        }
 
         a {
             display: flex;
@@ -35,7 +38,7 @@ ul {
                 }
 
                 .hourglass {
-                    color: yellow;
+                    color: rgb(190, 190, 42);
                 }
             }
 

@@ -68,7 +68,10 @@
                             <% if(!user) { %>
                                 <div id="ModalComponent"></div>
                             <% } else { %>
+                              <div>
+                                <!-- <button type="button" class="checkout-mobile-money">Mobile Money</button> -->
                                 <button type="submit">Continue To Checkout</button>
+                              </div>
                             <% } %>
                         </div>
                     <% } %>
@@ -77,5 +80,6 @@
         </section>
     </main>
     <%- include('../partials/scripts') %>
+    <script src="/public/js/checkout-mobile-money.js"></script>
 </body>
 </html>

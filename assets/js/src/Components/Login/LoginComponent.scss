@@ -5,9 +5,25 @@
         position: relative;
 
         h1 {
-            font-size: 4rem;
-            color: var(--accent);
-            text-transform: capitalize;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            span {
+                font-size: 4rem;
+                color: var(--accent);
+                text-transform: capitalize;
+            }
+
+            a {
+                font-size: 1rem;
+                cursor: pointer;
+                color: var(--accent);
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
         }
 
         section {

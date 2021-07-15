@@ -7,6 +7,7 @@ function get(req, res) {
     }
 
     return res.render('index/pick-template', {
+        title: 'Pick Template',
         user: req.user
     });
 }

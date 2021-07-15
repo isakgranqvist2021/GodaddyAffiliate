@@ -97,6 +97,10 @@ main {
         border: none;
         cursor: pointer;
 
+        &:first-of-type {
+            margin-right: 1rem;
+        }
+
         &:disabled {
             cursor: not-allowed;
             opacity: .7;

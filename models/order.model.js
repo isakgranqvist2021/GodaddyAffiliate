@@ -54,7 +54,7 @@ async function findOrder(filter) {
                     path: 'temp', model: 'Template'
                 }
             }
-        ]).exec();
+        ]).lean().exec();
     } catch (err) {
         return Promise.reject('caught error');
     }

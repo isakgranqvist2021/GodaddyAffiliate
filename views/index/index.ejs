@@ -6,44 +6,58 @@
     <%- include('../partials/nav') %>
 
     <main>
-        <section class="block">
+        <section class="main-section">
             <div class="container">
-                <h3>Lorem ipsum dolor sit amet.</h3>
+                <h1>Lorem ipsum dolo.</h1>
                 <p>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo reprehenderit hic assumenda itaque non excepturi.
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dignissimos quis laborum nihil itaque adipisci. Ex officiis suscipit laborum repudiandae, illo accusamus. Nihil corporis similique consectetur ea dolores tempora qui. Blanditiis, cum veniam.
                 </p>
                 <a href="/pick-tag">Build A Website</a>
             </div>
         </section>
         <section class="block">
+            <span class="material-icons-outlined spin">language</span>
+            <h3>Lorem, ipsum dolor.</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid necessitatibus maxime aspernatur odit voluptatibus, dignissimos eveniet sapiente, distinctio neque in hic soluta nihil unde corporis!</p>
+            <button>Pick An Awesome Domain</button>
+        </section>
+        <section class="cards">
+            <h2>Our Best Sellers</h2>
+            <% 
+                const cards = [
+                    {
+                        title: 'Business Oriented',
+                        href: '/set-tag?tag=business',
+                        img: '/public/img/placeholder1.png'
+                    },
+                    {
+                        title: 'Personal Portfolio',
+                        href: '/set-tag?tag=portfolio',
+                        img: '/public/img/placeholder2.png'
+                    },
+                    {
+                        title: 'Fitness & Health',
+                        href: '/set-tag?tag=fitness',
+                        img: '/public/img/placeholder3.png'
+                    }
+                ]
+            %> 
             <div class="container">
-                <h3>Lorem ipsum dolor sit amet.</h3>
-                <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo reprehenderit hic assumenda itaque non excepturi.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis esse nihil corrupti et. Optio.
-                </p>
-                <a href="/pick-logo">Build A Logo</a>
+                <% cards.forEach(card => { %>
+                    <a href="<%= card.href %>">
+                        <div class="card">
+                            <div class="img" style="background-image:url('<%= card.img %>')"></div>
+                            <h3><%= card.title %></h3>
+                        </div>
+                    </a>
+                <% }) %>
             </div>
         </section>
         <section class="block">
-            <div class="container">
-                <h3>Lorem ipsum dolor sit amet.</h3>
-                <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo reprehenderit hic assumenda itaque non excepturi.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, ex itaque. Eos?
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, tempora. Nostrum iure impedit sit minus modi non quaerat culpa asperiores nisi.
-                </p>
-            </div>
-        </section>
-        <section class="block">
-            <div class="container">
-                <h3>Lorem ipsum dolor sit amet.</h3>
-                <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo reprehenderit hic assumenda itaque non excepturi.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis numquam debitis, fuga impedit molestiae rem minima officiis recusandae perferendis velit dolorem porro. Reprehenderit porro, aut laborum est tempora error, dolore blanditiis culpa deleniti dolorem, perspiciatis mollitia rerum minus. Accusamus quos omnis voluptatem adipisci eligendi! Nobis quia voluptate possimus aliquam dolorum impedit assumenda deleniti? Eaque, laudantium excepturi.
-                </p>
-            </div>
+            <span class="material-icons-outlined">home</span>
+            <h3>Lorem, ipsum dolor.</h3>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid necessitatibus maxime aspernatur odit voluptatibus, dignissimos eveniet sapiente, distinctio neque in hic soluta nihil unde corporis!</p>
+            <button>Build Your New Home</button>
         </section>
     </main>
 

@@ -4,16 +4,6 @@ const userId = document.querySelector('.userId').value;
 const messages = document.querySelector('.messages');
 const template = document.querySelector('template');
 
-/*
-        <li>
-            <div class="message-header">
-                <span class="date">Date</span>
-                <span class="nickname">Nickname</span>
-            </div>
-            <p>Message</p>
-        </li>
-*/
-
 function createMessage(data) {
     console.log(data);
     console.log(new Date().toLocaleString())
@@ -33,6 +23,8 @@ function createMessage(data) {
 })();
 
 function send(input) {
+    if (input.value.trim() <= 0) return;
+
     socket.emit('message', {
         message: input.value,
         sentBy: userId,

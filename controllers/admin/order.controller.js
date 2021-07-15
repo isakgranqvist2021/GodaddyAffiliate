@@ -1,9 +1,5 @@
 import orderModel from "../../models/order.model";
 
-function get(req, res) {
-    return res.redirect(req.headers.referer);
-}
-
 async function add(req, res) {
     try {
         await orderModel.addEvent({ _id: req.body.order }, {
@@ -35,4 +31,4 @@ async function completed(req, res) {
     }
 }
 
-export default { get, add, remove, completed };
+export default { add, remove, completed };

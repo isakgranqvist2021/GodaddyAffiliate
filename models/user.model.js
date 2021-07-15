@@ -1,3 +1,4 @@
+import { getUserInfo } from '../utils/helpers';
 import mongoose from 'mongoose';
 
 const Schema = mongoose.Schema;
@@ -6,8 +7,9 @@ const userSchema = new Schema({
     createdAt: { type: Date, default: new Date() },
     lastLogin: { type: Date, default: new Date() },
     updatedAt: { type: Date, default: null },
-    country: { type: Object, required: false },
-    phone: { type: String, required: false, unique: true },
+    userInfo: { type: Object, required: true },
+    email: { type: String, required: false, unique: true, default: null },
+    phone: { type: String, required: false, unique: true, default: null },
     admin: { type: Boolean, default: false },
 });
 
@@ -15,15 +17,19 @@ const UserModel = mongoose.model('User', userSchema);
 
 async function register(data) {
     try {
-        return await new UserModel({ phone: data.phone, country: data.country }).save();
+        let userInfo = await getUserInfo();
+        return await new UserModel({
+            ...data,
+            userInfo: userInfo
+        }).save();
     } catch (err) {
         return Promise.reject(err.code === 11000 ? 'seems like you already have an account' : 'caught error');
     }
 }
 
-async function login(data) {
+async function login(data, filter) {
     try {
-        let user = await UserModel.findOne({ phone: data.phone });
+        let user = await UserModel.findOne(filter);
 
         if (user !== null) {
             user.lastLogin = new Date();
@@ -33,6 +39,7 @@ async function login(data) {
 
         return Promise.resolve(await register(data))
     } catch (err) {
+        return Promise.reject(typeof (err) === 'string' ? err : 'caught error');
     }
 }
 

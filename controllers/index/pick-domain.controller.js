@@ -2,6 +2,7 @@ import domains from '../../utils/domains';
 
 async function get(req, res) {
     return res.render('index/pick-domain', {
+        title: 'Pick Domain',
         user: req.user
     });
 }

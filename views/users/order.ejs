@@ -8,108 +8,86 @@
     <%- include('../partials/alerts') %>
     
     <main class="container">
+        <div class="actions">
+            <% if(user.admin) { %>
+                <form method="POST" action="/admin/order/mark/completed">
+                    <input type="hidden" name="order" value="<%= order._id %>">
+                    <button>Mark As Completed</button>
+                </form>
+            <% } %>
+        </div>
+
         <section>
-            <div class="order-details">
-                <header>
-                    Order Details
-                </header>
+            <div class="card">
+                <div class="card-icon"><span class="material-icons-outlined">description</span></div>
+
                 <ul>
-                    <li>
-                        <span>Order received</span>
-                        <span><%= order.createdAt.toLocaleString() %></span>
-                    </li>
-                    <li>
-                        <span>Template</span>
-                        <span><%= order.inv.temp.title %></span>
-                    </li>
-                    <li>
-                        <span>Domain</span>
-                        <div>
-                            <span><%= order.inv.dom.split('.')[0] %></span><span class="domain-ext">.<%= order.inv.dom.split('.')[1] %></span>
-                        </div>
-                    </li>
-                    <li>
-                        <span>Cost</span>
-                        <span>$<%= order.amount / 100 %></span>
-                    </li>
-                    <li>
-                        <span>Status</span>
-                        <span><%= order.status %></span>
-                    </li>
-                    <li>
-                        <span>Tag</span>
-                        <span><%= order.inv.tag %></span>
-                    </li>
+                    <li><span>Order Id</span><span><%= order._id %></span></li>
+                    <li><span>Order received</span><span><%= order.createdAt.toLocaleString() %></span></li>
+                    <li><span>Template</span><span><%= order.inv.temp.title %></span></li>
+                    <li><span>Domain</span><div><span><%= order.inv.dom.split('.')[0] %></span><span class="domain-ext">.<%= order.inv.dom.split('.')[1] %></span></div></li>
+                    <li><span>Cost</span><span>$<%= order.amount / 100 %></span></li>
+                    <li><span>Status</span><span><%= order.status %></span></li>
+                    <% if(user.admin) { %>
+                        <li><span>Tag</span><span><%= order.inv.tag %></span></li>
+                        <li><span>Completed</span><%= order.completed %></li>
+                    <% } %>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-icon"><span class="material-icons-outlined">fact_check</span></div>
+
+                <ul>
+                    <% order.events.forEach((event, index) => { %>
+                            <li>
+                                <% if(user.admin) { %>
+                                <a href="/admin/order/remove-event?ev=<%= index %>&order=<%= order._id %>" title="Remove event">
+                                    <span class="material-icons-outlined">delete</span>
+                                </a>
+                                <% } %>
+                                <p><%= event.message %></p>
+                                <p><%= event.createdAt.toLocaleString() %></p>
+                            </li>
+                    <% }) %>
+                </ul>
+                
+                <% if(user.admin) { %>
+                    <footer title="Add new event" class="event-footer">
+                        <form method="POST" action="/admin/order/add-event">
+                            <input placeholder="event" name="event"/>
+                            <input type="hidden" name="order" value="<%= order._id %>">
+                            <button type="submit"><span class="material-icons-outlined">send</span></button>
+                        </form>
+                    </footer>
+                <% } %> 
+            </div>
+
+            <div class="card">
+                <div class="card-icon"><span class="material-icons-outlined">chat</span></div>
+
+                <ul class="messages">
+                    <% messages.forEach(message => { %>
+                        <li>
+                            <div class="message-meta">
+                                <span class="date"><%= message.createdAt.toLocaleString() %></span>
+                                <span class="nickname"><%= JSON.stringify(message.sentBy) === JSON.stringify(user._id) ? 'You' : message.nickname %></span>
+                            </div>
+                            <p><%= message.message %></p>
+                        </li>
+                    <% }) %>
                 </ul>
 
                 <footer>
-                    <form method="POST" action="/admin/order/mark/completed">
-                        <input type="hidden" name="order" value="<%= order._id %>">
-                        <button>Mark As Completed</button>
+                    <input class="orderId" type="hidden" value="<%= order._id %>" />
+                    <input class="userId" type="hidden" value="<%= user._id %>" />
+                    <form>
+                        <input class="message" type="text" placeholder="Send a message"/>
+                        <button type="button" onclick="send(document.querySelector('.message'))">
+                            <span class="material-icons-outlined">send</span>
+                        </button>
                     </form>
                 </footer>
-            </div>
-
-            <div class="grid">
-                <div class="events">
-                    <header>Order Events</header>    
-                    <ul>
-                        <% order.events.forEach((event, index) => { %>
-                            <% if(user.admin) { %>
-                                <a href="/admin/order/remove-event?ev=<%= index %>&order=<%= order._id %>" title="Remove event">
-                                    <span class="material-icons-outlined">delete</span>
-                                    <li>
-                                        <p><%= event.message %></p>
-                                        <p><%= event.createdAt.toLocaleString() %></p>
-                                    </li>
-                                </a>
-                            <% } else { %>
-                                <a>
-                                    <li>
-                                        <p><%= event.message %></p>
-                                        <p><%= event.createdAt.toLocaleString() %></p>
-                                    </li>
-                                </a>
-                            <% } %>
-                        <% }) %>
-                    </ul>
-                    
-                    <% if(user.admin) { %>
-                        <footer title="Add new event" class="event-footer">
-                            <form method="POST" action="/admin/order/add-event">
-                                <input placeholder="event" name="event"/>
-                                <input type="hidden" name="order" value="<%= order._id %>">
-                                <button type="submit">
-                                    <span class="material-icons-outlined">send</span>
-                                </button>
-                            </form>
-                        </footer>
-                    <% } %> 
-                </div>
-                <div class="chat">
-                    <header>Chat</header>
-                    <ul class="messages">
-                        <% messages.forEach(message => { %>
-                            <li>
-                                <div class="message-header">
-                                    <span class="date"><%= message.createdAt.toLocaleString() %></span>
-                                    <span class="nickname"><%= JSON.stringify(message.sentBy) === JSON.stringify(user._id) ? 'You' : message.nickname %></span>
-                                </div>
-                                <p><%= message.message %></p>
-                            </li>
-                        <% }) %>
-                    </ul>
-                    <footer>
-                        <input class="orderId" type="hidden" value="<%= order._id %>" />
-                        <input class="userId" type="hidden" value="<%= user._id %>" />
-                        <form>
-                            <input class="message" type="text" placeholder="Send a message"/>
-                            <button type="button" onclick="send(document.querySelector('.message'))">
-                                <span class="material-icons-outlined">send</span>
-                            </button>
-                        </form>
-                    </footer>
-                </div>
             </div>
         </section>
     </main>

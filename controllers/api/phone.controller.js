@@ -1,4 +1,4 @@
-import { isPhoneValid } from '../../utils/helpers';
+import { isPhoneValid, getCode } from '../../utils/helpers';
 import texts from '../../utils/texts';
 
 async function post(req, res) {
@@ -16,19 +16,7 @@ async function post(req, res) {
         data: null
     });
 
-
-    let code = (() => {
-        const runes = '0123456789';
-        runes.split('');
-        let val = '';
-
-        for (let i = 0; i < 6; i++) {
-            val += runes[Math.floor(Math.random() * runes.length)]
-        }
-
-        return val;
-    })();
-
+    const code = getCode();
     try {
         await texts.sendText(`Verification Code: ${code}`, req.body.phone);
         req.session.code = code;

@@ -8,6 +8,7 @@ let stripe = stripeLib(env.STRIPE_KEY);
 
 async function get(req, res) {
     return res.render('index/checkout', {
+        title: 'Checkout',
         user: req.user,
         domain: req.session.inv.dom,
         template: req.session.inv.temp,
@@ -61,6 +62,7 @@ async function success(req, res) {
 
         delete req.session.cid;
         return res.render('index/checkout-success', {
+            title: 'Success',
             user: req.user
         });
     } catch (err) {

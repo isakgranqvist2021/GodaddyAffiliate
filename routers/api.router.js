@@ -13,7 +13,7 @@ import inventoryController from '../controllers/api/inventory.controller';
 import phoneController from '../controllers/api/phone.controller';
 import loginController from '../controllers/api/login.controller';
 import codesController from '../controllers/api/codes.controller';
-
+import emailController from '../controllers/api/email.controller';
 
 router.get('/tags', tagsController);
 router.get('/find-templates', findTemplatesController);
@@ -21,7 +21,9 @@ router.get('/search/:q', searchController.get);
 router.get('/my-inventory', inventoryController.get);
 
 router.post('/verify-phone', phoneController.post);
-router.post('/login', loginController.post);
+router.post('/verify-email', emailController.post);
+router.post('/login/phone', loginController.phone);
+router.post('/login/email', loginController.email);
 
 router.get('/codes', codesController.get);
 

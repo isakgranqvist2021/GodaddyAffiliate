@@ -8,9 +8,10 @@ import './LoginComponent.scss';
 function LoginComponent(props) {
     const [sent, setSent] = React.useState(false);
     const [codes, setCodes] = React.useState([]);
+    const [mode, setMode] = React.useState('phone');
     const [formData, setFormData] = React.useState({
         index: 0,
-        phone: '',
+        value: '',
         code: ''
     });
 
@@ -26,11 +27,16 @@ function LoginComponent(props) {
     }, []);
 
     const submit = async () => {
-        const response = await http.POST('/login', JSON.stringify({
-            phone: removeCode(formData.phone, formData.index),
+        let data = {
             code: formData.code,
             country: codes[formData.index]
-        }));
+        }
+
+        mode === 'phone'
+            ? data["phone"] = formData.value
+            : data["email"] = formData.value;
+
+        const response = await http.POST('/login/' + mode, JSON.stringify(data));
 
         window.alert(response.message);
 
@@ -39,7 +45,7 @@ function LoginComponent(props) {
         } else {
             setFormData({
                 index: 0,
-                phone: '',
+                value: '',
                 code: ''
             });
             setSent(false);
@@ -48,8 +54,20 @@ function LoginComponent(props) {
 
     const verifyPhone = async () => {
         const response = await http.POST('/verify-phone', JSON.stringify({
-            phone: removeCode(formData.phone, codes[formData.index].dial_code),
+            phone: removeCode(formData.value, codes[formData.index].dial_code),
             country: codes[formData.index]
+        }));
+
+        window.alert(response.message);
+
+        if (response.success) {
+            setSent(true);
+        }
+    }
+
+    const verifyEmail = async () => {
+        const response = await http.POST('/verify-email', JSON.stringify({
+            email: formData.value
         }));
 
         window.alert(response.message);
@@ -61,26 +79,44 @@ function LoginComponent(props) {
 
     return (
         <div className="LoginComponent">
-            <form method="POST" action="/login">
-                <h1>Log in</h1>
+            <form>
+                <h1>
+                    <span>Log in</span>
+                    <a onClick={() => setMode(mode === 'phone' ? 'email' : 'phone')}>
+                        {mode === 'phone' ? 'Login With Email' : 'Login With Phone'}
+                    </a>
+                </h1>
 
-                <section>
-                    <label htmlFor="phone">Phone Number</label>
-                    <div>
-                        <select disabled={sent} onChange={(e) => setFormData({ ...formData, index: e.target.value })}>
-                            {codes.map((code, i) => <option value={i} key={i}>{code.dial_code}</option>)}
-                        </select>
+                {mode === 'phone' && (
+                    <section>
+                        <label htmlFor="phone">Phone Number</label>
+                        <div>
+                            <select disabled={sent} onChange={(e) => setFormData({ ...formData, index: e.target.value })}>
+                                {codes.map((code, i) => <option value={i} key={i}>{code.dial_code}</option>)}
+                            </select>
+                            <input
+                                disabled={sent}
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                placeholder="Phone Number"
+                                value={formData.value}
+                                onChange={(e) => setFormData({ ...formData, value: e.target.value })}
+                            />
+                        </div>
+                    </section>
+                )}
+
+                {mode === 'email' && (
+                    <section>
+                        <label htmlFor="email">Email Address</label>
                         <input
-                            disabled={sent}
-                            type="tel"
-                            id="phone"
-                            name="phone"
-                            placeholder="Phone Number"
-                            value={formData.phone}
-                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                            placeholder="Email Address"
+                            value={formData.value}
+                            onChange={(e) => setFormData({ ...formData, value: e.target.value })}
                         />
-                    </div>
-                </section>
+                    </section>
+                )}
 
                 <section>
                     <label htmlFor="code">Verification Code</label>
@@ -98,11 +134,11 @@ function LoginComponent(props) {
                 <p>If you don't have an account, an account will automatically be created for you.</p>
 
                 <div className="form-actions">
-                    {!sent && <button type="button" onClick={verifyPhone}>Log In</button>}
+                    {!sent && <button type="button" onClick={mode === 'phone' ? verifyPhone : verifyEmail}>Log In</button>}
                     {sent && <button type="button" onClick={submit}>Log In</button>}
                 </div>
             </form>
-        </div>
+        </div >
     );
 }
 

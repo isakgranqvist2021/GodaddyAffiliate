@@ -1,4 +1,6 @@
-export const wwwImage = 'https://res.cloudinary.com/isak-tech/image/upload/v1625666073/www-purchase.jpg';
+import fetch from 'node-fetch';
+import nodemailer from 'nodemailer';
+import env from './env';
 
 export function randStr(n = 10) {
     let runes = 'QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890_!'.split('');
@@ -8,6 +10,47 @@ export function randStr(n = 10) {
         val += runes[Math.floor(Math.random() * runes.length)];
 
     return val;
+}
+
+export async function sendEmail(to, message) {
+    let transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 587,
+        secure: false,
+        auth: {
+            user: env.GMAIL_EMAIL,
+            pass: env.GMAIL_PW,
+        },
+    });
+
+    let info = await transporter.sendMail({
+        from: '<' + env.GMAIL_EMAIL + '>',
+        to: to,
+        subject: 'Verification Code',
+        html: message
+    });
+
+    console.log(info);
+}
+
+export function getCode() {
+    const runes = '0123456789';
+    runes.split('');
+    let val = '';
+
+    for (let i = 0; i < 6; i++) {
+        val += runes[Math.floor(Math.random() * runes.length)]
+    }
+
+    return val;
+}
+
+export async function getUserInfo() {
+    const ipInfo = await fetch('http://ip-api.com/json/?fields=61439', {
+        method: 'GET'
+    });
+
+    return await ipInfo.json();
 }
 
 export function isEmailValid(email) {
@@ -61,3 +104,5 @@ export function constructItem(data) {
         }
     }
 }
+
+export const wwwImage = 'https://res.cloudinary.com/isak-tech/image/upload/v1625666073/www-purchase.jpg';

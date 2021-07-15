@@ -53,8 +53,8 @@ select {
 
     &:focus {
         background-color: #fff;
-        border-color: #FA824C;
+        border-color: $accent;
         outline: 0;
-        box-shadow: 0 0 0 0.25rem #f39a716c;
+        box-shadow: 0 0 0 0.25rem rgba($accent, .2);
     }
 }

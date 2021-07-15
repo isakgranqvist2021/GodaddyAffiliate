@@ -25,5 +25,8 @@ export default {
     TWILIO_AUTH_TOKEN: process.env.TWILIO_AUTH_TOKEN,
     TWILIO_PHONE_NUMBER: process.env.TWILIO_PHONE_NUMBER,
 
+    GMAIL_EMAIL: process.env.GMAIL_EMAIL,
+    GMAIL_PW: process.env.GMAIL_PW,
+
     STRIPE_KEY: process.env.STRIPE_KEY
 };

@@ -6,17 +6,21 @@ async function get(req, res) {
         const order = await orderModel.findOrder({ _id: req.params.id });
         const messages = await messageModel.findMessages({ order: order._id });
 
-        if (req.session.uid !== JSON.stringify(order.belongsTo._id) && !req.user.admin) {
+        order.belongsTo._id = order.belongsTo._id.toString();
+
+        if (req.session.uid !== order.belongsTo._id && !req.user.admin) {
             return res.redirect('/users/orders');
         }
 
         return res.render('users/order', {
+            title: 'Order',
             user: req.user,
             order: order,
             messages: messages,
             alert: req.consumeAlert()
         });
     } catch (err) {
+        console.log(err);
         req.session.alert = { type: 'error', message: 'an error has occured' };
         return res.redirect('/');
     }
