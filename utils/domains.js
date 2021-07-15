@@ -16,7 +16,6 @@ async function isAvailable(query) {
 }
 
 async function retrieveDataForDomains(domains) {
-
     let url = `${baseURL}/domains/available?checkType=FAST`;
 
     const response = await fetch(url, {

@@ -24,7 +24,6 @@ async function success(req, res) {
 
     const checkout = await stripe.checkout.sessions.retrieve(req.session.cid);
 
-
     const data = {
         belongsTo: req.session.uid,
         inv: {
