@@ -21,7 +21,10 @@
 
             <div class="missing-data mt-5">
                 <% if( template === null || domain === null) { %>
-                <p>You're missing one or more parts to build your website</p>
+                <div class="alert alert-warning" role="alert">
+                    <p>You're missing one or more parts to build your website</p>
+                    <span class="material-icons-outlined" onclick="document.querySelector('.alert').style.display = 'none';">close</span>
+                </div>
                 <% } %>
                 <% if(tag === null) { %>
                 <a class="btn btn-primary me-3" href="/pick-tag">Pick a tag for your website</a>

@@ -11,7 +11,7 @@
         <section>
             <h1>Templates</h1>
 
-            <table class="table table-striped pt-4">
+            <table class="table pt-4 table-hover">
                 <thead>
                     <tr>
                       <th>#</th>
@@ -29,7 +29,7 @@
                   </thead>
                   <tbody>
                     <% templates.forEach((template, i) => { %>
-                      <tr>
+                      <tr onclick="window.location.href = '/admin/view-template/<%= template._id %>'">
                         <td><%= i + 1 %></td>
                         <td><%= template.title %></td>
                         <td><%= template.description.substring(0, 25) %>...</td>

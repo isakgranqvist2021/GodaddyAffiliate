@@ -11,8 +11,4 @@ async function get(req, res) {
     });
 }
 
-function put(req, res) {
-
-}
-
-export default { get, put };
+export default { get };

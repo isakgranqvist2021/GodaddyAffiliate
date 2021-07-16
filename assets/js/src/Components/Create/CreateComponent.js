@@ -13,6 +13,7 @@ function CreateComponent(props) {
     const [formData, setFormData] = React.useState(initialCreateTemplateState);
     const [loading, setLoading] = React.useState(true);
     const [dnd, setDnd] = React.useState(false);
+    const [mode, setMode] = React.useState('create');
 
     const upload = async (files) => {
         if (files.length <= 0) return;
@@ -34,9 +35,14 @@ function CreateComponent(props) {
         }
     }
 
-    React.useEffect(() => {
-        fetchTags();
-    }, []);
+    const fetchExisting = React.useCallback(async () => {
+        const response = await http.GET('/get-template/' + document.getElementById('tid').value);
+        setFormData({
+            ...formData,
+            ...response.data
+        });
+        setMode('update');
+    });
 
     const fetchTags = React.useCallback(async () => {
         const response = await http.GET('/tags');
@@ -57,7 +63,7 @@ function CreateComponent(props) {
         });
     }
 
-    const submit = async () => {
+    const create = async () => {
         try {
             const response = await http.POST('/create-template', JSON.stringify(formData));
 
@@ -65,6 +71,21 @@ function CreateComponent(props) {
 
             if (response.success) {
                 setFormData(initialCreateTemplateState);
+            }
+
+        } catch (err) {
+            window.alert('an error has occured');
+        }
+    }
+
+    const update = async () => {
+        try {
+            const response = await http.PUT('/update-template', JSON.stringify(formData));
+
+            window.alert(response.message);
+
+            if (response.success) {
+                window.location.href = '/admin/view-templates'
             }
 
         } catch (err) {
@@ -88,6 +109,14 @@ function CreateComponent(props) {
         }
     }
 
+    React.useEffect(() => {
+        if (window.location.href !== '/admin/create-template') {
+            fetchExisting();
+        }
+
+        fetchTags();
+    }, []);
+
     return (
         <div className="CreateComponent">
             {loading && <div className="spinner"></div>}
@@ -102,7 +131,7 @@ function CreateComponent(props) {
                     <textarea className="form-control" disabled={loading} type="text" id="description" value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })}></textarea>
                 </section>
 
-                <div class="d-flex">
+                <div className="d-flex">
                     <section className="form-group mb-4 w-100 me-3">
                         <label className="form-label" htmlFor="price">Price</label>
                         <input className="form-control" disabled={loading} type="number" id="price" value={formData.price} onChange={(e) => setFormData({ ...formData, price: e.target.value })} />
@@ -165,7 +194,9 @@ function CreateComponent(props) {
                         <span className="me-4">Active (users can buy this immediately)</span>
                         <input disabled={loading} type="checkbox" value={formData.active} onChange={(e) => setFormData({ ...formData, active: e.target.checked })} />
                     </label>
-                    <button disabled={loading} type="button" className="btn btn-primary" onClick={submit}>Create Template</button>
+                    <button disabled={loading} type="button" className="btn btn-primary" onClick={mode === 'create' ? create : update}>
+                        {mode === 'create' ? 'Create Template' : 'Update Template'}
+                    </button>
                 </div>
 
                 <div className="uploaded-files">

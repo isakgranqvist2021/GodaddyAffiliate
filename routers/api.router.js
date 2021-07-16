@@ -14,6 +14,8 @@ import phoneController from '../controllers/api/phone.controller';
 import loginController from '../controllers/api/login.controller';
 import codesController from '../controllers/api/codes.controller';
 import emailController from '../controllers/api/email.controller';
+import findTemplateController from '../controllers/api/find-template.controller';
+import updateTemplateController from '../controllers/api/update-template.controller';
 
 router.get('/tags', tagsController);
 router.get('/find-templates', findTemplatesController);
@@ -26,6 +28,9 @@ router.post('/login/phone', loginController.phone);
 router.post('/login/email', loginController.email);
 
 router.get('/codes', codesController.get);
+
+router.get('/get-template/:id', isAdmin_v2, findTemplateController.get);
+router.put('/update-template', isAdmin_v2, updateTemplateController);
 
 router.post('/upload', isAdmin_v2, upload.array('file', 10), uploadController);
 router.post('/create-template', isAdmin_v2, createTemplateController);

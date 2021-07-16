@@ -3,7 +3,8 @@ import templateModel from '../../models/template.model';
 async function findTemplates(req, res) {
     try {
         const templates = await templateModel.findTemplates({
-            tags: req.session.inv.tag
+            tags: req.session.inv.tag,
+            active: true
         });
 
         return res.json({
