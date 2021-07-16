@@ -40,20 +40,3 @@ p {
 main {
     min-height: 100vh;
 }
-
-input,
-textarea,
-select {
-    padding: 1rem;
-    border: 1px solid rgb(207, 207, 207);
-    outline: 0;
-    border-radius: 1rem;
-    transition: all 300ms ease;
-
-    &:focus {
-        background-color: #fff;
-        border-color: $accent;
-        outline: 0;
-        box-shadow: 0 0 0 0.25rem rgba($accent, .2);
-    }
-}
