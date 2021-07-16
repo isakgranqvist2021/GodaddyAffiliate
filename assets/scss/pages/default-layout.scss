@@ -1,18 +1,5 @@
 main {
-    .go-back {
-        display: flex;
-        align-items: center;
-        margin-top: 4rem;
-        text-decoration: none;
-
-        &::before {
-            font-family: 'Material Icons Outlined';
-            content: '\e5cb';
-            margin-right: .5rem;
-        }
-    }
-
-    section:first-of-type {
+    .layout {
         padding: 30px 0;
 
         h1 {

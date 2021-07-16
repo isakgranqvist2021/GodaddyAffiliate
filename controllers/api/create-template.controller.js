@@ -56,7 +56,10 @@ async function createTemplate(req, res) {
     }
 
     try {
-        const newTemplate = await templateModel.createTemplate(data);
+        const newTemplate = await templateModel.createTemplate({
+            ...data,
+            tags: data.tags.map(tag => tag.toLowerCase())
+        });
         return res.json({
             message: 'created new template successfully',
             success: true,

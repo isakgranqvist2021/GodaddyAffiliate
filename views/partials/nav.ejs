@@ -2,7 +2,7 @@
     <span class="material-icons-outlined">menu</span>
     <a href="/">
         <svg width="200" height="50" viewBox="0 0 200 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="200" height="50" rx="21"/>
+            <rect width="200" height="50" />
         </svg>
     </a>
 </div>
@@ -10,9 +10,12 @@
 <div class="sidenav">
     <div class="sidenav-content">
         <div class="links-group">
-            <h3>Useful Links</h3>
             <a href="/">Home</a>
             <a href="/checkout">Checkout</a>
+            <% if(user && user.admin) { %>
+            <a href="/admin/home">Administration</a>
+            <a href="/admin/create-template">Create Template</a>
+            <% } %>
         </div>
 
         <div class="links-group">
@@ -25,23 +28,12 @@
     
         <div class="links-group">
             <h3>Account</h3>
-
             <% if(user) { %>
-                <a href="/users/orders">My Orders</a>
-                <a href="/users/settings">Account Settings</a>
-            <% } %>
-
-            <% if(!user) { %>
-                <a href="/login">Log in</a>
-            <% } %>
-        
-            <% if(user && user.admin) { %>
-                <a href="/admin/home">Administration</a>
-                <a href="/admin/create-template">Create Template</a>
-            <% } %>
-        
-            <% if(user) { %>
-                <a href="/users/logout">Log out</a>
+            <a href="/users/orders">My Orders</a>
+            <a href="/users/settings">Account Settings</a>
+            <a href="/users/logout">Log out</a>
+            <% } else { %>
+            <a href="/login">Log in</a>
             <% } %>
         </div>
     </div>

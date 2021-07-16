@@ -28,7 +28,7 @@ function ResultsComponent(props) {
             <form ref={formRef} method="POST" action="/pick-domain"></form>
             {searchState.domain !== null && searchState.suggestions !== null && !searchState.loading && (
                 <div className="results-container">
-                    <ul class="list-group">
+                    <ul className="list-group">
                         <DomainComponent {...searchState.domain} pickDomain={pickDomain} />
                         {searchState.suggestions.map((domain, i) =>
                             <DomainComponent {...domain} pickDomain={pickDomain} key={i} />

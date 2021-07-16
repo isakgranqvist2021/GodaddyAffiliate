@@ -3,65 +3,6 @@
         margin: 10rem auto 0 auto;
         width: 500px;
         position: relative;
-
-        h1 {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            span {
-                font-size: 4rem;
-                color: var(--accent);
-                text-transform: capitalize;
-            }
-
-            a {
-                font-size: 1rem;
-                cursor: pointer;
-                color: var(--accent);
-
-                &:hover {
-                    text-decoration: underline;
-                }
-            }
-        }
-
-        section {
-            margin: 1.5rem 0;
-
-            div {
-                display: flex;
-            }
-
-            label,
-            input {
-                display: block;
-                width: 100%;
-            }
-
-            label {
-                margin-bottom: 17px;
-            }
-
-            select {
-                margin-right: 1rem;
-            }
-        }
-
-        button {
-            display: block;
-            margin: 0 0 0 auto;
-            background-color: var(--primary);
-            color: var(--white);
-            border: none;
-            padding: .7rem 1.4rem;
-            border-radius: .5rem;
-            cursor: pointer;
-
-            &:hover {
-                opacity: .81;
-            }
-        }
     }
 }
 

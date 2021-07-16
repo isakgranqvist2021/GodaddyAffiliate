@@ -90,21 +90,22 @@ function LoginComponent(props) {
     return (
         <div className="LoginComponent">
             <form>
-                <h1>
-                    <span>Log in</span>
-                    <a onClick={() => setMode(mode === 'phone' ? 'email' : 'phone')}>
+                <div className="d-flex justify-content-between align-items-center mb-4">
+                    <h1>Log in</h1>
+                    <button className="btn btn-secondary" type="button" onClick={() => setMode(mode === 'phone' ? 'email' : 'phone')}>
                         {mode === 'phone' ? 'Login With Email' : 'Login With Phone'}
-                    </a>
-                </h1>
+                    </button>
+                </div>
 
                 {mode === 'phone' && (
-                    <section>
-                        <label htmlFor="phone">Phone Number</label>
-                        <div>
-                            <select disabled={sent} onChange={(e) => setFormData({ ...formData, index: e.target.value })}>
+                    <section className="form-group mb-4">
+                        <label className="form-label" htmlFor="phone">Phone Number</label>
+                        <div className="d-flex">
+                            <select className="form-control w-25 me-3" disabled={sent} onChange={(e) => setFormData({ ...formData, index: e.target.value })}>
                                 {codes.map((code, i) => <option value={i} key={i}>{code.dial_code}</option>)}
                             </select>
                             <input
+                                className="form-control flex-grow-1"
                                 disabled={sent}
                                 type="tel"
                                 id="phone"
@@ -118,9 +119,10 @@ function LoginComponent(props) {
                 )}
 
                 {mode === 'email' && (
-                    <section>
-                        <label htmlFor="email">Email Address</label>
+                    <section className="form-group mb-4">
+                        <label className="form-label" htmlFor="email">Email Address</label>
                         <input
+                            className="form-control"
                             placeholder="Email Address"
                             value={formData.value}
                             onChange={(e) => setFormData({ ...formData, value: e.target.value })}
@@ -128,9 +130,10 @@ function LoginComponent(props) {
                     </section>
                 )}
 
-                <section>
-                    <label htmlFor="code">Verification Code</label>
+                <section className="form-group mb-4">
+                    <label className="form-label" htmlFor="code">Verification Code</label>
                     <input
+                        className="form-control"
                         disabled={!sent}
                         type="text"
                         id="code"
@@ -141,11 +144,11 @@ function LoginComponent(props) {
                     />
                 </section>
 
-                <p>If you don't have an account, an account will automatically be created for you.</p>
+                <p className="py-3">If you don't have an account, an account will automatically be created for you.</p>
 
-                <div className="form-actions">
-                    {!sent && <button disabled={loading} type="button" onClick={mode === 'phone' ? verifyPhone : verifyEmail}>Log In</button>}
-                    {sent && <button disabled={loading} type="button" onClick={submit}>Log In</button>}
+                <div className="form-actions d-flex justify-content-end">
+                    {!sent && <button className="btn btn-primary" disabled={loading} type="button" onClick={mode === 'phone' ? verifyPhone : verifyEmail}>Send Verification Code</button>}
+                    {sent && <button className="btn btn-primary" disabled={loading} type="button" onClick={submit}>Log In</button>}
                 </div>
             </form>
         </div >

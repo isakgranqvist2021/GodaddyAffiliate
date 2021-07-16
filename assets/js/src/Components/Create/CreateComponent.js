@@ -61,13 +61,14 @@ function CreateComponent(props) {
         try {
             const response = await http.POST('/create-template', JSON.stringify(formData));
 
+            window.alert(response.message);
+
             if (response.success) {
                 setFormData(initialCreateTemplateState);
             }
 
         } catch (err) {
-            // handle error
-            console.log(err);
+            window.alert('an error has occured');
         }
     }
 
@@ -91,31 +92,33 @@ function CreateComponent(props) {
         <div className="CreateComponent">
             {loading && <div className="spinner"></div>}
             <form>
-                <section className="form-group mb-3">
+                <section className="form-group mb-4">
                     <label className="form-label" htmlFor="title">Title</label>
                     <input className="form-control" disabled={loading} type="text" id="title" value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} />
                 </section>
 
-                <section className="form-group mb-3">
+                <section className="form-group mb-4">
                     <label className="form-label" htmlFor="description">Description</label>
                     <textarea className="form-control" disabled={loading} type="text" id="description" value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })}></textarea>
                 </section>
 
-                <section className="form-group mb-3">
-                    <label className="form-label" htmlFor="price">Price</label>
-                    <input className="form-control" disabled={loading} type="number" id="price" value={formData.price} onChange={(e) => setFormData({ ...formData, price: e.target.value })} />
-                </section>
+                <div class="d-flex">
+                    <section className="form-group mb-4 w-100 me-3">
+                        <label className="form-label" htmlFor="price">Price</label>
+                        <input className="form-control" disabled={loading} type="number" id="price" value={formData.price} onChange={(e) => setFormData({ ...formData, price: e.target.value })} />
+                    </section>
 
-                <section className="form-group mb-3">
-                    <label className="form-label" htmlFor="service">Service</label>
-                    <select className="form-control" disabled={loading} type="text" id="service" value={formData.service} onChange={(e) => setFormData({ ...formData, service: e.target.value })}>
-                        <option value="WordPress">WordPress</option>
-                        <option value="Shopify">Shopify</option>
-                        <option value="Custom">Custom</option>
-                    </select>
-                </section>
+                    <section className="form-group mb-4 w-100 ms-3">
+                        <label className="form-label" htmlFor="service">Service</label>
+                        <select className="form-control" disabled={loading} type="text" id="service" value={formData.service} onChange={(e) => setFormData({ ...formData, service: e.target.value })}>
+                            <option value="WordPress">WordPress</option>
+                            <option value="Shopify">Shopify</option>
+                            <option value="Custom">Custom</option>
+                        </select>
+                    </section>
+                </div>
 
-                <section className="form-group file-upload mb-3">
+                <section className="form-group file-upload mb-4">
                     <label className="form-label" htmlFor="upload">Images</label>
                     <div
                         className={`${dnd ? 'uploader active' : 'uploader'}`}
@@ -130,20 +133,20 @@ function CreateComponent(props) {
                     <input disabled={loading} type="file" id="upload" accept="image/jpg, image/jpeg, image/png" onChange={(e) => upload(e.target.files)} ref={uploadRef} multiple />
                 </section>
 
-                <section className="form-group mb-3">
+                <section className="form-group mb-4">
                     <label className="form-label" htmlFor="tags">Tags</label>
                     <div className="d-flex">
-                        <select className="flex-grow-1 me-3" disabled={loading} value={tag} onChange={(e) => setTag(e.target.value)}>
+                        <select className="form-control flex-grow-1 me-4" disabled={loading} value={tag} onChange={(e) => setTag(e.target.value)}>
                             {tags.map((tag, i) => <option key={i} value={tag}>{tag}</option>)}
                         </select>
-                        <button className="btn btn-primary" disabled={loading} type="button" onClick={() => setFormData({
+                        <button className="btn btn-primary text-nowrap" disabled={loading} type="button" onClick={() => setFormData({
                             ...formData,
                             tags: Array.from(new Set([...formData.tags, tag]))
                         })}>Add Tag</button>
                     </div>
 
                     {formData.tags.length > 0 &&
-                        <div className="tags mt-3">
+                        <div className="tags mt-4">
                             <div className="btn-group" role="group">
                                 {formData.tags.map((tag, i) => <button type="button" className="btn btn-outline-primary" key={i} onClick={() => {
                                     let fd = formData;
@@ -157,12 +160,13 @@ function CreateComponent(props) {
                     }
                 </section>
 
-                <section className="form-group mb-3">
+                <div className="d-flex justify-content-between align-items-center mb-4">
                     <label className="form-label">
-                        <span className="me-3">Active (users can buy this immediately)</span>
+                        <span className="me-4">Active (users can buy this immediately)</span>
                         <input disabled={loading} type="checkbox" value={formData.active} onChange={(e) => setFormData({ ...formData, active: e.target.checked })} />
                     </label>
-                </section>
+                    <button disabled={loading} type="button" className="btn btn-primary" onClick={submit}>Create Template</button>
+                </div>
 
                 <div className="uploaded-files">
                     {
@@ -175,10 +179,6 @@ function CreateComponent(props) {
                                 alt="Uploaded Image"
                             />)
                     }
-                </div>
-
-                <div className="d-flex justify-content-end">
-                    <button disabled={loading} type="button" className="btn btn-primary" onClick={submit}>Create Template</button>
                 </div>
             </form>
         </div>
