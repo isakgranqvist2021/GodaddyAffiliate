@@ -15,7 +15,7 @@ export const splitDomain = (domain) => {
 
         return <div>
             <span>{parts[0]}</span>
-            <span className="domain-ext">.{parts[1]}</span>
+            <span className="text-primary">.{parts[1]}</span>
         </div>
     }
 

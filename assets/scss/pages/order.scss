@@ -117,26 +117,6 @@ section {
         footer {
             padding: 1rem 0;
         }
-
-        form {
-            display: flex;
-            justify-content: space-between;
-
-            input {
-                width: 100%;
-                margin-right: 1rem;
-            }
-
-            button {
-                border: none;
-                border-radius: 1rem;
-                padding: 1rem;
-                background-color: var(--accent);
-                color: var(--white);
-                cursor: pointer;
-                width: 8rem;
-            }
-        }
     }
 }
 

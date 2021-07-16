@@ -14,7 +14,7 @@
             <h1>Which type of website will this be? </h1>
             <div class="tags">
                 <% tags.forEach(tag => { %>
-                    <button type="button" onclick="appendToForm('<%= tag %>')"><%= tag %></button>
+                    <button class="btn btn-primary" type="button" onclick="appendToForm('<%= tag %>')"><%= tag %></button>
                 <% }) %>
             </div>
         </section>

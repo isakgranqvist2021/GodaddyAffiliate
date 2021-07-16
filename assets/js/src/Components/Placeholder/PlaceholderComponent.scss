@@ -1,15 +1,14 @@
 .PlaceholderComponent {
     margin: 1rem 0;
-    
+
     .placeholder {
         height: 300px;
-        border-radius: 1rem;
         padding: 0 2rem;
         display: flex;
         justify-content: center;
         flex-direction: column;
         border: 1px solid rgb(231, 231, 231);
-        
+
         .placeholder-title,
         .placeholder-image,
         .placeholder-paragraph {
@@ -24,35 +23,33 @@
             background: linear-gradient(to right, #eee 2%, #ddd 18%, #eee 33%);
             background-size: 1300px; // Animation Area
         }
-       
+
         .placeholder-title {
             width: 80%;
             height: 25px;
             background-color: rgb(228, 228, 228);
-            border-radius: 1rem;
         }
-    
+
         .placeholder-image {
             width: 75px;
             height: 75px;
             border-radius: 50%;
             background-color: rgb(228, 228, 228);
         }
-    
+
         .placeholder-paragraph {
             height: 10px;
-            border-radius: 1rem;
             background-color: rgb(228, 228, 228);
         }
     }
 }
 
 @keyframes placeholderAnimate {
-    0% { 
-        background-position: -650px 0; 
+    0% {
+        background-position: -650px 0;
     }
 
-    100% { 
-        background-position: 650px 0; 
+    100% {
+        background-position: 650px 0;
     }
 }

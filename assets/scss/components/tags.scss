@@ -13,86 +13,12 @@ main {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+            padding: 2rem;
 
             button {
-                box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-                display: inline-block;
-                text-decoration: none;
-                padding: 3rem;
-                margin: 0 2rem 2rem 0;
-                color: rgb(114, 114, 114);
-                transition: all 215ms ease;
-                font-size: 1.7rem;
-                border: none;
-                background-color: #fff;
-                cursor: pointer;
-                flex-grow: .55;
-                border-radius: 1rem;
-
-                &:hover {
-                    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-                }
-            }
-        }
-    }
-}
-
-@media only screen and(min-width: 1200px) {
-    main {
-        section:first-of-type {
-            width: 80%;
-            margin: 0 auto;
-        }
-    }
-}
-
-@media only screen and(max-width: 850px) {
-    main {
-
-        section:first-of-type {
-            padding-top: 0;
-
-            .tags {
-                button {
-                    flex-grow: 1;
-                }
-            }
-        }
-    }
-}
-
-@media only screen and(max-width: 735px) {
-    main {
-        section:first-of-type {
-            h1 {
-                text-align: center;
-                font-size: 2.5rem;
-            }
-        }
-    }
-}
-
-
-@media only screen and(max-width: 500px) {
-    main {
-        padding-top: 100px;
-        display: block;
-
-        section:first-of-type {
-            h1 {
-                font-size: 2.2rem;
-                width: 90%;
-                margin: 3rem auto 1.5rem auto;
-            }
-
-            .tags {
-
-                flex-direction: column;
-                margin: 0 auto;
-
-                button {
-                    margin: 1rem 0;
-                }
+                flex-grow: 1;
+                padding: 2rem;
+                margin: 1rem;
             }
         }
     }
