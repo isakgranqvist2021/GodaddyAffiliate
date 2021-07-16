@@ -10,30 +10,70 @@
 <div class="sidenav">
     <div class="sidenav-content">
         <div class="links-group">
-            <a href="/">Home</a>
-            <a href="/checkout">Checkout</a>
-            <% if(user && user.admin) { %>
-            <a href="/admin/home">Administration</a>
-            <a href="/admin/create-template">Create Template</a>
-            <% } %>
+            <a href="/" class="btn btn-outline-primary">
+                <span class="material-icons-outlined">home</span>
+                <span>Home</span>
+            </a>
+            <a href="/checkout" class="btn btn-outline-primary">
+                <span class="material-icons-outlined">shopping_cart</span>
+                <span>Checkout</span>
+            </a>
         </div>
 
         <div class="links-group">
-            <h3>Services</h3>
-            <a href="/pick-tag">Build A Website</a>
-            <a href="/pick-domain">Pick A Domain</a>
-            <a href="/pick-template">Pick A Template</a>
-            <a href="#">Build A Logo</a>
+            <a href="/pick-tag" class="btn btn-outline-primary">
+                <span class="material-icons-outlined">build</span>
+                <span>Build A Website</span>
+            </a>
+            <a href="/pick-domain" class="btn btn-outline-primary">
+                <span class="material-icons-outlined">domain</span>
+                <span>Pick A Domain</span>
+            </a>
+            <a href="/pick-template" class="btn btn-outline-primary">
+                <span class="material-icons-outlined">subtitles</span>
+                <span>Pick A Template</span>
+            </a>
+            <a href="#" class="btn btn-outline-primary">
+                <span class="material-icons-outlined">branding_watermark</span>
+                <span>Build A Logo</span>
+            </a>
         </div>
     
         <div class="links-group">
-            <h3>Account</h3>
             <% if(user) { %>
-            <a href="/users/orders">My Orders</a>
-            <a href="/users/settings">Account Settings</a>
-            <a href="/users/logout">Log out</a>
+            <a href="/users/orders" class="btn btn-outline-primary">
+                <span class="material-icons-outlined">list_alt</span>
+                <span>My Orders</span>
+            </a>
+            <a href="/users/settings" class="btn btn-outline-primary">
+                <span class="material-icons-outlined">manage_accounts</span>
+                <span>Account Settings</span>
+            </a>
+            <a href="/users/logout" class="btn btn-outline-primary">
+                <span class="material-icons-outlined">logout</span>
+                <span>Log out</span>
+            </a>
             <% } else { %>
-            <a href="/login">Log in</a>
+            <a href="/login" class="btn btn-outline-primary">
+                <span class="material-icons-outlined">login</span>
+                <span>Log in</span>
+            </a>
+            <% } %>
+        </div>
+        <div class="links-group">
+            <% if(user && user.admin) { %>
+            <a href="/admin/orders" class="btn btn-outline-primary">
+                <span class="material-icons-outlined">list_alt</span>
+                <span>View Orders</span>
+            </a>
+            <a href="/admin/view-templates" class="btn btn-outline-primary">
+                <span class="material-icons-outlined">pageview</span>
+                <span>View Templates</span>
+            </a>
+            <a href="/admin/create-template" class="btn btn-outline-primary">
+                <span class="material-icons-outlined">library_add</span>
+                <span>Add Template</span>
+            </a>
             <% } %>
         </div>
     </div>

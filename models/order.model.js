@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import templateModel from './template.model';
 const Schema = mongoose.Schema;
 
 const orderSchema = new Schema({
@@ -24,6 +25,10 @@ const OrderModel = mongoose.model('Order', orderSchema);
 
 async function createOrder(data) {
     try {
+        await templateModel.updateTemplate({ _id: data.inv.temp }, {
+            $inc: { orders: 1 }
+        });
+
         return await new OrderModel(data).save();
     } catch (err) {
         return Promise.reject('caught error');

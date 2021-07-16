@@ -49,4 +49,12 @@ async function findTemplate(filter) {
     }
 }
 
-export default { createTemplate, findTemplates, findTemplate };
+async function updateTemplate(filter, update) {
+    try {
+        return await TemplateModel.findOneAndUpdate(filter, update);
+    } catch (err) {
+        return Promise.reject('caught error');
+    }
+}
+
+export default { createTemplate, findTemplates, findTemplate, updateTemplate };

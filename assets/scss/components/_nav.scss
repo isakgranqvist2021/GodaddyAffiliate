@@ -45,11 +45,14 @@
 
     .sidenav-content {
         width: 300px;
-        padding: 40px 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: 100%;
+        padding: 2rem;
 
         .links-group {
             width: 100%;
-            padding: 1.5rem 3rem;
+            padding: 1rem 0;
 
             &:not(:last-of-type) {
                 border-bottom: 1px solid #f0f0f0;
@@ -62,31 +65,14 @@
             }
 
             a {
-                padding: .3rem 0;
-                border-radius: .81rem;
-                color: $text;
-                text-decoration: none;
-                transition: all 215ms ease;
-                text-transform: capitalize;
-                font-size: .75rem;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                font-size: .75rem;
+                margin: 1rem 0;
 
-                &::after {
-                    font-family: 'Material Icons Outlined';
-                    content: '\e5cc';
-                    opacity: 0;
-                    transform: translateX(-50px);
-                    font-size: 1.5rem;
-                    transition: all 215ms ease;
-                }
-
-                &:hover {
-                    &::after {
-                        opacity: 1;
-                        transform: translateX(0);
-                    }
+                span.material-icons-outlined {
+                    font-size: .9rem;
                 }
             }
         }

@@ -20,7 +20,9 @@
             <h1>Checkout</h1>
 
             <div class="missing-data mt-5">
+                <% if( template === null || domain === null) { %>
                 <p>You're missing one or more parts to build your website</p>
+                <% } %>
                 <% if(tag === null) { %>
                 <a class="btn btn-primary me-3" href="/pick-tag">Pick a tag for your website</a>
                 <% } %>
@@ -54,7 +56,7 @@
                     </section>
 
                     <% if(template !== null && domain !== null) { %>
-                        <div class="form-footer d-flex justify-content-between">
+                        <div class="form-footer d-flex justify-content-between mt-5">
                             <p>Total Cost: $<%= getPrice(template, domain) %></p>
                             <% if(!user) { %>
                                 <div id="ModalComponent"></div>
