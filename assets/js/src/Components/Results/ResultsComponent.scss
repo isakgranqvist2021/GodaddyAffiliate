@@ -26,70 +26,8 @@
             animation: spin 2s linear infinite;
         }
     }
-
-    .results-container {
-        .domain {
-            padding: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid rgb(233, 233, 233);
-
-            div {
-                display: inherit;
-                flex-direction: column;
-
-                .domain-ext {
-                    color: var(--primary);
-                }
-
-                button {
-                    padding: 1rem;
-                    background-color: var(--accent);
-                    color: var(--white);
-                    border-radius: 1rem;
-                    border: none;
-                    cursor: pointer;
-
-                    &:hover {
-                        opacity: .85;
-                    }
-
-                    &:disabled {
-                        opacity: .5 !important;
-                        cursor: not-allowed;
-                    }
-                }
-            }
-
-            h3 {
-                margin: 0;
-                font-weight: 400;
-                font-size: 2.2rem;
-                color: rgb(80, 80, 80);
-            }
-        }
-    }
 }
 
-@media only screen and(max-width: 875px) {
-    .ResultsComponent {
-        .results-container {
-            .domain {
-                flex-direction: column;
-                align-items: flex-start;
-                position: relative;
-
-                button {
-                    position: absolute;
-                    right: 0;
-                    bottom: 0;
-                    margin: 0 1rem 1rem 0;
-                }
-            }
-        }
-    }
-}
 
 @keyframes spin {
     from {

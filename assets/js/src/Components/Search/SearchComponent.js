@@ -66,8 +66,9 @@ function SearchComponent(props) {
 
     return (
         <div className="SearchComponent">
-            <form>
+            <form className="d-flex mb-3">
                 <input
+                    className="form-control me-2"
                     placeholder="Click To Search: domain.com"
                     value={query}
                     disabled={loading}
@@ -75,7 +76,7 @@ function SearchComponent(props) {
                     onChange={(e) => setQuery(e.target.value)}
                 />
 
-                <button type="button" ref={submitBtn} onClick={search} disabled={loading}>
+                <button className="btn btn-primary" type="button" ref={submitBtn} onClick={search} disabled={loading}>
                     <span className="material-icons-outlined">search</span>
                 </button>
             </form>

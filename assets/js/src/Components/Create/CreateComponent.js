@@ -91,32 +91,32 @@ function CreateComponent(props) {
         <div className="CreateComponent">
             {loading && <div className="spinner"></div>}
             <form>
-                <section>
-                    <label htmlFor="title">Title</label>
-                    <input disabled={loading} type="text" id="title" value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} />
+                <section className="form-group mb-3">
+                    <label className="form-label" htmlFor="title">Title</label>
+                    <input className="form-control" disabled={loading} type="text" id="title" value={formData.title} onChange={(e) => setFormData({ ...formData, title: e.target.value })} />
                 </section>
 
-                <section>
-                    <label htmlFor="description">Description</label>
-                    <textarea disabled={loading} type="text" id="description" value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })}></textarea>
+                <section className="form-group mb-3">
+                    <label className="form-label" htmlFor="description">Description</label>
+                    <textarea className="form-control" disabled={loading} type="text" id="description" value={formData.description} onChange={(e) => setFormData({ ...formData, description: e.target.value })}></textarea>
                 </section>
 
-                <section>
-                    <label htmlFor="price">Price</label>
-                    <input disabled={loading} type="number" id="price" value={formData.price} onChange={(e) => setFormData({ ...formData, price: e.target.value })} />
+                <section className="form-group mb-3">
+                    <label className="form-label" htmlFor="price">Price</label>
+                    <input className="form-control" disabled={loading} type="number" id="price" value={formData.price} onChange={(e) => setFormData({ ...formData, price: e.target.value })} />
                 </section>
 
-                <section>
-                    <label htmlFor="service">Service</label>
-                    <select disabled={loading} type="text" id="service" value={formData.service} onChange={(e) => setFormData({ ...formData, service: e.target.value })}>
+                <section className="form-group mb-3">
+                    <label className="form-label" htmlFor="service">Service</label>
+                    <select className="form-control" disabled={loading} type="text" id="service" value={formData.service} onChange={(e) => setFormData({ ...formData, service: e.target.value })}>
                         <option value="WordPress">WordPress</option>
                         <option value="Shopify">Shopify</option>
                         <option value="Custom">Custom</option>
                     </select>
                 </section>
 
-                <section className="file-upload">
-                    <label htmlFor="upload">Images</label>
+                <section className="form-group file-upload mb-3">
+                    <label className="form-label" htmlFor="upload">Images</label>
                     <div
                         className={`${dnd ? 'uploader active' : 'uploader'}`}
                         onClick={(e) => uploadRef.current.click()}
@@ -125,39 +125,41 @@ function CreateComponent(props) {
                         onDragLeave={(e) => dragEvent(e, 'leave')}
                         onDrop={(e) => dragEvent(e, 'drop')}>
                         <span className="material-icons-outlined">file_upload</span>
-                        <p>Drop Files Here Or Click To Select Files</p>
+                        <p className="mb-0">Drop Files Here Or Click To Select Files</p>
                     </div>
                     <input disabled={loading} type="file" id="upload" accept="image/jpg, image/jpeg, image/png" onChange={(e) => upload(e.target.files)} ref={uploadRef} multiple />
                 </section>
 
-                <section>
-                    <label htmlFor="tags">Tags</label>
-                    <div className="row">
-                        <select disabled={loading} value={tag} onChange={(e) => setTag(e.target.value)}>
+                <section className="form-group mb-3">
+                    <label className="form-label" htmlFor="tags">Tags</label>
+                    <div className="d-flex">
+                        <select className="flex-grow-1 me-3" disabled={loading} value={tag} onChange={(e) => setTag(e.target.value)}>
                             {tags.map((tag, i) => <option key={i} value={tag}>{tag}</option>)}
                         </select>
-                        <button disabled={loading} type="button" onClick={() => setFormData({
+                        <button className="btn btn-primary" disabled={loading} type="button" onClick={() => setFormData({
                             ...formData,
                             tags: Array.from(new Set([...formData.tags, tag]))
                         })}>Add Tag</button>
                     </div>
 
                     {formData.tags.length > 0 &&
-                        <div className="tags">
-                            {formData.tags.map((tag, i) => <span key={i} onClick={() => {
-                                let fd = formData;
-                                fd.tags.splice(fd.tags.indexOf(tag), 1);
-                                setFormData({
-                                    ...fd
-                                });
-                            }}>{tag}</span>)}
+                        <div className="tags mt-3">
+                            <div className="btn-group" role="group">
+                                {formData.tags.map((tag, i) => <button type="button" className="btn btn-outline-primary" key={i} onClick={() => {
+                                    let fd = formData;
+                                    fd.tags.splice(fd.tags.indexOf(tag), 1);
+                                    setFormData({
+                                        ...fd
+                                    });
+                                }}>{tag}</button>)}
+                            </div>
                         </div>
                     }
                 </section>
 
-                <section>
-                    <label>
-                        Active (users can buy this immediately)
+                <section className="form-group mb-3">
+                    <label className="form-label">
+                        <span className="me-3">Active (users can buy this immediately)</span>
                         <input disabled={loading} type="checkbox" value={formData.active} onChange={(e) => setFormData({ ...formData, active: e.target.checked })} />
                     </label>
                 </section>
@@ -175,7 +177,9 @@ function CreateComponent(props) {
                     }
                 </div>
 
-                <button disabled={loading} type="button" className="submit-template" onClick={submit}>Create Template</button>
+                <div className="d-flex justify-content-end">
+                    <button disabled={loading} type="button" className="btn btn-primary" onClick={submit}>Create Template</button>
+                </div>
             </form>
         </div>
     )

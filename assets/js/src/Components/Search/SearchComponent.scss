@@ -1,39 +1,8 @@
 .SearchComponent {
     background-color: #fff;
-    margin-bottom: 2.5rem;
 
     p {
         color: crimson;
         margin: 8px 0 0 8px;
-    }
-
-    form {
-        display: flex;
-
-        input {
-            flex-grow: 1;
-            margin-right: 1.5rem;
-        }
-
-        button {
-            border: 1px solid rgb(219, 219, 219);
-            padding: 1rem;
-            cursor: pointer;
-            border-radius: 1rem;
-            transition: all 350ms ease;
-            width: 5rem;
-            background-color: var(--primary);
-            color: var(--white);
-
-            &:disabled {
-                width: 5rem !important;
-                opacity: .5;
-                cursor: not-allowed;
-            }
-
-            &:hover {
-                width: 13rem;
-            }
-        }
     }
 }

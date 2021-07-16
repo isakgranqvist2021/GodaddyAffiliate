@@ -1,21 +1,18 @@
 import React from 'react';
-import SliderComponent from '../Slider/SliderComponent';
-import http from '../../Utils/http';
 import './TemplateComponent.scss';
 
 function TemplateComponent(props) {
-
     return (
-        <div className="TemplateComponent">
-            <SliderComponent images={props.images} />
+        <div className="card">
+            <img src={props.images[0]} className="card-img-top" alt="" />
 
-            <div className="body">
-                <h2>{props.title}</h2>
-                <button onClick={() => props.pickTemplate(props._id)}>
-                    <span>Pick Template</span>
-                </button>
+            <div className="card-body">
+                <h5 className="card-title">{props.title}</h5>
+                <p className="card-text">{props.description.substring(0, 100)}</p>
+                <a onClick={() => props.pickTemplate(props._id)} className="btn btn-primary">Pick Template</a>
             </div>
         </div>
+
     );
 }
 
