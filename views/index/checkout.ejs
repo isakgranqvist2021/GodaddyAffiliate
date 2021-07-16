@@ -24,17 +24,18 @@
         <section>
             <h1>Checkout</h1>
 
-            <div class="missing-data">
+            <div class="missing-data mt-5">
+                <p>You're missing one or more parts to build your website</p>
                 <% if(tag === null) { %>
-                    <a href="/pick-tag">Pick a tag for your website</a>
+                    <a class="btn btn-primary me-3" href="/pick-tag">Pick a tag for your website</a>
                 <% } %>
 
                 <% if(template === null) { %>
-                    <a href="/pick-template">Pick a template for your website</a>
+                    <a class="btn btn-primary me-3" href="/pick-template">Pick a template for your website</a>
                 <% } %>
 
                 <% if(domain === null) { %>
-                    <a href="/pick-domain">Pick a domain for your website</a>
+                    <a class="btn btn-primary me-3" href="/pick-domain">Pick a domain for your website</a>
                 <% } %>
             </div>
 

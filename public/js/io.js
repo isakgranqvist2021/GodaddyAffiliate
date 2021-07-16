@@ -8,11 +8,12 @@ function createMessage(data) {
     console.log(data);
     console.log(new Date().toLocaleString())
     let newItem = document.createElement('li');
+    newItem.className = 'list-group-item';
     newItem.innerHTML = `<div class="message-header">
         <span class="date">${new Date(data.createdAt).toLocaleString()}</span>
         <span class="nickname">${userId === data.sentBy ? 'You' : data.nickname}</span>
     </div>
-    <p>${data.message}</p>`.trim();
+    <p class="mb-0">${data.message}</p>`.trim();
 
     return newItem;
 }
