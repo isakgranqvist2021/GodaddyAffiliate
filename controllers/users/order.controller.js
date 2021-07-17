@@ -16,9 +16,7 @@ async function get(req, res) {
             title: 'Order',
             user: req.user,
             order: order,
-            messages: messages,
-            staticFiles: req.getStatic('order'),
-            alert: req.consumeAlert(),
+            messages: messages
         });
     } catch (err) {
         console.log(err);

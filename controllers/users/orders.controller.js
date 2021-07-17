@@ -5,10 +5,8 @@ async function get(req, res) {
 
     return res.render('users/orders', {
         title: 'My Orders',
-        alert: req.consumeAlert(),
         orders: orders,
-        user: req.user,
-        staticFiles: req.getStatic('orders')
+        user: req.user
     });
 }
 

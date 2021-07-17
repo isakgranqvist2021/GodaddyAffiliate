@@ -5,9 +5,7 @@ async function get(req, res) {
     return res.render('admin/orders', {
         title: 'Orders',
         user: req.user,
-        orders: orders,
-        staticFiles: req.getStatic('orders'),
-        alert: req.consumeAlert()
+        orders: orders
     });
 }
 

@@ -12,9 +12,7 @@ async function get(req, res) {
         user: req.user,
         domain: req.session.inv.dom,
         template: req.session.inv.temp,
-        staticFiles: req.getStatic('checkout'),
-        tag: req.session.inv.tag,
-        alert: req.consumeAlert()
+        tag: req.session.inv.tag
     });
 }
 

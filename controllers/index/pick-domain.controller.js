@@ -3,8 +3,6 @@ import domains from '../../utils/domains';
 async function get(req, res) {
     return res.render('index/pick-domain', {
         title: 'Pick Domain',
-        staticFiles: req.getStatic('pick-domain'),
-        alert: req.consumeAlert(),
         user: req.user
     });
 }

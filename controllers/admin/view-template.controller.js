@@ -8,9 +8,7 @@ async function get(req, res) {
     return res.render('admin/view-template', {
         title: 'Template',
         user: req.user,
-        id: template._id,
-        staticFiles: req.getStatic('view-template'),
-        alert: req.consumeAlert()
+        id: template._id
     });
 }
 
