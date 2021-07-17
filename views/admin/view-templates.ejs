@@ -1,53 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<%- include('../partials/head') %>
-<link rel="stylesheet" href="/public/css/default-layout.min.css"/>
-<link rel="stylesheet" href="/public/css/view-templates.min.css">
-<body>
-    <%- include('../partials/nav') %>
-    <%- include('../partials/alerts') %>
-    
-    <main class="container">
-        <section>
-            <h1>Templates</h1>
+<main class="container">
+    <section>
+        <h1>Templates</h1>
 
-            <table class="table pt-4 table-hover">
-                <thead>
-                    <tr>
-                      <th>#</th>
-                      <th>Title</th>
-                      <th>Description</th>
-                      <th>Price</th>
-                      <th>Active</th>
-                      <th>Service</th>
-                      <th>Created At</th>
-                      <th>Updated At</th>
-                      <th>Orders</th>
-                      <th>Tags</th>
-                      <th>Images</th>
+        <table class="table pt-4 table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Active</th>
+                    <th>Service</th>
+                    <th>Created At</th>
+                    <th>Updated At</th>
+                    <th>Orders</th>
+                    <th>Tags</th>
+                    <th>Images</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% templates.forEach((template, i) => { %>
+                    <tr onclick="window.location.href = '/admin/view-template/<%= template._id %>'" title="Edit Template">
+                    <td><%= i + 1 %></td>
+                    <td><%= template.title %></td>
+                    <td><%= template.description.substring(0, 25) %>...</td>
+                    <td>$<%= template.price %></td>
+                    <td><%= template.active %></td>
+                    <td><%= template.service %></td>
+                    <td><%= template.createdAt.toLocaleString() %></td>
+                    <td><%= template.updatedAt !== null ? template.updatedAt.toLocaleString() : 'not available' %></td>
+                    <td><%= template.orders %></td>
+                    <td><%= template.tags[0] %></td>
+                    <td><%= template.images.length %></td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    <% templates.forEach((template, i) => { %>
-                      <tr onclick="window.location.href = '/admin/view-template/<%= template._id %>'" title="Edit Template">
-                        <td><%= i + 1 %></td>
-                        <td><%= template.title %></td>
-                        <td><%= template.description.substring(0, 25) %>...</td>
-                        <td>$<%= template.price %></td>
-                        <td><%= template.active %></td>
-                        <td><%= template.service %></td>
-                        <td><%= template.createdAt.toLocaleString() %></td>
-                        <td><%= template.updatedAt !== null ? template.updatedAt.toLocaleString() : 'not available' %></td>
-                        <td><%= template.orders %></td>
-                        <td><%= template.tags[0] %></td>
-                        <td><%= template.images.length %></td>
-                      </tr>
-                    <% }) %>
-                  </tbody>
-            </table>
-        </section>
-    </main>
-
-    <%- include('../partials/scripts') %>
-</body>
-</html>
+                <% }) %>
+                </tbody>
+        </table>
+    </section>
+</main>

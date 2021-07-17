@@ -7,6 +7,7 @@ async function get(req, res) {
     return res.render('index/pick-tag', {
         title: 'Pick Tag',
         user: req.user,
+        staticFiles: req.getStatic('pick-tag'),
         alert: req.consumeAlert(),
         tags: tags
     });

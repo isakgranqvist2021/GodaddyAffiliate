@@ -12,6 +12,7 @@ async function get(req, res) {
         user: req.user,
         domain: req.session.inv.dom,
         template: req.session.inv.temp,
+        staticFiles: req.getStatic('checkout'),
         tag: req.session.inv.tag,
         alert: req.consumeAlert()
     });
@@ -62,7 +63,9 @@ async function success(req, res) {
         delete req.session.cid;
         return res.render('index/checkout-success', {
             title: 'Success',
-            user: req.user
+            user: req.user,
+            alert: consumeAlert(),
+            path: 'checkout-success'
         });
     } catch (err) {
         req.session.alert = { type: 'error', message: 'order placement failed' }

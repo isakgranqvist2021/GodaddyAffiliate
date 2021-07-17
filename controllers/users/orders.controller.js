@@ -7,9 +7,11 @@ async function get(req, res) {
         title: 'My Orders',
         alert: req.consumeAlert(),
         orders: orders,
-        user: req.user
+        user: req.user,
+        staticFiles: req.getStatic('orders')
     });
 }
 
 
 export default { get };
+

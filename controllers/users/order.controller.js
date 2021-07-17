@@ -17,7 +17,8 @@ async function get(req, res) {
             user: req.user,
             order: order,
             messages: messages,
-            alert: req.consumeAlert()
+            staticFiles: req.getStatic('order'),
+            alert: req.consumeAlert(),
         });
     } catch (err) {
         console.log(err);
@@ -27,3 +28,4 @@ async function get(req, res) {
 }
 
 export default { get };
+

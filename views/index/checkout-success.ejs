@@ -1,36 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<%- include('../partials/head') %>
-<link rel="stylesheet" href="/public/css/default-layout.min.css" />
-<link rel="stylesheet" href="/public/css/checkout-success.min.css" />
-<body>
-    <%- include('../partials/nav') %>
+<main class="container">
+    <section>
+        <h1>Your purchase was successful!</h1>
 
-    <main class="container">
-        <section>
-            <h1>Your purchase was successful!</h1>
+        <div class="success-animation">
+            <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" /><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" /></svg>
+        </div>
 
-            <div class="success-animation">
-                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52"><circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" /><path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" /></svg>
-            </div>
+        <p>You will be sent to your orders in: <span id="counter">5</span>s</p>
+    </section>
+</main>
 
-            <p>You will be sent to your orders in: <span id="counter">5</span>s</p>
-        </section>
-    </main>
+<%- include('../partials/scripts') %>
 
-    <%- include('../partials/scripts') %>
-
-    <script>
-        (function() {
-            setInterval(() => {
-                let counter = document.getElementById('counter');
-                let value = parseInt(counter.textContent) - 1;
-                counter.textContent = value;
-                if(value === 0) {
-                    window.location.pathname = '/users/orders';
-                }
-            }, 1000)
-        })();
-    </script>
-</body>
-</html>
+<script>
+    (function() {
+        setInterval(() => {
+            let counter = document.getElementById('counter');
+            let value = parseInt(counter.textContent) - 1;
+            counter.textContent = value;
+            if(value === 0) {
+                window.location.pathname = '/users/orders';
+            }
+        }, 1000)
+    })();
+</script>

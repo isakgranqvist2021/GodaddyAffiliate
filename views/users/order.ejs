@@ -1,124 +1,109 @@
-<!DOCTYPE html>
-<html lang="en">
-<%- include('../partials/head') %>
-<link rel="stylesheet" href="/public/css/default-layout.min.css">
-<link rel="stylesheet" href="/public/css/order.min.css">
-<body>
-    <%- include('../partials/nav') %>
-    <%- include('../partials/alerts') %>
-    
-    <main class="container">
-            <% if(user.admin) { %>
-                <div class="d-flex mt-4 justify-content-between">
-                    <form method="POST" action="/admin/order/mark/completed">
-                        <input type="hidden" name="order" value="<%= order._id %>">
-                        <button class="btn btn-primary">Mark As Completed</button>
-                    </form>
-                    <p>Administrator: <%= user.admin %></p>
-                </div>
-            <% } %>
-
-
-        <section class="grid">
-            <div>
-                <h3>Order Details</h3>
-                <ul class="list-group">
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Order Id</span>
-                        <span><%= order._id %></span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Order received</span>
-                        <span><%= order.createdAt.toLocaleString() %></span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Template</span>
-                        <span><%= order.inv.temp.title %></span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Domain</span>
-                        <div><span><%= order.inv.dom.split('.')[0] %></span><span class="domain-ext">.<%= order.inv.dom.split('.')[1] %></span></div>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Cost</span>
-                        <span>$<%= order.amount / 100 %></span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Status</span>
-                        <span><%= order.status %></span>
-                    </li>
-                    <% if(user.admin) { %>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Tag</span>
-                        <span><%= order.inv.tag %></span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Completed</span>
-                        <span><%= order.completed %></span>
-                    </li>
-                    <% } %>
-                </ul>
+<main class="container">
+        <% if(user.admin) { %>
+            <div class="d-flex mt-4 justify-content-between">
+                <form method="POST" action="/admin/order/mark/completed">
+                    <input type="hidden" name="order" value="<%= order._id %>">
+                    <button class="btn btn-primary">Mark As Completed</button>
+                </form>
+                <p>Administrator: <%= user.admin %></p>
             </div>
+        <% } %>
 
-            <div>
-                <h3>Events</h3>
-                <ul class="list-group">
-                    <% order.events.forEach((event, index) => { %>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <p class="mb-0"><%= event.message %></p>
-                                <p class="mb-0"><%= event.createdAt.toLocaleString() %></p>
-                                <% if(user.admin) { %>
-                                    <a href="/admin/order/remove-event?ev=<%= index %>&order=<%= order._id %>" title="Remove event">
-                                        <span class="material-icons-outlined">delete</span>
-                                    </a>
-                                <% } %>
-                            </li>
-                    <% }) %>
-                </ul>
-                
+
+    <section class="grid">
+        <div>
+            <h3>Order Details</h3>
+            <ul class="list-group">
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Order Id</span>
+                    <span><%= order._id %></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Order received</span>
+                    <span><%= order.createdAt.toLocaleString() %></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Template</span>
+                    <span><%= order.inv.temp.title %></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Domain</span>
+                    <div><span><%= order.inv.dom.split('.')[0] %></span><span class="domain-ext">.<%= order.inv.dom.split('.')[1] %></span></div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Cost</span>
+                    <span>$<%= order.amount / 100 %></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Status</span>
+                    <span><%= order.status %></span>
+                </li>
                 <% if(user.admin) { %>
-                    <footer title="Add new event" class="event-footer mt-3">
-                        <form method="POST" action="/admin/order/add-event">
-                            <section class="form-group d-flex">
-                                <input class="form-control me-3" placeholder="event" name="event"/>
-                                <input type="hidden" name="order" value="<%= order._id %>">
-                                <button class="btn btn-primary" type="submit"><span class="material-icons-outlined">send</span></button>
-                            </section>
-                        </form>
-                    </footer>
-                <% } %> 
-            </div>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Tag</span>
+                    <span><%= order.inv.tag %></span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Completed</span>
+                    <span><%= order.completed %></span>
+                </li>
+                <% } %>
+            </ul>
+        </div>
 
-            <div>
-                <h3>Messages</h3>
-                <ul class="messages list-group">
-                    <% messages.forEach(message => { %>
-                        <li class="list-group-item">
-                            <div class="message-meta">
-                                <span class="date"><%= message.createdAt.toLocaleString() %></span>
-                                <span class="nickname"><%= JSON.stringify(message.sentBy) === JSON.stringify(user._id) ? 'You' : message.nickname %></span>
-                            </div>
-                            <p class="mb-0 text-muted"><%= message.message %></p>
+        <div>
+            <h3>Events</h3>
+            <ul class="list-group">
+                <% order.events.forEach((event, index) => { %>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <p class="mb-0"><%= event.message %></p>
+                            <p class="mb-0"><%= event.createdAt.toLocaleString() %></p>
+                            <% if(user.admin) { %>
+                                <a href="/admin/order/remove-event?ev=<%= index %>&order=<%= order._id %>" title="Remove event">
+                                    <span class="material-icons-outlined">delete</span>
+                                </a>
+                            <% } %>
                         </li>
-                    <% }) %>
-                </ul>
-
-                <footer class="mt-3">
-                    <input class="orderId" type="hidden" value="<%= order._id %>" />
-                    <input class="userId" type="hidden" value="<%= user._id %>" />
-                    <form class="d-flex">
-                        <input class="message form-control me-3" type="text" placeholder="Send a message"/>
-                        <button class="btn btn-primary" type="button" onclick="send(document.querySelector('.message'))">
-                            <span class="material-icons-outlined">send</span>
-                        </button>
+                <% }) %>
+            </ul>
+            
+            <% if(user.admin) { %>
+                <footer title="Add new event" class="event-footer mt-3">
+                    <form method="POST" action="/admin/order/add-event">
+                        <section class="form-group d-flex">
+                            <input class="form-control me-3" placeholder="event" name="event"/>
+                            <input type="hidden" name="order" value="<%= order._id %>">
+                            <button class="btn btn-primary" type="submit"><span class="material-icons-outlined">send</span></button>
+                        </section>
                     </form>
                 </footer>
-            </div>
-        </section>
-    </main>
+            <% } %> 
+        </div>
 
-    <%- include('../partials/scripts') %>
-    <script src="https://cdn.socket.io/3.1.3/socket.io.min.js" integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh" crossorigin="anonymous"></script>
-    <script src="/public/js/io.js" defer></script>
-</body>
-</html>
+        <div>
+            <h3>Messages</h3>
+            <ul class="messages list-group">
+                <% messages.forEach(message => { %>
+                    <li class="list-group-item">
+                        <div class="message-meta">
+                            <span class="date"><%= message.createdAt.toLocaleString() %></span>
+                            <span class="nickname"><%= JSON.stringify(message.sentBy) === JSON.stringify(user._id) ? 'You' : message.nickname %></span>
+                        </div>
+                        <p class="mb-0 text-muted"><%= message.message %></p>
+                    </li>
+                <% }) %>
+            </ul>
+
+            <footer class="mt-3">
+                <input class="orderId" type="hidden" value="<%= order._id %>" />
+                <input class="userId" type="hidden" value="<%= user._id %>" />
+                <form class="d-flex">
+                    <input class="message form-control me-3" type="text" placeholder="Send a message"/>
+                    <button class="btn btn-primary" type="button" onclick="send(document.querySelector('.message'))">
+                        <span class="material-icons-outlined">send</span>
+                    </button>
+                </form>
+            </footer>
+        </div>
+    </section>
+</main>

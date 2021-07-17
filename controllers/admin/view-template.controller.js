@@ -9,8 +9,10 @@ async function get(req, res) {
         title: 'Template',
         user: req.user,
         id: template._id,
+        staticFiles: req.getStatic('view-template'),
         alert: req.consumeAlert()
     });
 }
 
 export default { get };
+

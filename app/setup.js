@@ -16,13 +16,14 @@ import api from '../routers/api.router';
 import admin from '../routers/admin.router';
 import socket from '../routers/io.router';
 import error from '../controllers/error';
+import expressLayouts from 'express-ejs-layouts';
 
 import { loggedIn } from '../middleware/auth.middleware';
 import { isAdmin_v1 } from '../middleware/admin.middleware';
-import { alerts, user, inv } from '../middleware/helpers.middleware';
-
+import { alerts, user, inv, staticFiles } from '../middleware/helpers.middleware';
 
 app.set('view engine', '.ejs');
+app.use(expressLayouts);
 
 app.use(session({
     secret: 'secret',
@@ -51,7 +52,7 @@ app.use(express.urlencoded({
 
 io.on('connection', (connection) => socket(connection, io));
 
-app.use('*', alerts, user, inv);
+app.use('*', alerts, user, inv, staticFiles);
 app.use('/', index);
 app.use('/users', loggedIn, users);
 app.use('/api', api);

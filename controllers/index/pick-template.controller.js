@@ -8,7 +8,9 @@ function get(req, res) {
 
     return res.render('index/pick-template', {
         title: 'Pick Template',
-        user: req.user
+        user: req.user,
+        staticFiles: req.getStatic('pick-template'),
+        alert: req.consumeAlert()
     });
 }
 
@@ -19,3 +21,4 @@ async function post(req, res) {
 }
 
 export default { get, post };
+

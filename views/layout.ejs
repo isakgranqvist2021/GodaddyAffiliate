@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/public/libs/bootstrap.min.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&family=Oswald&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" />
+        <link rel="stylesheet" href="/public/css/main.min.css" />
+        <link rel="stylesheet" href="/public/css/default-layout.min.css" />
+        
+        <% staticFiles.styles.forEach(link => { %>
+        <link rel="stylesheet" href="<%= link %>" />
+        <% }) %>
+        
+        <title>Marina Media | <%= title %></title>
+    </head>
+<body>
+    <%- include('./partials/nav') %>
+    <%- include('./partials/alerts') %>
+
+    <%- body %>
+
+    <script src="/public/libs/bootstrap.bundle.min.js" defer></script>
+    <script src="/public/js/bundle.js" defer></script>
+    <script src="/public/js/fix-padding.js" defer></script>
+    <script src="/public/js/nav.js" defer></script>
+
+    <% staticFiles.scripts.forEach(sc => { %>
+    <script src="<%= sc %>" defer></script>
+    <% }) %>
+</body>
+</html>
