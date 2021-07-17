@@ -4,4 +4,10 @@ table {
     td {
         white-space: nowrap;
     }
+
+    tbody {
+        tr {
+            cursor: url('/public/img/icons8-edit-24.png'), auto;
+        }
+    }
 }

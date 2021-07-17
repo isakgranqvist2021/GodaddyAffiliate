@@ -29,7 +29,7 @@
                   </thead>
                   <tbody>
                     <% templates.forEach((template, i) => { %>
-                      <tr onclick="window.location.href = '/admin/view-template/<%= template._id %>'">
+                      <tr onclick="window.location.href = '/admin/view-template/<%= template._id %>'" title="Edit Template">
                         <td><%= i + 1 %></td>
                         <td><%= template.title %></td>
                         <td><%= template.description.substring(0, 25) %>...</td>

@@ -147,21 +147,6 @@ function CreateComponent(props) {
                     </section>
                 </div>
 
-                <section className="form-group file-upload mb-4">
-                    <label className="form-label" htmlFor="upload">Images</label>
-                    <div
-                        className={`${dnd ? 'uploader active' : 'uploader'}`}
-                        onClick={(e) => uploadRef.current.click()}
-                        onDragEnter={(e) => dragEvent(e, 'enter')}
-                        onDragOver={(e) => dragEvent(e, 'over')}
-                        onDragLeave={(e) => dragEvent(e, 'leave')}
-                        onDrop={(e) => dragEvent(e, 'drop')}>
-                        <span className="material-icons-outlined">file_upload</span>
-                        <p className="mb-0">Drop Files Here Or Click To Select Files</p>
-                    </div>
-                    <input disabled={loading} type="file" id="upload" accept="image/jpg, image/jpeg, image/png" onChange={(e) => upload(e.target.files)} ref={uploadRef} multiple />
-                </section>
-
                 <section className="form-group mb-4">
                     <label className="form-label" htmlFor="tags">Tags</label>
                     <div className="d-flex">
@@ -191,14 +176,29 @@ function CreateComponent(props) {
 
                 <div className="d-flex justify-content-between align-items-center mb-4">
                     <label className="form-label">
-                        <span className="me-4">Active (users can buy this immediately)</span>
-                        <input disabled={loading} type="checkbox" value={formData.active} onChange={(e) => setFormData({ ...formData, active: e.target.checked })} />
+                        <span className="me-4">Active (users can buy this)</span>
+                        <input disabled={loading} type="checkbox" value={formData.active} checked={formData.active} onChange={(e) => setFormData({ ...formData, active: e.target.checked })} />
                     </label>
                     <button disabled={loading} type="button" className="btn btn-primary" onClick={mode === 'create' ? create : update}>
                         {mode === 'create' ? 'Create Template' : 'Update Template'}
                     </button>
                 </div>
 
+                <hr className="my-5" />
+
+                <section className="form-group file-upload mb-4">
+                    <div
+                        className={`${dnd ? 'uploader active' : 'uploader'}`}
+                        onClick={(e) => uploadRef.current.click()}
+                        onDragEnter={(e) => dragEvent(e, 'enter')}
+                        onDragOver={(e) => dragEvent(e, 'over')}
+                        onDragLeave={(e) => dragEvent(e, 'leave')}
+                        onDrop={(e) => dragEvent(e, 'drop')}>
+                        <span className="material-icons-outlined">file_upload</span>
+                        <p className="mb-0">Drop Files Here Or Click To Select Files</p>
+                    </div>
+                    <input disabled={loading} type="file" id="upload" accept="image/jpg, image/jpeg, image/png" onChange={(e) => upload(e.target.files)} ref={uploadRef} multiple />
+                </section>
                 <div className="uploaded-files">
                     {
                         formData.images.map((img, i) =>

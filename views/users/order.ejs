@@ -21,6 +21,7 @@
 
         <section class="grid">
             <div>
+                <h3>Order Details</h3>
                 <ul class="list-group">
                     <li class="list-group-item d-flex justify-content-between">
                         <span>Order Id</span>
@@ -60,6 +61,7 @@
             </div>
 
             <div>
+                <h3>Events</h3>
                 <ul class="list-group">
                     <% order.events.forEach((event, index) => { %>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -88,6 +90,7 @@
             </div>
 
             <div>
+                <h3>Messages</h3>
                 <ul class="messages list-group">
                     <% messages.forEach(message => { %>
                         <li class="list-group-item">

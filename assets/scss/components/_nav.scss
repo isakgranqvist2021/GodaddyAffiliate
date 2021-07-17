@@ -67,12 +67,22 @@
             a {
                 display: flex;
                 justify-content: space-between;
+                flex-direction: row-reverse;
                 align-items: center;
                 font-size: .75rem;
-                margin: 1rem 0;
+                margin: 1.5rem 0;
+                text-decoration: none;
+                color: #333;
 
                 span.material-icons-outlined {
                     font-size: .9rem;
+                    transition: all 425ms ease;
+                }
+
+                &:hover {
+                    .material-icons-outlined {
+                        transform: rotate(360deg) scale(2);
+                    }
                 }
             }
         }
@@ -85,6 +95,7 @@
     background-color: rgba(0, 0, 0, 0);
     z-index: 1;
     pointer-events: none;
+    cursor: url('/public/img/icons8-macos-close-24.png'), auto;
 
     &.open {
         pointer-events: auto;

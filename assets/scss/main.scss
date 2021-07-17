@@ -40,3 +40,9 @@ p {
 main {
     min-height: 100vh;
 }
+
+.uploaded-files {
+    img {
+        cursor: url('/public/img/icons8-trash-24.png'), auto;
+    }
+}

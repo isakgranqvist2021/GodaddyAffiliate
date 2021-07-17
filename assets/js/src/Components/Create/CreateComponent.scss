@@ -4,6 +4,14 @@
     form {
         section {
             padding: 0;
+
+            textarea {
+                height: 200px;
+            }
+        }
+
+        hr {
+            color: #b6b6b6;
         }
 
         .uploader {
@@ -15,12 +23,14 @@
             padding: 2rem;
             transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 
-            &.active {
+            &.active,
+            &:hover {
                 color: #212529;
                 background-color: #fff;
                 border-color: #86b7fe;
                 outline: 0;
                 box-shadow: 0 0 0 0.25rem rgb(13 110 253 / 25%);
+                cursor: pointer;
             }
         }
     }
@@ -49,6 +59,18 @@
         opacity: 0;
         visibility: 0;
         pointer-events: none;
+    }
+
+    .uploaded-files {
+        img {
+            border: 3px solid transparent;
+            transition: all 215ms ease;
+
+            &:hover {
+                border-color: crimson;
+                opacity: .65;
+            }
+        }
     }
 }
 
