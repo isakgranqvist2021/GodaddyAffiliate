@@ -1,0 +1,26 @@
+<% 
+    const dropdown_links = [
+        { href: '/users/orders', icon: 'list_alt', text: 'My Orders', show: user !== undefined },
+        { href: '/users/settings', icon: 'manage_accounts', text: 'Account Settings', show: user !== undefined },
+        { href: '/users/logout', icon: 'logout', text: 'Log out', show: user !== undefined  },
+        { href: '/login', icon: 'login', text: 'Log in', show: user === undefined  }
+    ]
+%> 
+<div class="dropdown">
+    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+        <span class="material-icons-outlined me-3">account_circle</span>
+        <strong class="me-1">Account</strong>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+        <% dropdown_links.forEach(link => { %>
+            <% if(link.show) { %>
+                <li>
+                    <a class="dropdown-item<% if(link.href === originalUrl) { %> active <% } %>" href="<%= link.href %>">
+                        <span class="material-icons-outlined"><%= link.icon %></span>
+                        <span><%= link.text %></span>
+                    </a>
+                </li>
+            <% } %>
+        <% }) %>
+    </ul>
+</div>

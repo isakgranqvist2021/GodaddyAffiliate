@@ -1,0 +1,27 @@
+<%
+    const admin_links = [
+        { href: '/admin/orders', icon: 'list_alt', text: 'View Orders' },
+        { href: '/admin/view-templates', icon: 'pageview', text: 'View Templates' },
+        { href: '/admin/create-template', icon: 'library_add', text: 'Add Template' }
+    ];
+%>
+<li class="nav-item" style="cursor: pointer;user-select: none;">
+    <a class="nav-link text-white" data-bs-toggle="collapse" data-bs-target="#admin-collapse" aria-expanded="false">
+        <span class="material-icons-outlined">admin_panel_settings</span><span>Administration</span>
+    </a>
+</li>
+
+<li class="mb-1">
+    <div class="collapse" id="admin-collapse">
+      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+        <% admin_links.forEach(link => { %>
+        <li class="nav-item">
+            <a class="nav-link text-white<% if(link.href === originalUrl) { %> active <% } %>" href="<%= link.href %>">
+                <span class="material-icons-outlined"><%= link.icon %></span>
+                <span><%= link.text %></span>
+            </a>
+        </li>
+        <% }) %>
+      </ul>
+    </div>
+</li>

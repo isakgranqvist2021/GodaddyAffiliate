@@ -4,7 +4,7 @@
         if(template === null && domain !== null) return template.price;
         if(domain === null && template !== null) return domain.price;
 
-        return template.price + domain.price;
+        return Math.round(template.price + domain.price);
     }
 %>
 <section>
@@ -43,7 +43,7 @@
                     <% if(domain !== null) { %>
                         <li class="list-group-item d-flex justify-content-between px-3 py-3">
                             <h3 class="mb-0"><%= domain.domain.split('.')[0] %><span>.<%= domain.domain.split('.')[1] %></span></h3>
-                            <p class="mb-0">$<%= domain.price %></p>
+                            <p class="mb-0">$<%= Math.round(domain.price) %></p>
                         </li>
                     <% } %>
                 </ul>
@@ -56,8 +56,7 @@
                         <div id="ModalComponent"></div>
                     <% } else { %>
                         <div>
-                        <!-- <button type="button" class="checkout-mobile-money">Mobile Money</button> -->
-                        <button class="btn btn-primary" type="submit">Continue To Checkout</button>
+                            <button class="btn btn-primary" type="submit">Continue To Checkout</button>
                         </div>
                     <% } %>
                 </div>

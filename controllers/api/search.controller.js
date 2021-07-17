@@ -1,4 +1,5 @@
 import domains from '../../utils/domains';
+import { getPrice } from '../../utils/helpers';
 
 
 async function get(req, res) {
@@ -13,7 +14,18 @@ async function get(req, res) {
     return res.json({
         message: 'found your stuff',
         success: true,
-        data: data
+        data: {
+            domain: {
+                ...data.domain,
+                price: getPrice(data.domain.price)
+            },
+            suggestions: data.suggestions.map(s => {
+                return {
+                    ...s,
+                    price: getPrice(s.price)
+                }
+            })
+        }
     });
 }
 

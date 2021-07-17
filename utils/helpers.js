@@ -105,4 +105,10 @@ export function constructItem(data) {
     }
 }
 
+const multiplier = 1.4;
+
+export function getPrice(price) {
+    return price * multiplier;
+}
+
 export const wwwImage = 'https://res.cloudinary.com/isak-tech/image/upload/v1625666073/www-purchase.jpg';

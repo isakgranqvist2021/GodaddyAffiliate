@@ -25,7 +25,12 @@ function LoginComponent(props) {
 
     React.useEffect(() => {
         fetchCodes();
-    }, []);
+        setFormData({
+            index: 0,
+            value: '',
+            code: ''
+        });
+    }, [mode]);
 
     const submit = async () => {
         setLoading(true);

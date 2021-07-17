@@ -2,8 +2,9 @@ import userModel from "../models/user.model";
 
 
 export function alerts(req, res, next) {
-    res.locals.alert = req.session.alert;
-
+    let alert = req.session.alert;
+    res.locals.alert = alert;
+    delete req.session.alert;
     return next();
 }
 
@@ -32,6 +33,7 @@ export function inv(req, res, next) {
 export function staticFiles(req, res, next) {
     res.locals.styles = styles(req.originalUrl);
     res.locals.scripts = scripts(req.originalUrl);
+    res.locals.originalUrl = req.originalUrl;
     return next();
 }
 
@@ -46,7 +48,7 @@ function styles(path) {
         case '/pick-tag': return ['/public/css/tags.min.css'];
         case '/users/orders': return ['/public/css/orders.min.css'];
         case '/admin/orders': return ['/public/css/orders.min.css'];
-        case '/view-templates': return ['/public/css/view-templates.min.css'];
+        case '/admin/view-templates': return ['/public/css/view-templates.min.css'];
         default: return [];
     }
 }

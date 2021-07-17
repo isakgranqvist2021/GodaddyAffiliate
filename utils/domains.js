@@ -32,7 +32,10 @@ async function retrieveDataForDomains(domains) {
 }
 
 async function findSuggestions(query) {
-    let url = `${baseURL}/domains/suggest?query=${query}&waitMs=50&limit=10`;
+    const searchDur = 200;
+    const limit = 100;
+
+    let url = `${baseURL}/domains/suggest?query=${query}&waitMs=${searchDur}&limit=${limit}`;
 
     const response = await fetch(url, {
         method: 'GET',

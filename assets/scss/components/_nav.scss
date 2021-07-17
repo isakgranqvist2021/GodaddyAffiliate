@@ -14,9 +14,19 @@
     height: 100vh;
     width: 280px;
 
+    .logo {
+        width: 100%;
+
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
     li a {
         display: flex;
         align-items: center;
+        padding: 1rem;
 
         .material-icons-outlined {
             margin-right: 1rem;

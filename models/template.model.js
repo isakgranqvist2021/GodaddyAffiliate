@@ -51,7 +51,10 @@ async function findTemplate(filter) {
 
 async function updateTemplate(filter, update) {
     try {
-        return await TemplateModel.findOneAndUpdate(filter, update);
+        return await TemplateModel.findOneAndUpdate(filter, {
+            ...update,
+            updatedAt: new Date()
+        });
     } catch (err) {
         return Promise.reject('caught error');
     }

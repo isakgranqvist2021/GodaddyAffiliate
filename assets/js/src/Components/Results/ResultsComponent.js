@@ -29,9 +29,9 @@ function ResultsComponent(props) {
             {searchState.domain !== null && searchState.suggestions !== null && !searchState.loading && (
                 <div className="results-container">
                     <ul className="list-group">
-                        <DomainComponent {...searchState.domain} pickDomain={pickDomain} />
+                        <DomainComponent {...searchState.domain} pickDomain={pickDomain} active={true} />
                         {searchState.suggestions.map((domain, i) =>
-                            <DomainComponent {...domain} pickDomain={pickDomain} key={i} />
+                            <DomainComponent {...domain} pickDomain={pickDomain} key={i} active={false} />
                         )}
                     </ul>
                 </div>
