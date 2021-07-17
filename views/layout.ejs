@@ -16,14 +16,21 @@
     <title>Marina Media | <%= title %></title>
 </head>
 <body>
-    <%- include('./partials/nav') %>
-    <%- include('./partials/alerts') %>
 
-    <%- body %>
+    <main>
+        <%- include('./partials/nav') %>
+
+        <div class="main">
+            <%- include('./partials/alerts') %>
+            
+            <div class="container">
+                <%- body %>
+            </div>
+        </div>
+    </main>
 
     <script src="/public/libs/bootstrap.bundle.min.js" defer></script>
     <script src="/public/js/bundle.js" defer></script>
-    <script src="/public/js/fix-padding.js" defer></script>
     <script src="/public/js/nav.js" defer></script><% scripts.forEach(sc => { %>
     <script src="<%= sc %>" defer></script><% }) %>
 </body>

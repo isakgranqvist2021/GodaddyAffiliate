@@ -7,63 +7,61 @@
         return template.price + domain.price;
     }
 %>
-<main class="container">
-    <section>
-        <h1>Checkout</h1>
+<section>
+    <h1>Checkout</h1>
 
-        <div class="missing-data mt-5">
-            <% if( template === null || domain === null) { %>
-            <div class="alert alert-warning" role="alert">
-                <p>You're missing one or more parts to build your website</p>
-                <span class="material-icons-outlined" onclick="document.querySelector('.alert').style.display = 'none';">close</span>
-            </div>
-            <% } %>
-            <% if(tag === null) { %>
-            <a class="btn btn-primary me-3" href="/pick-tag">Pick a tag for your website</a>
-            <% } %>
-
-            <% if(template === null) { %>
-            <a class="btn btn-primary me-3" href="/pick-template">Pick a template for your website</a>
-            <% } %>
-
-            <% if(domain === null) { %>
-            <a class="btn btn-primary me-3" href="/pick-domain">Pick a domain for your website</a>
-            <% } %>
+    <div class="missing-data mt-5">
+        <% if( template === null || domain === null) { %>
+        <div class="alert alert-warning" role="alert">
+            <p>You're missing one or more parts to build your website</p>
+            <span class="material-icons-outlined" onclick="document.querySelector('.alert').style.display = 'none';">close</span>
         </div>
+        <% } %>
+        <% if(tag === null) { %>
+        <a class="btn btn-primary me-3" href="/pick-tag">Pick a tag for your website</a>
+        <% } %>
 
-        <div class="inventory">
-            <form method="POST" action="/checkout">
-                <section>
-                    <ul class="list-group">
-                        <% if(template !== null) { %>
-                            <li class="list-group-item d-flex justify-content-between px-3 py-3">
-                                <h3 class="mb-0"><%= template.title %></h3>
-                                <p class="mb-0">$<%= template.price %></p>
-                            </li>
-                        <% } %> 
-                        <% if(domain !== null) { %>
-                            <li class="list-group-item d-flex justify-content-between px-3 py-3">
-                                <h3 class="mb-0"><%= domain.domain.split('.')[0] %><span>.<%= domain.domain.split('.')[1] %></span></h3>
-                                <p class="mb-0">$<%= domain.price %></p>
-                            </li>
-                        <% } %>
-                    </ul>
-                </section>
+        <% if(template === null) { %>
+        <a class="btn btn-primary me-3" href="/pick-template">Pick a template for your website</a>
+        <% } %>
 
-                <% if(template !== null && domain !== null) { %>
-                    <div class="form-footer d-flex justify-content-between mt-5">
-                        <p>Total Cost: $<%= getPrice(template, domain) %></p>
-                        <% if(!user) { %>
-                            <div id="ModalComponent"></div>
-                        <% } else { %>
-                            <div>
-                            <!-- <button type="button" class="checkout-mobile-money">Mobile Money</button> -->
-                            <button class="btn btn-primary" type="submit">Continue To Checkout</button>
-                            </div>
-                        <% } %>
-                    </div>
-                <% } %>
-            </form>
-        </div>
-    </section>
-</main>
+        <% if(domain === null) { %>
+        <a class="btn btn-primary me-3" href="/pick-domain">Pick a domain for your website</a>
+        <% } %>
+    </div>
+
+    <div class="inventory">
+        <form method="POST" action="/checkout">
+            <section>
+                <ul class="list-group">
+                    <% if(template !== null) { %>
+                        <li class="list-group-item d-flex justify-content-between px-3 py-3">
+                            <h3 class="mb-0"><%= template.title %></h3>
+                            <p class="mb-0">$<%= template.price %></p>
+                        </li>
+                    <% } %> 
+                    <% if(domain !== null) { %>
+                        <li class="list-group-item d-flex justify-content-between px-3 py-3">
+                            <h3 class="mb-0"><%= domain.domain.split('.')[0] %><span>.<%= domain.domain.split('.')[1] %></span></h3>
+                            <p class="mb-0">$<%= domain.price %></p>
+                        </li>
+                    <% } %>
+                </ul>
+            </section>
+
+            <% if(template !== null && domain !== null) { %>
+                <div class="form-footer d-flex justify-content-between mt-5">
+                    <p>Total Cost: $<%= getPrice(template, domain) %></p>
+                    <% if(!user) { %>
+                        <div id="ModalComponent"></div>
+                    <% } else { %>
+                        <div>
+                        <!-- <button type="button" class="checkout-mobile-money">Mobile Money</button> -->
+                        <button class="btn btn-primary" type="submit">Continue To Checkout</button>
+                        </div>
+                    <% } %>
+                </div>
+            <% } %>
+        </form>
+    </div>
+</section>

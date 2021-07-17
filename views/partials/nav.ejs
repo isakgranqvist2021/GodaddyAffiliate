@@ -1,85 +1,72 @@
-<div class="toolbar">
+<div class="toggle-menu">
     <span class="material-icons-outlined">menu</span>
-    <a href="/">
-        <svg width="200" height="50" viewBox="0 0 200 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="200" height="50" />
-        </svg>
-    </a>
 </div>
 
-<div class="sidenav">
-    <div class="sidenav-content">
-        <div class="links-group">
-            <h3>Useful Links</h3>
-            <a href="/">
-                <span class="material-icons-outlined">home</span>
-                <span>Home</span>
-            </a>
-            <a href="/checkout">
-                <span class="material-icons-outlined">shopping_cart</span>
-                <span>Checkout</span>
-            </a>
-        </div>
+<div class="sidenav d-flex flex-column flex-shrink-0 p-3 text-white bg-dark">
+    <a href="/" class="d-flex align-items-center mt-3 mb-md-0 me-md-auto text-white text-decoration-none logo">
+        <span class="fs-4">Marina Media</span>
+    </a>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+        <li class="nav-item">
+            <a class="nav-link text-white" href="/"><span class="material-icons-outlined">home</span><span>Home</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="/checkout"><span class="material-icons-outlined">shopping_cart</span><span>Checkout</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="/pick-tag"><span class="material-icons-outlined">build</span><span>Build A Website</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="/pick-domain"><span class="material-icons-outlined">domain</span><span>Pick A Domain</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="/pick-template"><span class="material-icons-outlined">subtitles</span><span>Pick A Template</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="#"><span class="material-icons-outlined">branding_watermark</span><span>Build A Logo</span></a>
+        </li>
 
-        <div class="links-group">
-            <h3>Services</h3>
-            <a href="/pick-tag">
-                <span class="material-icons-outlined">build</span>
-                <span>Build A Website</span>
-            </a>
-            <a href="/pick-domain">
-                <span class="material-icons-outlined">domain</span>
-                <span>Pick A Domain</span>
-            </a>
-            <a href="/pick-template">
-                <span class="material-icons-outlined">subtitles</span>
-                <span>Pick A Template</span>
-            </a>
-            <a href="#">
-                <span class="material-icons-outlined">branding_watermark</span>
-                <span>Build A Logo</span>
-            </a>
-        </div>
     
-        <div class="links-group">
-            <h3>Account</h3>
-            <% if(user) { %>
-            <a href="/users/orders">
-                <span class="material-icons-outlined">list_alt</span>
-                <span>My Orders</span>
-            </a>
-            <a href="/users/settings">
-                <span class="material-icons-outlined">manage_accounts</span>
-                <span>Account Settings</span>
-            </a>
-            <a href="/users/logout">
-                <span class="material-icons-outlined">logout</span>
-                <span>Log out</span>
-            </a>
-            <% } else { %>
-            <a href="/login">
-                <span class="material-icons-outlined">login</span>
-                <span>Log in</span>
-            </a>
-            <% } %>
-        </div>
+        
         <% if(user && user.admin) { %>
-        <div class="links-group">
-            <h3>Admin</h3>
-            <a href="/admin/orders">
-                <span class="material-icons-outlined">list_alt</span>
-                <span>View Orders</span>
-            </a>
-            <a href="/admin/view-templates">
-                <span class="material-icons-outlined">pageview</span>
-                <span>View Templates</span>
-            </a>
-            <a href="/admin/create-template">
-                <span class="material-icons-outlined">library_add</span>
-                <span>Add Template</span>
-            </a>
-        </div>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="/admin/orders"><span class="material-icons-outlined">list_alt</span><span>View Orders</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="/admin/view-templates"><span class="material-icons-outlined">pageview</span><span>View Templates</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" href="/admin/create-template"><span class="material-icons-outlined">library_add</span><span>Add Template</span></a>
+        </li>
         <% } %>
+    </ul>
+
+    <hr>
+    <div class="dropdown">
+        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="material-icons-outlined me-3">account_circle</span>
+            <strong class="me-1">Account</strong>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+
+            <% if(user) { %>
+                <li>
+                    <a class="dropdown-item" href="/users/orders"><span class="material-icons-outlined">list_alt</span><span>My Orders</span></a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="/users/settings"><span class="material-icons-outlined">manage_accounts</span><span>Account Settings</span></a>
+                </li>
+                <li><hr class="dropdown-divider"></li>
+                <li>
+                    <a class="dropdown-item" href="/users/logout"><span class="material-icons-outlined">logout</span><span>Log out</span></a>
+                </li>
+                <% } else { %>
+                <li>
+                    <a class="dropdown-item" href="/login"><span class="material-icons-outlined">login</span><span>Log in</span></a>
+                </li>
+            <% } %>
+        </ul>
     </div>
 </div>
 

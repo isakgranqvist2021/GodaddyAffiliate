@@ -2,5 +2,10 @@ section.grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
-    padding: 20px 0 100px 0 !important;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #fff;
+    color: #333;
+    fill: #333;
 }

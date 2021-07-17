@@ -18,110 +18,107 @@ const cards = [
 ]
 %>
 
-<main>
-    <section class="main-section">
-        <div class="container col-xxl-8 px-4 py-5">
-            <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-                <div class="col-10 col-sm-8 col-lg-6">
-                    <img src="/public/img/temp.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes"
-                        width="700" height="500" loading="lazy">
+<section class="main-section">
+    <div class="px-4 py-5">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div class="col-10 col-sm-8 col-lg-6">
+                <img src="/public/img/temp.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes"
+                    width="700" height="500" loading="lazy">
+            </div>
+            <div class="col-lg-6">
+                <h1 class="display-5 fw-bold lh-1 mb-3">What is Lorem Ipsum?</h1>
+                <p class="lead">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
+                    printer took a galley of type and scrambled. it to make a type specimen book. It has
+                    survived not only five centuries. </p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <a href="/pick-tag" class="btn btn-primary btn-lg px-4 me-md-2">Build A Website</a>
+                    <a href="#" class="btn btn-outline-secondary btn-lg px-4">Build A Logo</a>
                 </div>
-                <div class="col-lg-6">
-                    <h1 class="display-5 fw-bold lh-1 mb-3">What is Lorem Ipsum?</h1>
-                    <p class="lead">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
-                        printer took a galley of type and scrambled. it to make a type specimen book. It has
-                        survived not only five centuries. </p>
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                        <a href="/pick-tag" class="btn btn-primary btn-lg px-4 me-md-2">Build A Website</a>
-                        <a href="#" class="btn btn-outline-secondary btn-lg px-4">Build A Logo</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="container marketing">
-        <hr class="featurette-divider">
-
-        <div class="row">
-            <% cards.forEach(card => { %>
-                <div class="col-lg-4">
-                    <img class="bd-placeholder-img rounded-circle mb-3" width="140" height="140" src="<%= card.img %>"/>
-                    <h2><%= card.title %></h2>
-                    <p>And lastly this, the third column of representative placeholder content.</p>
-                    <p><a class="btn btn-secondary" href="<%= card.href %>">View details &raquo;</a></p>
-                </div>
-            <% }) %>
-        </div>
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-            <div class="col-md-7">
-                <h2 class="featurette-heading">
-                    Ecommerce & Business. <span class="text-muted">It’ll blow your mind.</span>
-                </h2>
-                <p class="lead">
-                    Some great placeholder content for the first featurette here. 
-                    Imagine some exciting prose here.
-                </p>
-            </div>
-
-            <div class="col-md-5">
-                <img 
-                src="/public/img/templates/example1.png" 
-                alt="" 
-                class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" 
-                width="500" 
-                height="500"/>
-            </div>
-        </div>
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-            <div class="col-md-7 order-md-2">
-                <h2 class="featurette-heading">Blogs & Portfolio. <span class="text-muted">See for yourself.</span></h2>
-                <p class="lead">
-                    Another featurette? Of course. More placeholder content here to give you an idea of
-                    how this layout would work with some actual real-world content in place.
-                </p>
-            </div>
-
-            <div class="col-md-5 order-md-1">
-                <img 
-                src="/public/img/templates/example2.png" 
-                alt="" 
-                class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" 
-                width="500" 
-                height="500"/>
-            </div>
-        </div>
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette pb-5">
-            <div class="col-md-7">
-                <h2 class="featurette-heading">
-                    Restaurants & Food. <span class="text-muted">Delicious.</span>
-                </h2>
-                <p class="lead">
-                    And yes, this is the last block of representative placeholder content. Again, not
-                    really intended to be actually read, simply here to give you a better view of what this would
-                    look like with some actual content. Your content.
-                </p>
-            </div>
-
-            <div class="col-md-5">
-                <img 
-                src="/public/img/templates/example3.png" 
-                alt="" 
-                class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" 
-                width="500" 
-                height="500"/>
             </div>
         </div>
     </div>
+</section>
 
-</main>
+<div class="container marketing">
+    <hr class="featurette-divider">
+
+    <div class="row">
+        <% cards.forEach(card => { %>
+            <div class="col-lg-4">
+                <img class="bd-placeholder-img rounded-circle mb-3" width="140" height="140" src="<%= card.img %>"/>
+                <h2><%= card.title %></h2>
+                <p>And lastly this, the third column of representative placeholder content.</p>
+                <p><a class="btn btn-secondary" href="<%= card.href %>">View details &raquo;</a></p>
+            </div>
+        <% }) %>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">
+                Ecommerce & Business. <span class="text-muted">It’ll blow your mind.</span>
+            </h2>
+            <p class="lead">
+                Some great placeholder content for the first featurette here. 
+                Imagine some exciting prose here.
+            </p>
+        </div>
+
+        <div class="col-md-5">
+            <img 
+            src="/public/img/templates/example1.png" 
+            alt="" 
+            class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" 
+            width="500" 
+            height="500"/>
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">Blogs & Portfolio. <span class="text-muted">See for yourself.</span></h2>
+            <p class="lead">
+                Another featurette? Of course. More placeholder content here to give you an idea of
+                how this layout would work with some actual real-world content in place.
+            </p>
+        </div>
+
+        <div class="col-md-5 order-md-1">
+            <img 
+            src="/public/img/templates/example2.png" 
+            alt="" 
+            class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" 
+            width="500" 
+            height="500"/>
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette pb-5">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">
+                Restaurants & Food. <span class="text-muted">Delicious.</span>
+            </h2>
+            <p class="lead">
+                And yes, this is the last block of representative placeholder content. Again, not
+                really intended to be actually read, simply here to give you a better view of what this would
+                look like with some actual content. Your content.
+            </p>
+        </div>
+
+        <div class="col-md-5">
+            <img 
+            src="/public/img/templates/example3.png" 
+            alt="" 
+            class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" 
+            width="500" 
+            height="500"/>
+        </div>
+    </div>
+</div>

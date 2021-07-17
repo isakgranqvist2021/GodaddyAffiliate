@@ -1,5 +1,6 @@
 (function () {
-    let bars = document.querySelector('.toolbar span');
+    let toggleMenu = document.querySelector('.toggle-menu');
+    let bars = document.querySelector('.toggle-menu span');
     let sidenav = document.querySelector('.sidenav');
     let filler = document.querySelector('.filler');
 
@@ -19,10 +20,12 @@
         if (sidenav.classList.contains('open')) {
             sidenav.classList.remove('open');
             filler.classList.remove('open');
+            toggleMenu.classList.remove('open');
             bars.textContent = 'menu';
         } else {
             sidenav.classList.add('open');
             filler.classList.add('open');
+            toggleMenu.classList.add('open');
             bars.textContent = 'close';
         }
     }
