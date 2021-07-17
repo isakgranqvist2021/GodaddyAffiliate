@@ -94,7 +94,7 @@ function LoginComponent(props) {
 
     return (
         <div className="LoginComponent">
-            <form>
+            <form className="shadow p-3 mb-5 bg-body rounded">
                 <div className="d-flex justify-content-between align-items-center mb-4">
                     <h1>Log in</h1>
                     <button className="btn btn-secondary" type="button" onClick={() => setMode(mode === 'phone' ? 'email' : 'phone')}>

@@ -8,10 +8,10 @@ function ModalComponent(props) {
 
     return (
         <div className="ModalComponent">
-            <button type="button" onClick={(e) => setOpen(true)}>Continue To Checkout</button>
+            <button className="btn btn-primary" type="button" onClick={(e) => setOpen(true)}>Continue To Checkout</button>
 
-            <div className={open ? 'modal open' : 'modal'} onClick={(e) => setOpen(false)}>
-                <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <div className={open ? 'c-modal open' : 'c-modal'} onClick={(e) => setOpen(false)}>
+                <div className="c-modal-content" onClick={(e) => e.stopPropagation()}>
                     <LoginComponent />
                 </div>
             </div>

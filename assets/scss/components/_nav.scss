@@ -8,6 +8,19 @@
 
 .toggle-menu {
     display: none;
+    z-index: 3;
+    position: fixed;
+    margin: 1rem 0 0 1rem;
+    left: 0;
+    cursor: pointer;
+
+    span {
+        font-size: 3rem;
+    }
+
+    &.open {
+        left: 280px;
+    }
 }
 
 .sidenav {
@@ -41,6 +54,7 @@
     z-index: 1;
     pointer-events: none;
     cursor: url('/public/img/icons8-macos-close-24.png'), auto;
+    display: none;
 
     &.open {
         pointer-events: auto;
@@ -70,19 +84,8 @@
         }
     }
 
-    .toggle-menu {
+    .toggle-menu,
+    .filler {
         display: block;
-        position: fixed;
-        margin: 1rem 0 0 1rem;
-        left: 0;
-        cursor: pointer;
-
-        &.open {
-            left: 280px;
-        }
-
-        span {
-            font-size: 3rem;
-        }
     }
 }

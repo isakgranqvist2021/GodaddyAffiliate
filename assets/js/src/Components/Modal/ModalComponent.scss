@@ -1,5 +1,5 @@
 .ModalComponent {
-    .modal {
+    .c-modal {
         position: fixed;
         inset: 0;
         background-color: rgba(0, 0, 0, 0);
@@ -15,15 +15,13 @@
             background-color: rgba(0, 0, 0, 0.363);
             pointer-events: auto;
 
-            .modal-content {
+            .c-modal-content {
                 transform: translateY(0);
                 opacity: 1;
             }
         }
 
-        .modal-content {
-            background-color: #fff;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+        .c-modal-content {
             padding: 2rem;
             border-radius: 1rem;
             transform: translateY(100%);

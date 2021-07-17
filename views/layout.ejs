@@ -23,15 +23,20 @@
         <div class="main">
             <%- include('./partials/alerts') %>
             
-            <div class="container">
+            <div class="container body">
                 <%- body %>
             </div>
+
+            <footer class="page-footer">
+
+            </footer>
         </div>
     </main>
 
     <script src="/public/libs/bootstrap.bundle.min.js" defer></script>
     <script src="/public/js/bundle.js" defer></script>
-    <script src="/public/js/nav.js" defer></script><% scripts.forEach(sc => { %>
+    <script src="/public/js/nav.js" defer></script>
+    <script src="/public/js/animate.js"></script><% scripts.forEach(sc => { %>
     <script src="<%= sc %>" defer></script><% }) %>
 </body>
 </html>
