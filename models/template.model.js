@@ -35,7 +35,7 @@ async function createTemplate(data) {
 
 async function findTemplates(filter) {
     try {
-        return await TemplateModel.find(filter);
+        return await TemplateModel.find(filter).lean().exec();
     } catch (err) {
         return Promise.reject('caught error');
     }

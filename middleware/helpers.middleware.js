@@ -1,5 +1,6 @@
 import userModel from "../models/user.model";
-
+import fs from 'fs';
+import path from 'path';
 
 export function alerts(req, res, next) {
     let alert = req.session.alert;
@@ -34,6 +35,16 @@ export function staticFiles(req, res, next) {
     res.locals.styles = styles(req.originalUrl);
     res.locals.scripts = scripts(req.originalUrl);
     res.locals.originalUrl = req.originalUrl;
+    return next();
+}
+
+export function setCurrency(req, res, next) {
+    const currencies = JSON.parse(fs.readFileSync(path.resolve('.', path.join('./data/currencies.json'))));
+
+    if (!req.session.currency) {
+        req.session.currency = currencies[0];
+    }
+
     return next();
 }
 

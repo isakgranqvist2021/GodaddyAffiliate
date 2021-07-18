@@ -8,7 +8,10 @@
     }
 %>
 <section>
-    <h1>Checkout</h1>
+    <header class="d-flex justify-content-between align-items center">
+        <h1>Checkout</h1>
+        <div id="CurrComponent"></div>
+    </header>
 
     <div class="missing-data mt-5">
         <% if( template === null || domain === null) { %>
@@ -37,13 +40,13 @@
                     <% if(template !== null) { %>
                         <li class="list-group-item d-flex justify-content-between px-3 py-3">
                             <h3 class="mb-0"><%= template.title %></h3>
-                            <p class="mb-0">$<%= template.price %></p>
+                            <p class="mb-0"><%= currency.code %> <%= template.price %></p>
                         </li>
                     <% } %> 
                     <% if(domain !== null) { %>
                         <li class="list-group-item d-flex justify-content-between px-3 py-3">
                             <h3 class="mb-0"><%= domain.domain.split('.')[0] %><span>.<%= domain.domain.split('.')[1] %></span></h3>
-                            <p class="mb-0">$<%= Math.round(domain.price) %></p>
+                            <p class="mb-0"><%= currency.code %> <%= Math.round(domain.price) %></p>
                         </li>
                     <% } %>
                 </ul>
@@ -51,7 +54,7 @@
 
             <% if(template !== null && domain !== null) { %>
                 <div class="form-footer d-flex justify-content-between mt-5">
-                    <p>Total Cost: $<%= getPrice(template, domain) %></p>
+                    <p>Total Cost: <%= currency.code %> <%= getPrice(template, domain) %></p>
                     <% if(!user) { %>
                         <div id="ModalComponent"></div>
                     <% } else { %>

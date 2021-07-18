@@ -3,15 +3,21 @@ import searchStore from '../../Store/search.store';
 import { initialSearchState } from '../../Utils/initial-states';
 import PlaceholderComponent from '../Placeholder/PlaceholderComponent';
 import DomainComponent from './DomainComponent';
+import currStore from '../../Store/curr.store';
 
 import './ResultsComponent.scss';
 
 function ResultsComponent(props) {
     const [searchState, setSearchState] = React.useState(initialSearchState);
+    const [curr, setCurr] = React.useState(null);
     const formRef = React.useRef();
 
     searchStore.subscribe(() => {
         setSearchState({ ...searchStore.getState() });
+    });
+
+    currStore.subscribe(() => {
+        setCurr(currStore.getState());
     });
 
 
@@ -29,9 +35,9 @@ function ResultsComponent(props) {
             {searchState.domain !== null && searchState.suggestions !== null && !searchState.loading && (
                 <div className="results-container">
                     <ul className="list-group">
-                        <DomainComponent {...searchState.domain} pickDomain={pickDomain} active={true} />
+                        <DomainComponent curr={curr} {...searchState.domain} pickDomain={pickDomain} active={true} />
                         {searchState.suggestions.map((domain, i) =>
-                            <DomainComponent {...domain} pickDomain={pickDomain} key={i} active={false} />
+                            <DomainComponent curr={curr} {...domain} pickDomain={pickDomain} key={i} active={false} />
                         )}
                     </ul>
                 </div>

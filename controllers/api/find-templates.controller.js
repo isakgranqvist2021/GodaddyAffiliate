@@ -1,4 +1,5 @@
 import templateModel from '../../models/template.model';
+import { getPriceTemplate } from '../../Utils/helpers';
 
 async function findTemplates(req, res) {
     try {
@@ -10,7 +11,12 @@ async function findTemplates(req, res) {
         return res.json({
             message: `found ${templates.length} templates`,
             success: true,
-            data: templates
+            data: templates.map(t => {
+                return {
+                    ...t,
+                    price: getPriceTemplate(t.price, req.session.currency)
+                }
+            })
         });
 
     } catch (err) {

@@ -1,4 +1,4 @@
-import { constructItem, wwwImage } from '../../utils/helpers';
+import { constructItem, wwwImage, getPriceDomain, getPriceTemplate } from '../../utils/helpers';
 
 import stripeLib from 'stripe';
 import env from '../../utils/env';
@@ -10,9 +10,16 @@ async function get(req, res) {
     return res.render('index/checkout', {
         title: 'Checkout',
         user: req.user,
-        domain: req.session.inv.dom,
-        template: req.session.inv.temp,
-        tag: req.session.inv.tag
+        domain: {
+            ...req.session.inv.dom,
+            price: Math.round(req.session.inv.dom.price * req.session.currency.value)
+        },
+        template: {
+            ...req.session.inv.temp,
+            price: getPriceTemplate(req.session.inv.temp.price, req.session.currency)
+        },
+        tag: req.session.inv.tag,
+        currency: req.session.currency
     });
 }
 
@@ -78,14 +85,14 @@ async function post(req, res) {
             {
                 price: req.session.inv.temp.price,
                 title: req.session.inv.temp.title,
-                images: req.session.inv.temp.images
+                images: req.session.inv.temp.images,
             },
             {
                 price: req.session.inv.dom.price,
                 title: req.session.inv.dom.domain,
                 images: [wwwImage]
             }
-        ].map(item => constructItem(item)),
+        ].map(item => constructItem(item, req.session.currency)),
         mode: 'payment',
         success_url: env.SERVER_URL + '/checkout-success',
         cancel_url: env.SERVER_URL + '/checkout',

@@ -28,5 +28,7 @@ export default {
     GMAIL_EMAIL: process.env.GMAIL_EMAIL,
     GMAIL_PW: process.env.GMAIL_PW,
 
-    STRIPE_KEY: process.env.STRIPE_KEY
+    STRIPE_KEY: process.env.STRIPE_KEY,
+
+    FIXER_API_KEY: process.env.FIXER_API_KEY
 };

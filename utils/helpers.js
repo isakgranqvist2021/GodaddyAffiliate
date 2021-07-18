@@ -1,5 +1,7 @@
 import fetch from 'node-fetch';
 import nodemailer from 'nodemailer';
+import fs from 'fs';
+import path from 'path';
 import env from './env';
 
 export function randStr(n = 10) {
@@ -91,12 +93,12 @@ export function validatePhone(body) {
 }
 
 
-export function constructItem(data) {
+export function constructItem(data, currency) {
     return {
         quantity: 1,
         price_data: {
-            currency: 'usd',
-            unit_amount: Math.round(data.price) * 100,
+            currency: currency.code,
+            unit_amount: Math.round(data.price * 100 * currency.value),
             product_data: {
                 name: data.title,
                 images: data.images
@@ -107,8 +109,41 @@ export function constructItem(data) {
 
 const multiplier = 1.4;
 
-export function getPrice(price) {
-    return Math.round(price * multiplier * 0.000001);
+export async function getPricingData() {
+    try {
+        const url = `http://data.fixer.io/api/latest?access_key=${env.FIXER_API_KEY}&format=1&symbols=EUR,SEK,XOF,USD`;
+
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const data = await response.json();
+
+        let output = [];
+        for (let k in data.rates) {
+            output.push({
+                code: k,
+                value: data.rates[k]
+            });
+        }
+
+        fs.writeFileSync(path.resolve('.', path.join('./data/currencies.json')), JSON.stringify(output, null, 4));
+        return Promise.resolve('currencies have been updated');
+    } catch (err) {
+        console.log(err);
+        return Promise.reject('unable to update currencies');
+    }
+}
+
+export function getPriceDomain(price, currency) {
+    return Math.round(price * multiplier * 0.000001 * currency.value);
+}
+
+export function getPriceTemplate(price, currency) {
+    return Math.round(price * currency.value);
 }
 
 export const wwwImage = 'https://res.cloudinary.com/isak-tech/image/upload/v1625666073/www-purchase.jpg';

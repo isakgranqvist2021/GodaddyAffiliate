@@ -15,5 +15,9 @@ export const initialSearchState = {
     suggestions: null
 };
 
+export const initialCurrState = {
+    code: 'EUR',
+    value: 1
+};
 
 export const initialTag = 'Business';

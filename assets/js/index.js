@@ -7,6 +7,7 @@ import SearchComponent from './src/Components/Search/SearchComponent';
 import ResultsComponent from './src/Components/Results/ResultsComponent';
 import LoginComponent from './src/Components/Login/LoginComponent';
 import ModalComponent from './src/Components/Modal/ModalComponent';
+import CurrComponent from './src/Components/Curr/CurrComponent';
 
 const components = [
     {
@@ -32,6 +33,10 @@ const components = [
     {
         selector: '#ModalComponent',
         Component: ModalComponent
+    },
+    {
+        selector: '#CurrComponent',
+        Component: CurrComponent
     }
 ];
 

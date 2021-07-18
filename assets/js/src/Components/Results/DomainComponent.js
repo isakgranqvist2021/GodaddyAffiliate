@@ -14,7 +14,7 @@ function DomainComponent(props) {
         return <li className="list-group-item d-flex justify-content-between align-items-center active">
             <div>
                 <h3 className="mb-2">{props.domain}</h3>
-                <p className="mb-0">${props.price}</p>
+                <p className="mb-0">{props.curr.code !== null ? props.curr.code : 'EUR'} {props.price}</p>
             </div>
             <button className="btn btn-light" onClick={() => props.pickDomain(props.domain)} disabled={!props.available}>Pick Domain</button>
         </li>
@@ -22,7 +22,7 @@ function DomainComponent(props) {
         return <li className="list-group-item d-flex justify-content-between align-items-center">
             <div>
                 <h3 className="mb-2">{splitDomain(props.domain)}</h3>
-                <p className="mb-0">${props.price}</p>
+                <p className="mb-0">{props.curr.code !== null ? props.curr.code : 'EUR'} {props.price}</p>
             </div>
             <button className="btn btn-primary" onClick={() => props.pickDomain(props.domain)}>
                 Pick Domain
