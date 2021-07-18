@@ -80,7 +80,8 @@ function SearchComponent(props) {
                     <span className="material-icons-outlined">search</span>
                 </button>
             </form>
-            {error.show && <p>{error.message}</p>}
+            {error.show && <p className="text-danger">{error.message}</p>}
+            {loading && <p className="text-primary">Finding the best domains... this process might take some time</p>}
         </div>
     );
 }

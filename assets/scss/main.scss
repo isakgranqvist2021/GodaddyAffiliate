@@ -67,3 +67,12 @@ main {
         cursor: url('/public/img/trash.png'), auto;
     }
 }
+
+.goog-logo-link {
+    display: none !important;
+}
+
+.goog-te-gadget {
+    color: transparent !important;
+    line-height: 0;
+}

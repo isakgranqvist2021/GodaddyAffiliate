@@ -80,11 +80,14 @@ function scripts(path) {
     }
 
     if (/\/view-template\/[a-zA-Z0-9]+/.test(path)) {
-        return ['/public/libs/splide.min.js'];
+        return [
+            '/public/libs/splide.min.js',
+            '/public/js/splide.js'
+        ];
     }
 
     switch (path) {
-        case '/pick-tag': return ['/public/js/appendToForm.js'];
+        case '/pick-tag': return ['/public/js/form.js'];
         default: return [];
     }
 }

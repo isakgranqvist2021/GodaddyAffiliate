@@ -1,10 +1,26 @@
 <form id="form" method="POST" action="/pick-tag"></form>
 
-<section>
-    <h1 class="display-3 mb-0">Which type of website will this be? </h1>
-    <div class="tags">
+<section class="m-auto pt-5 col-xl-10 col-12">
+    <h1 class="display-3 mb-4 text-center text-muted">Choose a tag for your website</h1>
+    <div class="tags m-auto d-flex flex-wrap mt-4">
         <% tags.forEach(tag => { %>
-            <button class="btn btn-primary" type="button" onclick="appendToForm('<%= tag %>')"><%= tag %></button>
+            <button class="btn btn-primary p-5 flex-grow-1 m-2" type="button" onclick="appendToForm('<%= tag %>')"><%= tag %></button>
         <% }) %>
+    </div>
+</section>
+
+<hr class="my-5">
+
+<h3 class="display-3 text-muted text-center">or talk to an expert</h3>
+
+<section>
+    <div class="col-md-8 m-auto">
+        <p class="text-center">
+            Our designers and developers will guide you through the process of creating your new website. 
+            Don't hesitate to contact us if you should have any questions regarding your new website.
+        </p>
+        <div class="d-flex justify-content-center mt-4">
+            <button class="btn btn-success px-5 py-3">Talk To An Expert</button>
+        </div>
     </div>
 </section>

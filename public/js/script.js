@@ -4,9 +4,4 @@ function googleTranslateElementInit() {
     }, 'google_translate_element');
 
     document.querySelector('#google_translate_element select').classList.add('form-control');
-
-    new Splide('.splide', {
-        type: 'loop',
-        perPage: 3,
-    }).mount();
 }

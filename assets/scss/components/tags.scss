@@ -2,22 +2,4 @@ section:first-of-type {
     display: flex;
     justify-content: center;
     flex-direction: column;
-
-    h1 {
-        text-align: center;
-        margin: 3rem 0;
-    }
-
-    .tags {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 2rem;
-
-        button {
-            flex-grow: 1;
-            padding: 2rem;
-            margin: 1rem;
-        }
-    }
 }

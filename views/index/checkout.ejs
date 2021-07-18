@@ -34,13 +34,13 @@
                     <% if(template !== null) { %>
                         <li class="list-group-item d-flex justify-content-between px-3 py-3">
                             <h3 class="mb-0"><%= template.title %></h3>
-                            <p class="mb-0"><%= currency.code %> <%= template.price %></p>
+                            <p class="mb-0 d-flex align-items-center"><%= currency.code %> <%= template.price %></p>
                         </li>
                     <% } %> 
                     <% if(domain !== null) { %>
                         <li class="list-group-item d-flex justify-content-between px-3 py-3">
                             <h3 class="mb-0"><%= domain.domain.split('.')[0] %><span>.<%= domain.domain.split('.')[1] %></span></h3>
-                            <p class="mb-0"><%= currency.code %> <%= Math.round(domain.price) %></p>
+                            <p class="mb-0 d-flex align-items-center"><%= currency.code %> <%= Math.round(domain.price) %></p>
                         </li>
                     <% } %>
                 </ul>
