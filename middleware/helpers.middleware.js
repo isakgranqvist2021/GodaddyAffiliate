@@ -54,7 +54,10 @@ function styles(path) {
     }
 
     if (/\/view-template\/[a-zA-Z0-9]+/.test(path)) {
-        return ['/public/css/view-template.min.css']
+        return [
+            '/public/css/view-template.min.css',
+            '/public/libs/splide.min.css'
+        ];
     }
 
     switch (path) {
@@ -74,6 +77,10 @@ function scripts(path) {
             '/public/libs/socket.io.js',
             '/public/js/io.js'
         ];
+    }
+
+    if (/\/view-template\/[a-zA-Z0-9]+/.test(path)) {
+        return ['/public/libs/splide.min.js'];
     }
 
     switch (path) {

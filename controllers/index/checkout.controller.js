@@ -10,14 +10,11 @@ async function get(req, res) {
     return res.render('index/checkout', {
         title: 'Checkout',
         user: req.user,
-        domain: {
-            ...req.session.inv.dom,
-            price: Math.round(req.session.inv.dom.price * req.session.currency.value)
-        },
-        template: {
+        domain: req.session.inv.dom,
+        template: req.session.inv.temp !== null ? {
             ...req.session.inv.temp,
             price: getPriceTemplate(req.session.inv.temp.price, req.session.currency)
-        },
+        } : null,
         tag: req.session.inv.tag,
         currency: req.session.currency
     });
@@ -69,8 +66,6 @@ async function success(req, res) {
         return res.render('index/checkout-success', {
             title: 'Success',
             user: req.user,
-            alert: consumeAlert(),
-            path: 'checkout-success'
         });
     } catch (err) {
         req.session.alert = { type: 'error', message: 'order placement failed' }
@@ -83,12 +78,12 @@ async function post(req, res) {
         payment_method_types: ['card'],
         line_items: [
             {
-                price: req.session.inv.temp.price,
+                price: getPriceTemplate(req.session.inv.temp.price, req.session.currency) * 100,
                 title: req.session.inv.temp.title,
                 images: req.session.inv.temp.images,
             },
             {
-                price: req.session.inv.dom.price,
+                price: req.session.inv.dom.price * 100,
                 title: req.session.inv.dom.domain,
                 images: [wwwImage]
             }

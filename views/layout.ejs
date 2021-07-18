@@ -11,8 +11,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" />
     <link rel="stylesheet" href="/public/css/main.min.css" />
     <link rel="stylesheet" href="/public/css/default-layout.min.css" /><% styles.forEach(link => { %>
-    <link rel="stylesheet" href="<%= link %>" />
-    <% }) %>
+    <link rel="stylesheet" href="<%= link %>" /><% }) %>
     <title>Marina Media | <%= title %></title>
 </head>
 <body>
@@ -27,9 +26,7 @@
                 <%- body %>
             </div>
 
-            <footer class="page-footer">
-
-            </footer>
+            <%- include('./partials/page-footer') %>
         </div>
     </main>
 

@@ -14,7 +14,7 @@
                 <td><%= order.inv.temp.title %></td>
                 <td><%= order.inv.dom.split('.')[0] %><span class="domain-ext">.<%= order.inv.dom.split('.')[1] %></span></td>
                 <td><%= order.createdAt.toLocaleString() %></td>
-                <td>$<%= order.amount / 100 %></td>
+                <td><span class="text-uppercase"><%= order.currency %></span> <%= order.amount / 100 %></td>
                 <td><%= order.completed %></td>
             </tr>
         <% }) %>

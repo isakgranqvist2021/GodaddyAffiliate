@@ -1,6 +1,7 @@
 @import './components/nav';
 @import './colors';
 @import './components/alert';
+@import './components/footer';
 
 *,
 *::before,
@@ -58,17 +59,11 @@ main {
             min-height: 100vh;
             padding-bottom: 100px;
         }
-
-        .page-footer {
-            height: 300px;
-            width: 100%;
-            background-color: #2a2e33 !important;
-        }
     }
 }
 
 .uploaded-files {
     img {
-        cursor: url('/public/img/icons8-trash-24.png'), auto;
+        cursor: url('/public/img/trash.png'), auto;
     }
 }

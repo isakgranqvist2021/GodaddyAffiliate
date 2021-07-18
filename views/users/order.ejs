@@ -4,7 +4,7 @@
         { label: 'Order received', value: order.createdAt.toLocaleString() },
         { label: 'Template', value: order.inv.temp.title },
         { label: 'Domain', value: order.inv.dom },
-        { label: 'Cost', value: '$' + order.amount / 100 },
+        { label: 'Cost', value: `${order.currency.toUpperCase()} ${order.amount / 100}` },
         { label: 'Status', value: order.status },
         { label: 'Tag', value: order.inv.tag },
         { label: 'Completed', value: order.completed }
@@ -28,36 +28,7 @@
     <% }) %>
 </div>
 
-<section class="grid">
-    <div>
-        <h3 class="mb-3">Events</h3>
-        <ul class="list-group">
-            <% order.events.forEach((event, index) => { %>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <p class="mb-0"><%= event.message %></p>
-                        <p class="mb-0"><%= event.createdAt.toLocaleString() %></p>
-                        <% if(user.admin) { %>
-                            <a href="/admin/order/remove-event?ev=<%= index %>&order=<%= order._id %>" title="Remove event">
-                                <span class="material-icons-outlined">delete</span>
-                            </a>
-                        <% } %>
-                    </li>
-            <% }) %>
-        </ul>
-        
-        <% if(user.admin) { %>
-            <footer title="Add new event" class="event-footer mt-3">
-                <form method="POST" action="/admin/order/add-event">
-                    <section class="form-group d-flex">
-                        <input class="form-control me-3" placeholder="event" name="event"/>
-                        <input type="hidden" name="order" value="<%= order._id %>">
-                        <button class="btn btn-primary" type="submit"><span class="material-icons-outlined">send</span></button>
-                    </section>
-                </form>
-            </footer>
-        <% } %> 
-    </div>
-
+<!-- <section class="grid">
     <div>
         <h3 class="mb-3">Messages</h3>
         <ul class="messages list-group">
@@ -83,7 +54,7 @@
             </form>
         </footer>
     </div>
-</section>
+</section> -->
 
 
 

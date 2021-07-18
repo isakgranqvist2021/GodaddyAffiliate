@@ -8,9 +8,10 @@ function TemplateComponent(props) {
             <img src={props.images[0]} className="card-img-top" alt="" />
 
             <div className="card-body">
-                <h5 className="card-title d-flex justify-content-between">
-                    {props.title} <span>{props.curr !== null ? props.curr.code : 'EUR'} {props.price}</span>
-                </h5>
+                <header className="d-flex justify-content-between">
+                    <h5 className="card-title">{props.title}</h5>
+                    <span>{props.curr !== null ? props.curr.code : 'EUR'} {props.price}</span>
+                </header>
                 <p className="card-text text-muted">{props.description.substring(0, 100)}</p>
                 <div>
                     <a onClick={() => props.pickTemplate(props._id)} className="btn btn-primary me-3">Pick Template</a>

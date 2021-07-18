@@ -98,7 +98,7 @@ export function constructItem(data, currency) {
         quantity: 1,
         price_data: {
             currency: currency.code,
-            unit_amount: Math.round(data.price * 100 * currency.value),
+            unit_amount: data.price,
             product_data: {
                 name: data.title,
                 images: data.images

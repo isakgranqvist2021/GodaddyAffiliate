@@ -16,7 +16,7 @@ function PickComponent(props) {
         const response = await http.GET(`/find-templates`);
 
         if (response.success) {
-            setSlice(response.data.slice(0, 3));
+            setSlice(response.data);
         }
 
     }, []);
