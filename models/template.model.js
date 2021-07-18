@@ -43,7 +43,7 @@ async function findTemplates(filter) {
 
 async function findTemplate(filter) {
     try {
-        return await TemplateModel.findOne(filter);
+        return await TemplateModel.findOne(filter).lean().exec();
     } catch (err) {
         return Promise.reject('caught error');
     }

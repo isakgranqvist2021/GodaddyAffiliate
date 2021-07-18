@@ -31,9 +31,12 @@ function CurrComponent(props) {
 
     return <div>
         {data !== null &&
-            <select className="form-control" onChange={(e) => setCurr(e.target.value)} value={data.currency.code}>
-                {data.currencies.map((curr, i) => <option key={i} value={curr.code}>{curr.code}</option>)}
-            </select >
+            <label className="d-flex align-items-center">
+                Currency
+                <select className="ms-3 form-control" onChange={(e) => setCurr(e.target.value)} value={data.currency.code}>
+                    {data.currencies.map((curr, i) => <option key={i} value={curr.code}>{curr.code}</option>)}
+                </select >
+            </label>
         }
 
         {data === null && <p>Loading...</p>}

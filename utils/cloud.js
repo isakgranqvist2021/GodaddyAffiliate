@@ -17,8 +17,8 @@ async function upload(file) {
 
         const uploaded = await cloudinary.v2.uploader.upload(filePath, {
             transformation: {
-                height: 300,
-                width: 300,
+                width: 1920,
+                height: 1080,
                 crop: 'scale'
             }
         });

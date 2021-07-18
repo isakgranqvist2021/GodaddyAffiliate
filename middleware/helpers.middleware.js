@@ -53,6 +53,10 @@ function styles(path) {
         return ['/public/css/order.min.css'];
     }
 
+    if (/\/view-template\/[a-zA-Z0-9]+/.test(path)) {
+        return ['/public/css/view-template.min.css']
+    }
+
     switch (path) {
         case '/': return ['/public/css/home.min.css'];
         case '/checkout-success': return ['/public/css/checkout-success.min.css'];

@@ -12,6 +12,7 @@ import pickTemplateController from '../controllers/index/pick-template.controlle
 import pickDomainController from '../controllers/index/pick-domain.controller'
 import checkoutController from '../controllers/index/checkout.controller';
 
+import viewTemplateController from '../controllers/index/view-template';
 
 router.get('/', indexController.get);
 
@@ -21,6 +22,8 @@ router.post('/pick-tag', pickTagController.post);
 
 router.get('/pick-template', pickTemplateController.get);
 router.post('/pick-template', pickTemplateController.post);
+
+router.get('/view-template/:id', viewTemplateController.get);
 
 router.get('/pick-domain', pickDomainController.get);
 router.post('/pick-domain', pickDomainController.post);

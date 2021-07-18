@@ -7,7 +7,6 @@
 }
 
 .toggle-menu {
-    display: none;
     z-index: 3;
     position: fixed;
     margin: 1rem 0 0 1rem;
@@ -25,10 +24,32 @@
 
 .sidenav {
     height: 100vh;
-    width: 280px;
+    position: fixed;
+    width: 0;
+    overflow: hidden;
+    z-index: 5;
+    pointer-events: none;
+    padding: 0 !important;
+
+    .dropdown,
+    #google_translate_element {
+        padding: 1rem;
+    }
+
+    .nav,
+    .dropdown,
+    .logo,
+    #google_translate_element {
+        width: 280px;
+    }
+
+    &.open {
+        width: 280px;
+        pointer-events: unset;
+    }
 
     .logo {
-        width: 100%;
+        padding: 0 1rem;
 
         img {
             width: 100%;
@@ -70,38 +91,9 @@
     z-index: 1;
     pointer-events: none;
     cursor: url('/public/img/icons8-macos-close-24.png'), auto;
-    display: none;
 
     &.open {
         pointer-events: auto;
         background-color: rgba(0, 0, 0, 0.274);
-    }
-}
-
-@media only screen and(max-width: 800px) {
-    .sidenav {
-        position: fixed;
-        width: 0;
-        overflow: hidden;
-        z-index: 5;
-        pointer-events: none;
-        padding: 0 !important;
-
-        .nav,
-        .dropdown,
-        .logo {
-            width: 280px !important;
-        }
-
-        &.open {
-            width: 280px;
-            pointer-events: unset;
-            padding: 1rem !important;
-        }
-    }
-
-    .toggle-menu,
-    .filler {
-        display: block;
     }
 }

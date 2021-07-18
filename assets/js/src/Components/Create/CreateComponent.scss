@@ -65,6 +65,8 @@
         img {
             border: 3px solid transparent;
             transition: all 215ms ease;
+            width: 300px;
+            object-fit: contain;
 
             &:hover {
                 border-color: crimson;

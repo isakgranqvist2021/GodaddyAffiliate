@@ -11,8 +11,11 @@ function TemplateComponent(props) {
                 <h5 className="card-title d-flex justify-content-between">
                     {props.title} <span>{props.curr !== null ? props.curr.code : 'EUR'} {props.price}</span>
                 </h5>
-                <p className="card-text">{props.description.substring(0, 100)}</p>
-                <a onClick={() => props.pickTemplate(props._id)} className="btn btn-primary">Pick Template</a>
+                <p className="card-text text-muted">{props.description.substring(0, 100)}</p>
+                <div>
+                    <a onClick={() => props.pickTemplate(props._id)} className="btn btn-primary me-3">Pick Template</a>
+                    <a href={'/view-template/' + props._id} className="btn btn-secondary">Preview Template</a>
+                </div>
             </div>
         </div>
 
