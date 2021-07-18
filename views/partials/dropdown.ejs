@@ -1,13 +1,34 @@
 <% 
     const dropdown_links = [
-        { href: '/users/orders', icon: 'list_alt', text: 'My Orders', show: user !== null },
-        { href: '/users/settings', icon: 'manage_accounts', text: 'Account Settings', show: user !== null },
-        { href: '/users/logout', icon: 'logout', text: 'Log out', show: user !== null  },
-        { href: '/login', icon: 'login', text: 'Log in', show: user === null  }
+        { 
+            href: '/users/orders', 
+            icon: 'list_alt', 
+            text: 'My Orders', 
+            show: user !== null 
+        },
+        { 
+            href: '/users/settings', 
+            icon: 'manage_accounts', 
+            text: 'Account Settings', 
+            show: user !== null 
+        },
+        { 
+            href: '/users/logout', 
+            icon: 'logout', 
+            text: 'Log out', 
+            show: user !== null  
+        },
+        { 
+            href: '/login', 
+            icon: 'login', 
+            text: 'Log in', 
+            show: user === null  
+        }
     ]
-%> 
+%>
 <div class="dropdown">
-    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1"
+        data-bs-toggle="dropdown" aria-expanded="false">
         <span class="material-icons-outlined me-3">account_circle</span>
         <strong class="me-1">Account</strong>
     </a>
@@ -15,7 +36,7 @@
         <% dropdown_links.filter(l => l.show).forEach(link => { %>
         <li>
             <a class="dropdown-item<% if(link.href === originalUrl) { %> active <% } %>" href="<%= link.href %>">
-                <span class="material-icons-outlined"><%= link.icon %></span>
+                <span class="material-icons-outlined skiptranslate"><%= link.icon %></span>
                 <span><%= link.text %></span>
             </a>
         </li>

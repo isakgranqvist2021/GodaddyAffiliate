@@ -1,9 +1,5 @@
 import React from 'react';
 
-export const calcPrice = (price) => {
-    return '$' + Math.round(price * 0.000001);
-}
-
 export const splitDomain = (domain) => {
     if (domain !== undefined && domain !== null) {
         let parts = domain.split('.');

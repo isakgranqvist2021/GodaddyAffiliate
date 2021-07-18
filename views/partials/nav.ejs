@@ -5,12 +5,36 @@
 
 <%
     const links = [
-        { href: '/', icon: 'home', text: 'Home' },
-        { href: '/checkout', icon: 'shopping_cart', text: 'Checkout' },
-        { href: '/pick-tag', icon: 'build', text: 'Build A Website' },
-        { href: '/pick-domain', icon: 'domain', text: 'Pick A Domain' },
-        { href: '/pick-template', icon: 'subtitles', text: 'Pick A Template' },
-        { href: '#', icon: 'branding_watermark', text: 'Build A Logo' },
+        { 
+            href: '/', 
+            icon: 'home', 
+            text: 'Home' 
+        },
+        { 
+            href: '/checkout', 
+            icon: 'shopping_cart',
+            text: 'Checkout' 
+        },
+        { 
+            href: '/pick-tag', 
+            icon: 'build', 
+            text: 'Build A Website' 
+        },
+        { 
+            href: '/pick-domain', 
+            icon: 'domain', 
+            text: 'Pick A Domain' 
+        },
+        { 
+            href: '/pick-template', 
+            icon: 'subtitles', 
+            text: 'Pick A Template' 
+        },
+        { 
+            href: '#', 
+            icon: 'branding_watermark', 
+            text: 'Build A Logo' 
+        },
     ];
     
 %>
@@ -24,22 +48,22 @@
 
     <ul class="nav nav-pills flex-column mb-auto">
         <% links.forEach(link => { %>
-        <li class="nav-item ">
+        <li class="nav-item">
             <a class="nav-link text-white<% if(link.href === originalUrl) { %> active <% } %>" href="<%= link.href %>">
-                <span class="material-icons-outlined"><%= link.icon %></span>
+                <span class="material-icons-outlined skiptranslate"><%= link.icon %></span>
                 <span><%= link.text %></span>
             </a>
         </li>
         <% }) %>
-    
+            
         <% if(user && user.admin) { %> 
             <hr>
             <%- include('./admin-nav') %> 
         <% } %>
     </ul>
 
+    <div id="google_translate_element"></div>
     <hr>
-
     <%- include('./dropdown') %>
 </div>
 

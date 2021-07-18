@@ -108,7 +108,7 @@ export function constructItem(data) {
 const multiplier = 1.4;
 
 export function getPrice(price) {
-    return price * multiplier;
+    return Math.round(price * multiplier * 0.000001);
 }
 
 export const wwwImage = 'https://res.cloudinary.com/isak-tech/image/upload/v1625666073/www-purchase.jpg';

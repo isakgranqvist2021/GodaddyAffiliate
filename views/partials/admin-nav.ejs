@@ -1,8 +1,20 @@
 <%
     const admin_links = [
-        { href: '/admin/orders', icon: 'list_alt', text: 'View Orders' },
-        { href: '/admin/view-templates', icon: 'pageview', text: 'View Templates' },
-        { href: '/admin/create-template', icon: 'library_add', text: 'Add Template' }
+        { 
+            href: '/admin/orders', 
+            icon: 'list_alt', 
+            text: 'View Orders' 
+        },
+        { 
+            href: '/admin/view-templates', 
+            icon: 'pageview', 
+            text: 'View Templates' 
+        },
+        { 
+            href: '/admin/create-template', 
+            icon: 'library_add', 
+            text: 'Add Template' 
+        }
     ];
 %>
 <li class="nav-item" style="cursor: pointer;user-select: none;">
@@ -17,7 +29,7 @@
         <% admin_links.forEach(link => { %>
         <li class="nav-item">
             <a class="nav-link text-white<% if(link.href === originalUrl) { %> active <% } %>" href="<%= link.href %>">
-                <span class="material-icons-outlined"><%= link.icon %></span>
+                <span class="material-icons-outlined skiptranslate"><%= link.icon %></span>
                 <span><%= link.text %></span>
             </a>
         </li>
