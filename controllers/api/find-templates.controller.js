@@ -1,5 +1,5 @@
 import templateModel from '../../models/template.model';
-import { getPriceTemplate } from '../../Utils/helpers';
+import { getPriceTemplate } from '../../utils/helpers';
 
 async function findTemplates(req, res) {
     try {
