@@ -1,1 +1,1 @@
-section.grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}.accordion-button:not(.collapsed){background-color:#fff;color:#333;fill:#333}/*# sourceMappingURL=order.min.css.map */
+section.grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem}.accordion-button:not(.collapsed){background-color:#fff;color:#333;fill:#333}.list-group input{opacity:0;position:absolute;top:0;left:0;pointer-events:none;line-height:0}.list-group button{width:10rem}/*# sourceMappingURL=order.min.css.map */

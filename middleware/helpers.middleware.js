@@ -62,6 +62,8 @@ function styles(path) {
 
     switch (path) {
         case '/': return ['/public/css/home.min.css'];
+        case '/direction': return ['/public/css/direction.min.css'];
+        case '/checkout': return ['/public/css/checkout.min.css'];
         case '/checkout-success': return ['/public/css/checkout-success.min.css'];
         case '/pick-tag': return ['/public/css/tags.min.css'];
         case '/users/orders': return ['/public/css/orders.min.css'];

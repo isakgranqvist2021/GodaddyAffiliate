@@ -11,11 +11,11 @@
     <tbody>
         <% orders.forEach(order => { %>
             <tr onclick="window.location.href  = '/users/order/<%= order._id %>'">
-                <td><%= order.inv.temp.title %></td>
-                <td><%= order.inv.dom.split('.')[0] %><span class="domain-ext">.<%= order.inv.dom.split('.')[1] %></span></td>
-                <td><%= order.createdAt.toLocaleString() %></td>
-                <td><span class="text-uppercase"><%= order.currency %></span> <%= order.amount / 100 %></td>
-                <td><%= order.completed %></td>
+                <td class="text-nowrap"><%= order.inv.temp.title %></td>
+                <td class="text-nowrap"><%= order.inv.dom.split('.')[0] %><span class="text-primary">.<%= order.inv.dom.split('.')[1] %></span></td>
+                <td class="text-nowrap"><%= order.createdAt.toLocaleString() %></td>
+                <td class="text-nowrap"><span class="text-uppercase"><%= order.currency %></span> <%= order.amount / 100 %></td>
+                <td class="text-nowrap"><%= order.completed %></td>
             </tr>
         <% }) %>
     </tbody>

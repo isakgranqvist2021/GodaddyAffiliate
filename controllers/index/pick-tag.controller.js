@@ -14,7 +14,7 @@ async function get(req, res) {
 function post(req, res) {
     req.session.inv.tag = req.body.tag;
 
-    return res.redirect('/pick-template');
+    return res.redirect('/direction');
 }
 
 function set(req, res) {
@@ -24,7 +24,7 @@ function set(req, res) {
 
     if (tags.includes(req.query.tag.toLowerCase())) {
         req.session.inv.tag = req.query.tag;
-        return res.redirect('/pick-template');
+        return res.redirect('/direction');
     }
 
     return res.redirect(req.headers.referer);

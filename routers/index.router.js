@@ -11,6 +11,7 @@ import pickTagController from '../controllers/index/pick-tag.controller';
 import pickTemplateController from '../controllers/index/pick-template.controller';
 import pickDomainController from '../controllers/index/pick-domain.controller'
 import checkoutController from '../controllers/index/checkout.controller';
+import directionController from '../controllers/index/direction.controller';
 
 import viewTemplateController from '../controllers/index/view-template';
 
@@ -19,6 +20,8 @@ router.get('/', indexController.get);
 router.get('/pick-tag', pickTagController.get);
 router.get('/set-tag', pickTagController.set);
 router.post('/pick-tag', pickTagController.post);
+
+router.get('/direction', directionController.get);
 
 router.get('/pick-template', pickTemplateController.get);
 router.post('/pick-template', pickTemplateController.post);

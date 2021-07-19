@@ -9,3 +9,18 @@ section.grid {
     color: #333;
     fill: #333;
 }
+
+.list-group {
+    input {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        line-height: 0;
+    }
+
+    button {
+        width: 10rem;
+    }
+}
