@@ -9,6 +9,7 @@ import LoginComponent from './src/Components/Login/LoginComponent';
 import ModalComponent from './src/Components/Modal/ModalComponent';
 import CurrComponent from './src/Components/Curr/CurrComponent';
 import OrderComponent from './src/Components/Order/OrderComponent';
+import FilesComponent from './src/Components/Order/FilesComponent';
 
 const components = [
     {
@@ -42,6 +43,10 @@ const components = [
     {
         selector: '#OrderComponent',
         Component: OrderComponent
+    },
+    {
+        selector: '#FilesComponent',
+        Component: FilesComponent
     }
 ];
 

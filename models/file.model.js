@@ -29,5 +29,20 @@ async function insertOne(data) {
     }
 }
 
+async function findMany(filter) {
+    try {
+        return await FileModel.find(filter);
+    } catch (err) {
+        return Promise.reject('caught error');
+    }
+}
 
-export default { insertMany, insertOne };
+async function removeOne(id) {
+    try {
+        return await FileModel.findOneAndRemove({ _id: id });
+    } catch (err) {
+        return Promise.reject('caught error');
+    }
+}
+
+export default { insertMany, insertOne, findMany, removeOne };

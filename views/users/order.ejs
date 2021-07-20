@@ -41,9 +41,14 @@
 
 <input type="hidden" id="orderId" value="<%= order._id %>" />
 
-<div class="col-md-12">
+<div class="col-md-12 mb-5">
     <h3 class="mb-3">Order Requirements</h3>
     <div id="OrderComponent"></div>
+</div>
+
+<div class="col-md-12 mb-5">
+    <h3 class="mb-3">Uploaded Files</h3>
+    <div id="FilesComponent"></div>
 </div>
 
 <% if(user.admin) { %>

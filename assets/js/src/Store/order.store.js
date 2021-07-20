@@ -1,13 +1,10 @@
 import { createStore } from 'redux';
-import { initialModalState } from '../Utils/initial-states';
 
-// an open action should always include a payload
-function modalReducer(state = initialModalState, action) {
+function orderReducer(state = {}, action) {
     switch (action.type) {
-        case 'open': return state = action.payload;
-        case 'close': return state = initialModalState;
+        case 'update': return state = action.payload;
         default: return state;
     }
 }
 
-export default createStore(modalReducer);
+export default createStore(orderReducer);

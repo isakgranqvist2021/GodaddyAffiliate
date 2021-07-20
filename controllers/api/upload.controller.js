@@ -3,7 +3,6 @@ import fileModel from '../../models/file.model';
 import orderModel from '../../models/order.model';
 
 async function upload(req, res) {
-
     const files = await Promise.all(req.files.map(async (file) => {
         return await cloud.upload(file.filename);
     }));
@@ -17,9 +16,6 @@ async function upload(req, res) {
 
 
 async function post(req, res) {
-    console.log(req.body);
-    console.log(req.files);
-
     try {
         const order = await orderModel.findOrder({ _id: req.body.orderId });
 
@@ -55,6 +51,5 @@ async function post(req, res) {
         });
     }
 }
-
 
 export default { upload, post };

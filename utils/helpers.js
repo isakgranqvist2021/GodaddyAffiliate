@@ -5,7 +5,7 @@ import path from 'path';
 import env from './env';
 
 export function randStr(n = 10) {
-    let runes = 'QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890_!'.split('');
+    let runes = 'QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm1234567890_'.split('');
     let val = '';
 
     for (let i = 0; i < n; i++)

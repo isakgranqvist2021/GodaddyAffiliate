@@ -17,6 +17,7 @@ import emailController from '../controllers/api/email.controller';
 import findTemplateController from '../controllers/api/find-template.controller';
 import updateTemplateController from '../controllers/api/update-template.controller';
 import currenciesController from '../controllers/api/currencies.controller';
+import fileController from '../controllers/api/file.controller';
 
 router.get('/tags', tagsController);
 router.get('/find-templates', findTemplatesController);
@@ -34,7 +35,11 @@ router.get('/get-template/:id', isAdmin_v2, findTemplateController.get);
 router.put('/update-template', isAdmin_v2, updateTemplateController);
 
 router.post('/upload', isAdmin_v2, upload, uploadController.upload);
+
 router.post('/upload-file', upload, uploadController.post);
+router.post('/add-file', fileController.post);
+router.get('/order-files/:order', fileController.get);
+router.get('/remove-file/:file', fileController.remove);
 
 router.post('/create-template', isAdmin_v2, createTemplateController);
 router.get('/currencies', currenciesController.get);
