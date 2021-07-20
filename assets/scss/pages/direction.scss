@@ -5,7 +5,11 @@
 }
 
 .row {
-    min-height: 50vh;
+
+    &.mh-50 {
+        min-height: 50vh;
+    }
+
     max-width: 100%;
 }
 

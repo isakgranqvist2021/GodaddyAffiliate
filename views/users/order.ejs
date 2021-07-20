@@ -1,64 +1,51 @@
-<%
-    const items = [
-        { label: 'Order Id', value: order._id },
-        { label: 'Order received', value: order.createdAt.toLocaleString() },
-        { label: 'Template', value: order.inv.temp.title },
-        { label: 'Domain', value: order.inv.dom },
-        { label: 'Cost', value: `${order.currency.toUpperCase()} ${order.amount / 100}` },
-        { label: 'Status', value: order.status },
-        { label: 'Tag', value: order.inv.tag },
-        { label: 'Completed', value: order.completed }
-    ]
-%>
-<div class="accordion my-4" id="accordion">
-    <h3>Order Details</h3>
-    <% items.forEach((item, i) => { %>
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="h-<%= i %>">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c-<%= i %>" aria-expanded="true" aria-controls="c-<%= i %>">
-                    <%= item.label %>
-                </button>
-            </h2>
-            <div id="c-<%= i %>" class="accordion-collapse collapse" aria-labelledby="h-<%= i %>" data-bs-parent="#accordion">
-                <div class="accordion-body">
-                    <p class="mb-0"><%= item.value %></p>
-                </div>
-            </div>
-        </div>
-    <% }) %>
-</div>
+<div class="col-md-12 mb-5">
+    <header class="d-flex justify-content-between align-items-center">
+        <h3 class="mb-3">Order Details</h3>
+        <span title="Order Created Date" class="fw-bold"><%= order.createdAt.toLocaleString() %></span>
+    </header>
 
-<div class="col-md-12">
-    <h3>Order Requirements</h3>
     <ul class="list-group">
         <li class="list-group-item d-flex justify-content-between align-items-center">
-            <span>Logo File</span>
-            <input type="file" name="" id="u_logo" />
-            <button class="btn btn-primary" onclick="document.getElementById('u_logo').click()">Choose File</button>
+            <span>Order Id</span>
+            <p class="mb-0"><%= order._id %></p>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>Template</span>
+            <p class="mb-0"><%= order.inv.temp.title %></p>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
             <span>Domain</span>
-            <button class="btn btn-primary">Configure</button>
+            <p class="mb-0 d-flex">
+                <span><%= order.inv.dom.split('.')[0] %></span>
+                <span class="text-primary">.<%= order.inv.dom.split('.')[1] %></span>
+            </p>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
-            <span>brief description of their business</span>
-            <button class="btn btn-primary">Fill Out</button>
+            <span>Cost</span>
+            <p class="mb-0"><%= order.currency.toUpperCase() %> <%= order.amount / 100 %></p>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
-            <span>related content and images to appear on the site</span>
-            <input type="file" name="" id="u_images" />
-            <button class="btn btn-primary" onclick="document.getElementById('u_images').click()">Choose File</button>
+            <span>Status</span>
+            <p class="mb-0"><%= order.status %></p>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
-            <span>Social media links</span>
-            <button class="btn btn-primary">Fill Out</button>
+            <span>Tag</span>
+            <p class="mb-0"><%= order.inv.tag %></p>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
-            <span>Any specific add-on details they would want to have on their site</span>
-            <button class="btn btn-primary">Add Details</button>
+            <span>Completed</span>
+            <p class="mb-0"><%= order.completed %></p>
         </li>
     </ul>
 </div>
+
+<input type="hidden" id="orderId" value="<%= order._id %>" />
+
+<div class="col-md-12">
+    <h3 class="mb-3">Order Requirements</h3>
+    <div id="OrderComponent"></div>
+</div>
+
 <% if(user.admin) { %>
 <footer class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
     <div class="container d-flex align-items-center">

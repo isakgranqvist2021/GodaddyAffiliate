@@ -1,6 +1,8 @@
 import express from 'express';
 const router = express.Router();
 
+import { upload } from '../middleware/upload.middleware';
+
 import accountController from '../controllers/users/orders.controller';
 import logoutController from '../controllers/users/logout.controller';
 import settingsController from '../controllers/users/settings.controller';

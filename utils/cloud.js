@@ -13,7 +13,7 @@ cloudinary.config({
 
 async function upload(file) {
     try {
-        let filePath = './uploads/' + file;
+        let filePath = path.resolve('./uploads/' + file);
 
         const uploaded = await cloudinary.v2.uploader.upload(filePath, {
             transformation: {

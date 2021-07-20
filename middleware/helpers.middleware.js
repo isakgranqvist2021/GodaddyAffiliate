@@ -74,12 +74,12 @@ function styles(path) {
 }
 
 function scripts(path) {
-    if (/\/users\/order\/[a-zA-Z0-9]+/.test(path)) {
-        return [
-            '/public/libs/socket.io.js',
-            '/public/js/io.js'
-        ];
-    }
+    // if (/\/users\/order\/[a-zA-Z0-9]+/.test(path)) {
+    //     return [
+    //         '/public/libs/socket.io.js',
+    //         '/public/js/io.js'
+    //     ];
+    // }
 
     if (/\/view-template\/[a-zA-Z0-9]+/.test(path)) {
         return [

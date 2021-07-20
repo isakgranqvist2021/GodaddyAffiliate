@@ -20,4 +20,10 @@ export const initialCurrState = {
     value: 1
 };
 
+export const initialModalState = {
+    open: false,
+    label: null,
+    orderId: null
+};
+
 export const initialTag = 'Business';

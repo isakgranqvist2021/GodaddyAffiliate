@@ -33,7 +33,9 @@ router.get('/codes', codesController.get);
 router.get('/get-template/:id', isAdmin_v2, findTemplateController.get);
 router.put('/update-template', isAdmin_v2, updateTemplateController);
 
-router.post('/upload', isAdmin_v2, upload.array('file', 10), uploadController);
+router.post('/upload', isAdmin_v2, upload, uploadController.upload);
+router.post('/upload-file', upload, uploadController.post);
+
 router.post('/create-template', isAdmin_v2, createTemplateController);
 router.get('/currencies', currenciesController.get);
 router.get('/set-currency/:code', currenciesController.set);
