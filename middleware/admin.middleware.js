@@ -8,6 +8,7 @@ export function isAdmin_v1(req, res, next) {
 }
 
 export function isAdmin_v2(req, res, next) {
+    console.log(req);
     if (!req.user || !req.user.admin) {
         return res.json({
             message: 'you must be an administrator to perform that action',

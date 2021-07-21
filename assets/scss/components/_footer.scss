@@ -1,15 +1,5 @@
 .page-footer {
     width: 100%;
-    background-color: #2a2e33 !important;
-
-    hr {
-        color: #64686d;
-    }
-
-    h3,
-    p {
-        color: rgb(148, 148, 148);
-    }
 
     ul {
         color: #fff;
@@ -32,6 +22,6 @@
     svg {
         width: 24px;
         height: 24px;
-        fill: #64686d;
+        fill: var(--bs-light);
     }
 }

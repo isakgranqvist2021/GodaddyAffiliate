@@ -81,6 +81,10 @@ function scripts(path) {
     //     ];
     // }
 
+    if (/\/admin\/view-template\/[a-zA-Z0-9]+/.test(path)) {
+        return [];
+    }
+
     if (/\/view-template\/[a-zA-Z0-9]+/.test(path)) {
         return [
             '/public/libs/splide.min.js',
