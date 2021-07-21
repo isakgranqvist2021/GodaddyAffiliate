@@ -47,6 +47,7 @@ main {
 
     .main {
         overflow: auto;
+        overflow-x: hidden;
         flex-grow: 1;
         width: 100%;
         padding: 100px 0 0 0;

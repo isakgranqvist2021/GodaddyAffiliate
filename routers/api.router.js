@@ -39,7 +39,7 @@ router.post('/upload', isAdmin_v2, upload, uploadController.upload);
 router.post('/upload-file', upload, uploadController.post);
 router.post('/add-file', fileController.post);
 router.get('/order-files/:order', fileController.get);
-router.get('/remove-file/:file', fileController.remove);
+router.post('/remove-file', fileController.remove);
 
 router.post('/create-template', isAdmin_v2, createTemplateController);
 router.get('/currencies', currenciesController.get);

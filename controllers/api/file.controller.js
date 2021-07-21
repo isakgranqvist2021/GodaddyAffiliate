@@ -76,7 +76,17 @@ async function post(req, res) {
 
 async function remove(req, res) {
     try {
-        await fileModel.removeOne(req.params.file);
+        const order = await orderModel.findOrder({ _id: req.body.orderId });
+
+        if (req.session.uid != order.belongsTo._id) {
+            return res.json({
+                message: 'you do not have permission to perform that action',
+                success: false,
+                data: null
+            });
+        }
+
+        await fileModel.removeOne(req.body.file);
         return res.json({
             message: 'file has been removed',
             success: true,

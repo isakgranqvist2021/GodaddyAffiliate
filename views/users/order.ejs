@@ -1,3 +1,5 @@
+<input type="hidden" id="orderId" value="<%= order._id %>" />
+
 <div class="col-md-12 mb-5">
     <header class="d-flex justify-content-between align-items-center">
         <h3 class="mb-3">Order Details</h3>
@@ -21,25 +23,19 @@
             </p>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
-            <span>Cost</span>
+            <span>Total Cost</span>
             <p class="mb-0"><%= order.currency.toUpperCase() %> <%= order.amount / 100 %></p>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
-            <span>Status</span>
+            <span>Payment Status</span>
             <p class="mb-0"><%= order.status %></p>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
-            <span>Tag</span>
-            <p class="mb-0"><%= order.inv.tag %></p>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
             <span>Completed</span>
-            <p class="mb-0"><%= order.completed %></p>
+            <p class="mb-0"><%= order.completed ? 'completed' : 'in progress' %></p>
         </li>
     </ul>
 </div>
-
-<input type="hidden" id="orderId" value="<%= order._id %>" />
 
 <div class="col-md-12 mb-5">
     <h3 class="mb-3">Order Requirements</h3>

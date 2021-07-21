@@ -11,9 +11,8 @@ const classes = {
     spinner: "spinner-border spinner-border-sm"
 };
 
-const orderId = document.querySelector('#orderId').value;
-
 function ModalComponent(props) {
+    const orderId = document.querySelector('#orderId').value;
     const [open, setOpen] = React.useState(false);
     const [val, setVal] = React.useState('');
 
