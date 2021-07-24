@@ -18,107 +18,144 @@ const cards = [
 ]
 %>
 
-<section class="main-section">
-    <div class="px-4 py-5">
-        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-            <div class="col-10 col-sm-8 col-lg-6">
-                <img src="/public/img/temp.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes"
-                    width="700" height="500" loading="lazy">
+<header class="masthead">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-6">
+                <div class="mb-5 mb-lg-0 text-center text-lg-start">
+                    <h1 class="display-1 lh-1 mb-3">Showcase your app beautifully.</h1>
+                    <p class="lead fw-normal text-muted mb-5">
+                        Launch your mobile app landing page faster with this free,
+                        open source theme from Start Bootstrap!
+                    </p>
+                    <div class="d-flex flex-column flex-lg-row align-items-center">
+                        <a class="me-lg-3 mb-4 mb-lg-0 btn btn-dark btn-lg" href="/pick-tag">Build A Website</a>
+                        <a href="#!" class="btn btn-outline-dark btn-lg">Build A Logo</a>
+                    </div>
+                </div>
             </div>
             <div class="col-lg-6">
-                <h1 class="display-5 fw-bold lh-1 mb-3">What is Lorem Ipsum?</h1>
-                <p class="lead">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
-                    printer took a galley of type and scrambled. it to make a type specimen book. It has
-                    survived not only five centuries. </p>
-                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                    <a href="/pick-tag" class="btn btn-primary btn-lg px-4 me-md-2">Build A Website</a>
-                    <a href="#" class="btn btn-outline-secondary btn-lg px-4">Build A Logo</a>
+                <div class="masthead-device-mockup">
+                    <div class="device-wrapper">
+                        <div class="device" data-device="iPhoneX" data-orientation="portrait" data-color="black">
+                            <div class="screen bg-black">
+                                <video muted="muted" autoplay="" loop="" style="max-width: 100%; height: 100%">
+                                    <source src="/public/img/includes/demo-screen.mp4" type="video/mp4" />
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<aside class="text-center bg-gradient-primary-to-secondary">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-xl-8">
+                <div class="h2 fs-1 text-white mb-4">"An intuitive solution to a common problem that we all face,
+                    wrapped up in a single app!"</div>
+                <img src="/public/img/includes/tnw-logo.svg" alt="..." style="height: 3rem" />
+            </div>
+        </div>
+    </div>
+</aside>
+<section id="features">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center">
+            <div class="col-lg-8 order-lg-1 mb-5 mb-lg-0">
+                <div class="container-fluid px-5">
+                    <div class="row gx-5">
+                        <div class="col-md-6 mb-5">
+                            <div class="text-center">
+                                <i class="bi-phone icon-feature text-gradient d-block mb-3"></i>
+                                <h3 class="font-alt">Device Mockups</h3>
+                                <p class="text-muted mb-0">Ready to use HTML/CSS device mockups, no Photoshop required!
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-5">
+                            <div class="text-center">
+                                <i class="bi-camera icon-feature text-gradient d-block mb-3"></i>
+                                <h3 class="font-alt">Flexible Use</h3>
+                                <p class="text-muted mb-0">Put an image, video, animation, or anything else in the
+                                    screen!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-5 mb-md-0">
+                            <div class="text-center">
+                                <i class="bi-gift icon-feature text-gradient d-block mb-3"></i>
+                                <h3 class="font-alt">Free to Use</h3>
+                                <p class="text-muted mb-0">As always, this theme is free to download and use for any
+                                    purpose!</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-center">
+                                <i class="bi-patch-check icon-feature text-gradient d-block mb-3"></i>
+                                <h3 class="font-alt">Open Source</h3>
+                                <p class="text-muted mb-0">Since this theme is MIT licensed, you can use it
+                                    commercially!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 order-lg-0">
+                <div class="features-device-mockup">
+                    <div class="device-wrapper">
+                        <div class="device" data-device="iPhoneX" data-orientation="portrait" data-color="black">
+                            <div class="screen bg-black">
+                                <video muted="muted" autoplay="" loop="" style="max-width: 100%; height: 100%">
+                                    <source src="/public/img/includes/demo-screen.mp4" type="video/mp4" /></video>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
-<div class="container marketing">
-    <hr class="featurette-divider">
-
-    <div class="row">
-        <% cards.forEach(card => { %>
-            <div class="col-lg-4">
-                <img class="bd-placeholder-img rounded-circle mb-3" width="140" height="140" src="<%= card.img %>"/>
-                <h2><%= card.title %></h2>
-                <p>And lastly this, the third column of representative placeholder content.</p>
-                <p><a class="btn btn-secondary" href="<%= card.href %>">View details &raquo;</a></p>
+<section class="bg-light">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center justify-content-center justify-content-lg-between">
+            <div class="col-12 col-lg-5">
+                <h2 class="display-4 lh-1 mb-4">Enter a new age of web design</h2>
+                <p class="lead fw-normal text-muted mb-5 mb-lg-0">This section is perfect for featuring some information
+                    about your application, why it was built, the problem it solves, or anything else! There's plenty of
+                    space for text here, so don't worry about writing too much.</p>
             </div>
-        <% }) %>
+            <div class="col-sm-8 col-md-6">
+                <div class="px-5 px-sm-0"><img class="img-fluid rounded-circle"
+                        src="https://source.unsplash.com/u8Jn2rzYIps/900x900" alt="..." /></div>
+            </div>
+        </div>
     </div>
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-        <div class="col-md-7">
-            <h2 class="featurette-heading">
-                Ecommerce & Business. <span class="text-muted">It’ll blow your mind.</span>
+</section>
+<section class="cta">
+    <div class="cta-content">
+        <div class="container px-5">
+            <h2 class="text-white display-1 lh-1 mb-4">
+                Stop waiting.
+                <br />
+                Start building.
             </h2>
-            <p class="lead">
-                Some great placeholder content for the first featurette here. 
-                Imagine some exciting prose here.
-            </p>
-        </div>
-
-        <div class="col-md-5">
-            <img 
-            src="/public/img/templates/example1.png" 
-            alt="" 
-            class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" 
-            width="500" 
-            height="500"/>
+            <a class="btn btn-outline-light py-3 px-4 rounded-pill" href="/pick-tag"
+                target="_blank">Browse For Free</a>
         </div>
     </div>
-
-    <hr class="featurette-divider">
-
-    <div class="row featurette">
-        <div class="col-md-7 order-md-2">
-            <h2 class="featurette-heading">Blogs & Portfolio. <span class="text-muted">See for yourself.</span></h2>
-            <p class="lead">
-                Another featurette? Of course. More placeholder content here to give you an idea of
-                how this layout would work with some actual real-world content in place.
-            </p>
-        </div>
-
-        <div class="col-md-5 order-md-1">
-            <img 
-            src="/public/img/templates/example2.png" 
-            alt="" 
-            class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" 
-            width="500" 
-            height="500"/>
+</section>
+<section class="bg-gradient-primary-to-secondary" id="download">
+    <div class="container px-5">
+        <h2 class="text-center text-white font-alt mb-4">Build Your Dream Now!</h2>
+        <p class="m-auto w-50 mb-4 text-white text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic tempora veniam laboriosam animi assumenda, ipsa at voluptatum cumque voluptates quos culpa.</p>
+        <div class="d-flex flex-column flex-lg-row align-items-center justify-content-center">
+            <a class="me-lg-3 mb-4 mb-lg-0 btn btn-light btn-lg" href="#!">Build A Website</a>
+            <a href="#!" class="btn btn-outline-light btn-lg">Build A Logo</a>
         </div>
     </div>
+</section>
 
-    <hr class="featurette-divider">
-
-    <div class="row featurette pb-5">
-        <div class="col-md-7">
-            <h2 class="featurette-heading">
-                Restaurants & Food. <span class="text-muted">Delicious.</span>
-            </h2>
-            <p class="lead">
-                And yes, this is the last block of representative placeholder content. Again, not
-                really intended to be actually read, simply here to give you a better view of what this would
-                look like with some actual content. Your content.
-            </p>
-        </div>
-
-        <div class="col-md-5">
-            <img 
-            src="/public/img/templates/example3.png" 
-            alt="" 
-            class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" 
-            width="500" 
-            height="500"/>
-        </div>
-    </div>
-</div>

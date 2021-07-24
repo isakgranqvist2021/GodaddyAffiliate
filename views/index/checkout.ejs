@@ -1,134 +1,82 @@
-<% 
-    function getPrice(template, domain) {
-        if(template === null && domain === null) return 0;
-        if(template === null && domain !== null) return template.price;
-        if(domain === null && template !== null) return domain.price;
-
-        return Math.round(template.price + domain.price);
-    }
-%>
-<div class="row gx-5 mt-5">
-    <div class="col-md-5">
-        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <% template.images.forEach((_, i) => { %>
-                    <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="<%= i %>" class="active" aria-current="true"></button>
-                <% }) %>
-            </div>
-            <div class="carousel-inner">
-                <% template.images.forEach((img, i) => { %>
-                <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
-                    <img class="bd-placeholder-img" src="<%= img %>" alt="" />
-                </div>
-                <% }) %>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-    </div>
-    
-    <section class="col-md-7">
+<div class="d-flex flex-column">
+    <section class="col-md-12 flex-grow-1 h-100 w-100 d-flex flex-column">
         <header class="d-flex justify-content-between align-items-center mb-3">
             <h1>Checkout</h1>
             <div id="CurrComponent"></div>
         </header>
     
-        <% if(tag === null || template === null || domain === null) { %>
-        <div class="missing-data my-5">
-            <% if(tag === null) { %>
-            <a class="btn btn-primary me-3" href="/pick-tag">Pick a tag for your website</a>
-            <% } %>
-    
-            <% if(template === null) { %>
-            <a class="btn btn-primary me-3" href="/pick-template">Pick a template for your website</a>
-            <% } %>
-    
-            <% if(domain === null) { %>
-            <a class="btn btn-primary me-3" href="/pick-domain">Pick a domain for your website</a>
-            <% } %>
-        </div>
-        <% } %>
-    
+        <% if(cart.length > 0) { %>
         <div class="inventory">
             <form method="POST" action="/checkout">
-                <section>
+                <section class="mt-4">
                     <ul class="list-group">
-                        <% if(template !== null) { %>
-                            <li class="list-group-item d-flex justify-content-between px-3 py-3">
-                                <a class="text-decoration-none text-dark" href="/view-template/<%= template._id %>">
-                                    <h3 class="mb-0"><%= template.title %></h3>
-                                </a>
-                                <p class="mb-0 d-flex align-items-center">
-                                    <%= currency.code %> 
-                                    <%= template.price %>
-                                </p>
+                        <% cart.forEach(item => { %>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span><%= item.title %></span>
+                                <span><%= currency.code %> <%= Math.round(item.price) %></span>
                             </li>
-                        <% } %> 
-                        <% if(domain !== null) { %>
-                            <li class="list-group-item d-flex justify-content-between px-3 py-3">
-                                <a class="text-decoration-none text-dark" href="/pick-domain">
-                                    <h3 class="mb-0 d-flex">
-                                        <span><%= domain.domain.split('.')[0] %></span>
-                                        <span class="text-primary">.<%= domain.domain.split('.')[1] %></span>
-                                    </h3>
-                                </a>
-                                <p class="mb-0 d-flex align-items-center">
-                                    <%= currency.code %> 
-                                    <%= Math.round(domain.price) %>
-                                </p>
-                            </li>
-                        <% } %>
+                        <% }) %>
                     </ul>
                 </section>
     
-                <% if(template !== null && domain !== null) { %>
-                    <div class="form-footer d-flex justify-content-between mt-5">
-                        <p>Total Cost: <%= currency.code %> <%= getPrice(template, domain) %></p>
-                        <% if(!user) { %>
-                            <div id="ModalComponent"></div>
-                        <% } else { %>
-                            <div>
-                                <button class="btn btn-primary" type="submit">Continue To Checkout</button>
-                            </div>
-                        <% } %>
+                <div class="form-footer d-flex justify-content-between mt-5">
+                    <p>Total Cost: <%= currency.code %> <%= cost %></p>
+                    <% if(!user) { %>
+                    <div id="ModalComponent"></div>
+                    <% } else { %>
+                    <div>
+                        <button class="btn btn-primary" type="submit">Continue To Checkout</button>
                     </div>
-                <% } %>
+                    <% } %>
+                </div>
             </form>
         </div>
-    </section>
-</div>
-
-<hr class="featured-hr">
-
-<div class="container px-4 mt-5" id="featured-3">
-
-    <div class="row g-4 row-cols-1 row-cols-lg-3">
-      <div class="feature col">
-        <div class="feature-icon bg-primary bg-gradient">
-            <span class="material-icons-outlined skiptranslate">shield</span>
+        <% } else { %>
+        <div class="h-100 w-100 flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+            <p class="display-6">Your cart is empty</p>
+            <div class="d-flex mt-3">
+                <a class="btn btn-primary me-2" href="/pick-tag">Build a website</a>
+                <a class="btn btn-secondary ms-2" href="/pick-domain">Find A Domain</a>
+            </div>
         </div>
-        <h2>Security</h2>
-        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-      </div>
-      <div class="feature col">
-        <div class="feature-icon bg-primary bg-gradient">
-            <span class="material-icons-outlined skiptranslate">speed</span>
+        <% } %>
+    </section> 
+    
+    
+    <hr class="featured-hr">
+    
+    <div class="container px-4 mt-5" id="featured-3">
+        <div class="row g-4 row-cols-1 row-cols-lg-3">
+            <div class="feature col">
+                <div class="feature-icon bg-primary bg-gradient">
+                    <span class="material-icons-outlined skiptranslate">shield</span>
+                </div>
+                <h2>Security</h2>
+                <p>
+                    Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and
+                    probably just keep going until we run out of words.
+                </p>
+            </div>
+            <div class="feature col">
+                <div class="feature-icon bg-primary bg-gradient">
+                    <span class="material-icons-outlined skiptranslate">speed</span>
+                </div>
+                <h2>Speed</h2>
+                <p>
+                    Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and
+                    probably just keep going until we run out of words.
+                </p>
+            </div>
+            <div class="feature col">
+                <div class="feature-icon bg-primary bg-gradient">
+                    <span class="material-icons-outlined skiptranslate">groups</span>
+                </div>
+                <h2>Customer Oriented</h2>
+                <p>
+                    Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and
+                    probably just keep going until we run out of words.
+                </p>
+            </div>
         </div>
-        <h2>Speed</h2>
-        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-      </div>
-      <div class="feature col">
-        <div class="feature-icon bg-primary bg-gradient">
-            <span class="material-icons-outlined skiptranslate">groups</span>
-        </div>
-        <h2>Customer Oriented</h2>
-        <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-      </div>
     </div>
-  </div>
+</div>

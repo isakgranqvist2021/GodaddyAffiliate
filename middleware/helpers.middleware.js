@@ -20,12 +20,8 @@ export function inv(req, res, next) {
         req.session.token = null;
     }
 
-    if (!req.session.inv) {
-        req.session.inv = {
-            tag: null,
-            temp: null,
-            dom: null
-        }
+    if (!req.session.cart) {
+        req.session.cart = [];
     }
 
     return next();

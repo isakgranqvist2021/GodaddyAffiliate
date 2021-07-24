@@ -16,7 +16,19 @@ async function get(req, res) {
 
 async function set(req, res) {
     const currencies = JSON.parse(fs.readFileSync(path.resolve('.', path.join('./data/currencies.json'))));
-    req.session.currency = currencies.find(c => c.code === req.params.code);
+    let newCurrency = currencies.find(c => c.code === req.params.code);
+
+    req.session.currency = newCurrency;
+
+    if (req.session.cart.length > 0) {
+        req.session.cart = req.session.cart.map(item => {
+            return {
+                ...item,
+                currency: newCurrency.code,
+                price: item.price = item.originalPrice * newCurrency.value
+            };
+        });
+    }
 
     return res.json({
         message: 'currency updated',

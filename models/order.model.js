@@ -7,11 +7,7 @@ const orderSchema = new Schema({
     updatedAt: { type: Date, default: new Date() },
     events: { type: Array, required: true },
     belongsTo: { type: Schema.Types.ObjectId, ref: 'User' },
-    inv: {
-        tag: { type: String, required: true },
-        temp: { type: Schema.Types.ObjectId, ref: 'Template' },
-        dom: { type: Object, required: true }
-    },
+    cart: { type: Array, default: [] },
     cid: { type: String, required: true },
     amount: { type: Number, required: true },
     currency: { type: String, required: true },

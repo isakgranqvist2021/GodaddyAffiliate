@@ -12,7 +12,7 @@ async function get(req, res) {
 }
 
 function post(req, res) {
-    req.session.inv.tag = req.body.tag;
+    req.session.tag = req.body.tag;
 
     return res.redirect('/direction');
 }
@@ -20,10 +20,8 @@ function post(req, res) {
 function set(req, res) {
     let tags = JSON.parse(fs.readFileSync(path.resolve('.', path.join('./data/tags.json'))));
 
-    console.log(req.query.tag.toLowerCase());
-
     if (tags.includes(req.query.tag.toLowerCase())) {
-        req.session.inv.tag = req.query.tag;
+        req.session.tag = req.query.tag;
         return res.redirect('/direction');
     }
 

@@ -107,7 +107,7 @@ export function constructItem(data, currency) {
     }
 }
 
-const multiplier = 1.4;
+export const multiplier = 1.4;
 
 export async function getPricingData() {
     try {

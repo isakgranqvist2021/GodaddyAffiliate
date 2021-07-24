@@ -1,4 +1,4 @@
-import { constructItem, wwwImage, getPriceDomain, getPriceTemplate } from '../../utils/helpers';
+import { constructItem, getPriceDomain, getPriceTemplate } from '../../utils/helpers';
 
 import stripeLib from 'stripe';
 import env from '../../utils/env';
@@ -7,15 +7,14 @@ import orderModel from '../../models/order.model';
 let stripe = stripeLib(env.STRIPE_KEY);
 
 async function get(req, res) {
+
     return res.render('index/checkout', {
         title: 'Checkout',
         user: req.user,
-        domain: req.session.inv.dom,
-        template: req.session.inv.temp !== null ? {
-            ...req.session.inv.temp,
-            price: getPriceTemplate(req.session.inv.temp.price, req.session.currency)
-        } : null,
-        tag: req.session.inv.tag,
+        cart: req.session.cart,
+        cost: Math.round(req.session.cart.reduce((t, i) => {
+            return t + i.price;
+        }, 0)),
         currency: req.session.currency
     });
 }
@@ -29,11 +28,7 @@ async function success(req, res) {
 
     const data = {
         belongsTo: req.session.uid,
-        inv: {
-            tag: req.session.inv.tag,
-            temp: req.session.inv.temp._id,
-            dom: req.session.inv.dom.domain
-        },
+        cart: req.session.cart,
         cid: checkout.id,
         amount: checkout.amount_total,
         currency: checkout.currency,
@@ -41,10 +36,7 @@ async function success(req, res) {
         email: checkout.customer_details.email,
         status: checkout.payment_status,
         events: [
-            {
-                message: 'Order Received',
-                createdAt: new Date()
-            }
+            { message: 'Order Received', createdAt: new Date() }
         ]
     }
 
@@ -56,11 +48,7 @@ async function success(req, res) {
             return res.redirect('/checkout');
         }
 
-        req.session.inv = {
-            tag: null,
-            temp: null,
-            dom: null
-        }
+        req.session.cart = [];
 
         delete req.session.cid;
         return res.render('index/checkout-success', {

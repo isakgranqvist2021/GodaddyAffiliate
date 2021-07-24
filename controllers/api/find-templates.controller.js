@@ -4,7 +4,7 @@ import { getPriceTemplate } from '../../utils/helpers';
 async function findTemplates(req, res) {
     try {
         const templates = await templateModel.findTemplates({
-            tags: req.session.inv.tag,
+            tags: req.session.tag,
             active: true
         });
 
