@@ -15,11 +15,11 @@ html {
 }
 
 .bg-gradient-primary-to-secondary {
-    background: linear-gradient(45deg, var(--bs-white), var(--bs-dark)) !important;
+    background: var(--bs-gray-dark);
 }
 
 .text-gradient {
-    background: -webkit-linear-gradient(var(--bs-white), var(--bs-dark));
+    background: var(--bs-gray-dark);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

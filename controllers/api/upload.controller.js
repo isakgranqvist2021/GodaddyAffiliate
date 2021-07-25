@@ -16,6 +16,8 @@ async function upload(req, res) {
 
 
 async function post(req, res) {
+    console.log(req.body);
+
     try {
         const order = await orderModel.findOrder({ _id: req.body.orderId });
 

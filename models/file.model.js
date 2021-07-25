@@ -15,6 +15,8 @@ const FileModel = mongoose.model('File', fileSchema);
 
 async function insertMany(data) {
     try {
+        console.log('Insert', data);
+
         return await FileModel.insertMany(data);
     } catch (err) {
         return Promise.reject('caught error');

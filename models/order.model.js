@@ -38,12 +38,7 @@ async function createOrder(data) {
 async function findOrders(filter) {
     try {
         return await OrderModel.find(filter).populate([
-            { path: 'belongsTo', model: 'User' },
-            {
-                path: 'inv', populate: {
-                    path: 'temp', model: 'Template'
-                }
-            }
+            { path: 'belongsTo', model: 'User' }
         ]).exec();
     } catch (err) {
         return Promise.reject('caught error');
@@ -53,12 +48,7 @@ async function findOrders(filter) {
 async function findOrder(filter) {
     try {
         return await OrderModel.findOne(filter).populate([
-            { path: 'belongsTo', model: 'User' },
-            {
-                path: 'inv', populate: {
-                    path: 'temp', model: 'Template'
-                }
-            }
+            { path: 'belongsTo', model: 'User' }
         ]).lean().exec();
     } catch (err) {
         return Promise.reject('caught error');

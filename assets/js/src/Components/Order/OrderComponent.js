@@ -12,7 +12,6 @@ const classes = {
 };
 
 function ModalComponent(props) {
-    const orderId = document.querySelector('#orderId').value;
     const [open, setOpen] = React.useState(false);
     const [val, setVal] = React.useState('');
 
@@ -46,6 +45,7 @@ function ModalComponent(props) {
 }
 
 function OrderComponent(props) {
+    const orderId = document.querySelector('#orderId').value;
     const [loaders, setLoaders] = React.useState(new Array(6).fill(false));
     const [payload, setPayload] = React.useState({
         open: false,
