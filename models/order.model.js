@@ -21,8 +21,12 @@ const OrderModel = mongoose.model('Order', orderSchema);
 
 async function createOrder(data) {
     try {
-        await templateModel.updateTemplate({ _id: data.inv.temp }, {
-            $inc: { orders: 1 }
+        data.cart.filter(item => {
+            return item.type === 'template';
+        }).map(async (item) => {
+            await templateModel.updateTemplate({ _id: item._id }, {
+                $inc: { orders: 1 }
+            });
         });
 
         return await new OrderModel(data).save();

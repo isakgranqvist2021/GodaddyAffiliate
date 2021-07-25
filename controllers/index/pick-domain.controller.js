@@ -18,6 +18,9 @@ async function post(req, res) {
         price: getPriceDomain(domain.price, req.session.currency),
         originalPrice: Math.round(domain.price * multiplier * 0.000001),
         currency: req.session.currency.code,
+        originalCurrency: 'EUR',
+        linkTo: '/pick-domain?q=' + domain.domain,
+        type: 'domain',
         title: domain.domain,
         service: domain.domain
     });

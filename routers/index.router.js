@@ -34,6 +34,7 @@ router.post('/pick-domain', pickDomainController.post);
 router.get('/checkout', checkoutController.get);
 router.post('/checkout', checkoutController.post);
 router.get('/checkout-success', checkoutController.success);
+router.get('/remove/:index', checkoutController.remove);
 
 router.get('/login', loggedOut, loginController.get);
 

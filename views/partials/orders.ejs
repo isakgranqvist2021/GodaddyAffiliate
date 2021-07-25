@@ -1,8 +1,6 @@
 <table>
     <thead>
         <tr>
-            <th>Template</th>
-            <th>Domain</th>
             <th>Created</th>
             <th>Price</th>
             <th>Payment Status</th>
@@ -12,12 +10,10 @@
     <tbody>
         <% orders.forEach(order => { %>
             <tr onclick="window.location.href  = '/users/order/<%= order._id %>'">
-                <td class="text-nowrap"><%= order.inv.temp.title %></td>
-                <td class="text-nowrap"><%= order.inv.dom.split('.')[0] %><span class="text-primary">.<%= order.inv.dom.split('.')[1] %></span></td>
-                <td class="text-nowrap"><%= order.createdAt.toLocaleString() %></td>
-                <td class="text-nowrap"><span class="text-uppercase"><%= order.currency %></span> <%= order.amount / 100 %></td>
-                <td class="text-nowrap"><%= order.status %></td>
-                <td class="text-nowrap"><%= order.completed ? 'completed' : 'in progress' %></td>
+                <td><%= order.createdAt %></td>
+                <td><span class="text-uppercase"><%= order.currency %></span> <%= order.amount / 100 %></td>
+                <td><%= order.status %></td>
+                <td><%= order.completed ? 'completed' : 'in progress' %></td>
             </tr>
         <% }) %>
     </tbody>

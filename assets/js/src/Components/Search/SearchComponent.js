@@ -45,16 +45,14 @@ function SearchComponent(props) {
         }
     }
 
-    const fetchMyInventory = React.useCallback(async () => {
-        const response = await http.GET('/my-inventory');
-        if (response.success && response.data.dom !== null) {
-            setQuery(response.data.dom.domain);
-            submitBtn.current.click();
-        }
-    }, []);
-
     React.useEffect(() => {
-        fetchMyInventory();
+        let search = new URLSearchParams(window.location.search);
+        let q = search.get('q');
+
+        if (q !== null) {
+            setQuery(q);
+        }
+
     }, [])
 
     const onKeyDown = (e) => {

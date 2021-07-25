@@ -21,6 +21,9 @@ async function post(req, res) {
         price: getPriceTemplate(template.price, req.session.currency),
         originalPrice: getPriceTemplate(template.price, req.session.currency),
         currency: req.session.currency.code,
+        originalCurrency: 'EUR',
+        linkTo: '/view-template/' + template._id,
+        type: 'template',
         title: template.title,
         service: template.service
     });

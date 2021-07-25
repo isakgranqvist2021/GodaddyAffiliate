@@ -15,11 +15,11 @@ html {
 }
 
 .bg-gradient-primary-to-secondary {
-    background: linear-gradient(45deg, var(--bs-gray-dark), var(--bs-dark)) !important;
+    background: linear-gradient(45deg, var(--bs-white), var(--bs-dark)) !important;
 }
 
 .text-gradient {
-    background: -webkit-linear-gradient(var(--bs-gray-dark), var(--bs-dark));
+    background: -webkit-linear-gradient(var(--bs-white), var(--bs-dark));
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -125,13 +125,13 @@ section.cta:before {
 .features-device-mockup .circle {
     position: absolute;
     left: 0;
-    fill: var(--bs-gray-dark);
+    fill: var(--bs-white);
     width: 70%;
     display: none;
 }
 
 .features-device-mockup .circle .gradient-start-color {
-    stop-color: var(--bs-gray-dark);
+    stop-color: var(--bs-white);
 }
 
 .features-device-mockup .circle .gradient-end-color {
@@ -249,7 +249,7 @@ footer a:focus {
 }
 
 .masthead .masthead-device-mockup .circle .gradient-start-color {
-    stop-color: var(--bs-gray-dark);
+    stop-color: var(--bs-white);
 }
 
 .masthead .masthead-device-mockup .circle .gradient-end-color {
@@ -261,7 +261,7 @@ footer a:focus {
     height: 1rem;
     width: 1rem;
     transform: rotate(-10deg);
-    fill: var(--bs-gray-dark);
+    fill: var(--bs-white);
     bottom: 15%;
     left: 10%;
 }
@@ -270,7 +270,7 @@ footer a:focus {
     position: absolute;
     height: 0.75rem;
     width: 0.75rem;
-    fill: var(--bs-gray-dark);
+    fill: var(--bs-white);
     top: 15%;
     right: 10%;
 }

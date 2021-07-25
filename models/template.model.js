@@ -60,4 +60,19 @@ async function updateTemplate(filter, update) {
     }
 }
 
-export default { createTemplate, findTemplates, findTemplate, updateTemplate };
+async function updateMany(filter, update) {
+    try {
+        return await TemplateModel.updateMany(filter, update);
+    } catch (err) {
+        return Promise.reject('caught error');
+    }
+}
+
+
+export default {
+    createTemplate,
+    findTemplates,
+    findTemplate,
+    updateTemplate,
+    updateMany
+};

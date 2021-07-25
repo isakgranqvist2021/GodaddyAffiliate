@@ -9,7 +9,6 @@ import uploadController from '../controllers/api/upload.controller';
 import createTemplateController from '../controllers/api/create-template.controller';
 import findTemplatesController from '../controllers/api/find-templates.controller';
 import searchController from '../controllers/api/search.controller';
-import inventoryController from '../controllers/api/inventory.controller';
 import phoneController from '../controllers/api/phone.controller';
 import loginController from '../controllers/api/login.controller';
 import codesController from '../controllers/api/codes.controller';
@@ -22,7 +21,6 @@ import fileController from '../controllers/api/file.controller';
 router.get('/tags', tagsController);
 router.get('/find-templates', findTemplatesController);
 router.get('/search/:q', searchController.get);
-router.get('/my-inventory', inventoryController.get);
 
 router.post('/verify-phone', phoneController.post);
 router.post('/verify-email', emailController.post);

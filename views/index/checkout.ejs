@@ -9,10 +9,11 @@
         <div class="inventory">
             <form method="POST" action="/checkout">
                 <section class="mt-4">
-                    <ul class="list-group">
-                        <% cart.forEach(item => { %>
+                    <ul class="list-group cart">
+                        <% cart.forEach((item, i) => { %>
                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span><%= item.title %></span>
+                                <a class="remove-item" href="/remove/<%= i %>"><span class="material-icons-outlined skiptranslate">delete</span></a>
+                                <a class="text-decoration-none" href="<%= item.linkTo %>"><%= item.title %></a>
                                 <span><%= currency.code %> <%= Math.round(item.price) %></span>
                             </li>
                         <% }) %>
@@ -32,7 +33,7 @@
             </form>
         </div>
         <% } else { %>
-        <div class="h-100 w-100 flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+        <div class="h-100 w-100 flex-grow-1 d-flex flex-column justify-content-center align-items-center mt-5">
             <p class="display-6">Your cart is empty</p>
             <div class="d-flex mt-3">
                 <a class="btn btn-primary me-2" href="/pick-tag">Build a website</a>

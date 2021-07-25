@@ -1,13 +1,15 @@
-import { constructItem, getPriceDomain, getPriceTemplate } from '../../utils/helpers';
-
 import stripeLib from 'stripe';
 import env from '../../utils/env';
 import orderModel from '../../models/order.model';
 
 let stripe = stripeLib(env.STRIPE_KEY);
 
-async function get(req, res) {
+function remove(req, res) {
+    req.session.cart.splice(req.params.index, 1);
+    return res.redirect(req.headers.referer);
+}
 
+async function get(req, res) {
     return res.render('index/checkout', {
         title: 'Checkout',
         user: req.user,
@@ -20,6 +22,8 @@ async function get(req, res) {
 }
 
 async function success(req, res) {
+    console.log(req.session);
+
     if (!req.session.cid) {
         return res.redirect('/checkout');
     }
@@ -64,25 +68,26 @@ async function success(req, res) {
 async function post(req, res) {
     const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
-        line_items: [
-            {
-                price: getPriceTemplate(req.session.inv.temp.price, req.session.currency) * 100,
-                title: req.session.inv.temp.title,
-                images: req.session.inv.temp.images,
-            },
-            {
-                price: req.session.inv.dom.price * 100,
-                title: req.session.inv.dom.domain,
-                images: [wwwImage]
-            }
-        ].map(item => constructItem(item, req.session.currency)),
         mode: 'payment',
         success_url: env.SERVER_URL + '/checkout-success',
         cancel_url: env.SERVER_URL + '/checkout',
+        line_items: req.session.cart.map(item => {
+            return {
+                quantity: 1,
+                price_data: {
+                    currency: req.session.currency.code,
+                    unit_amount: Math.round(item.price * 100),
+                    product_data: {
+                        name: item.title,
+                        images: item.images
+                    }
+                }
+            }
+        })
     });
 
     req.session.cid = session.id;
-    res.redirect(303, session.url);
+    return res.redirect(303, session.url);
 }
 
-export default { get, post, success };
+export default { get, post, success, remove };

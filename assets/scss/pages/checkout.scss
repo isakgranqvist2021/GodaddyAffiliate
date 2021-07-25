@@ -1,3 +1,30 @@
+.cart {
+    li {
+        position: relative;
+
+        .remove-item {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            pointer-events: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+        }
+
+        &:hover {
+            .remove-item {
+                opacity: 1;
+                pointer-events: unset;
+            }
+        }
+    }
+}
+
 #myCarousel {
     img {
         width: 100%;

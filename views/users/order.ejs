@@ -12,17 +12,6 @@
             <p class="mb-0"><%= order._id %></p>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
-            <span>Template</span>
-            <p class="mb-0"><%= order.inv.temp.title %></p>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-            <span>Domain</span>
-            <p class="mb-0 d-flex">
-                <span><%= order.inv.dom.split('.')[0] %></span>
-                <span class="text-primary">.<%= order.inv.dom.split('.')[1] %></span>
-            </p>
-        </li>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
             <span>Total Cost</span>
             <p class="mb-0"><%= order.currency.toUpperCase() %> <%= order.amount / 100 %></p>
         </li>
@@ -34,6 +23,21 @@
             <span>Order Status</span>
             <p class="mb-0"><%= order.completed ? 'completed' : 'in progress' %></p>
         </li>
+    </ul>
+</div>
+
+<div class="col-md-12 mb-5">
+    <h3>Cart</h3>
+    <ul class="list-group">
+        <% order.cart.forEach(item => { %>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a class="text-decoration-none" href="<%= item.linkTo %>"><%= item.title %></a>
+                <span>
+                    <%= item.currency %>
+                    <%= item.price %>
+                </span>
+            </li>
+        <% }) %>
     </ul>
 </div>
 

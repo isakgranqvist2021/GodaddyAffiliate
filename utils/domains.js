@@ -32,8 +32,8 @@ async function retrieveDataForDomains(domains) {
 }
 
 async function findSuggestions(query) {
-    const searchDur = 200;
-    const limit = 100;
+    const searchDur = 25;
+    const limit = 25;
 
     let url = `${baseURL}/domains/suggest?query=${query}&waitMs=${searchDur}&limit=${limit}`;
 

@@ -8,7 +8,7 @@ function ModalComponent(props) {
 
     return (
         <div className="ModalComponent">
-            <button className="btn btn-primary" type="button" onClick={(e) => setOpen(true)}>Continue To Checkout</button>
+            <button className="btn btn-primary" type="button" onClick={(e) => setOpen(true)}>Log In</button>
 
             <div className={open ? 'c-modal open' : 'c-modal'} onClick={(e) => setOpen(false)}>
                 <div className="c-modal-content" onClick={(e) => e.stopPropagation()}>
