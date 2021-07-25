@@ -14,8 +14,11 @@ import checkoutController from '../controllers/index/checkout.controller';
 import directionController from '../controllers/index/direction.controller';
 
 import viewTemplateController from '../controllers/index/view-template';
+import hireController from '../controllers/index/hire.controller';
 
 router.get('/', indexController.get);
+
+router.get('/talk-to-an-expert', hireController.get);
 
 router.get('/pick-tag', pickTagController.get);
 router.get('/set-tag', pickTagController.set);
