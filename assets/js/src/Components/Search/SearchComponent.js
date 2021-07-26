@@ -75,7 +75,7 @@ function SearchComponent(props) {
                 />
 
                 <button className="btn btn-primary" type="button" ref={submitBtn} onClick={search} disabled={loading}>
-                    <span className="material-icons-outlined">search</span>
+                    <span className="material-icons-outlined skiptranslate">search</span>
                 </button>
             </form>
             {error.show && <p className="text-danger">{error.message}</p>}

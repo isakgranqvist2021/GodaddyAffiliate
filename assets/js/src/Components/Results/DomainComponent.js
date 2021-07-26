@@ -5,7 +5,10 @@ function DomainComponent(props) {
     if (!props.available) {
         return <li className="list-group-item d-flex justify-content-between align-items-center disabled">
             <div>
-                <h3 className="mb-2">{splitDomain(props.domain)}</h3>
+                <h3 className="mb-2 d-flex skiptranslate">
+                    <span>{props.domain.split('.')[0]}</span>
+                    <span className="text-primary">.{props.domain.split('.')[1]}</span>
+                </h3>
                 <p className="mb-0">Price Not Available</p>
             </div>
             <button className="btn btn-primary disabled">Not Available</button>
@@ -21,7 +24,10 @@ function DomainComponent(props) {
     } else {
         return <li className="list-group-item d-flex justify-content-between align-items-center">
             <div>
-                <h3 className="mb-2">{splitDomain(props.domain)}</h3>
+                <h3 className="mb-2 d-flex skiptranslate">
+                    <span>{props.domain.split('.')[0]}</span>
+                    <span className="text-primary">.{props.domain.split('.')[1]}</span>
+                </h3>
                 <p className="mb-0">{props.curr.code !== null ? props.curr.code : 'EUR'} {props.price}</p>
             </div>
             <button className="btn btn-primary" onClick={() => props.pickDomain(props.domain)}>
