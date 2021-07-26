@@ -53,6 +53,7 @@ main {
         position: relative;
 
         .body {
+            min-height: 100vh;
             padding-bottom: 100px;
             display: flex;
             flex-direction: column;
