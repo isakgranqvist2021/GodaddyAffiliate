@@ -2,6 +2,7 @@ import stripeLib from 'stripe';
 import env from '../../utils/env';
 import orderModel from '../../models/order.model';
 import { FedaPay, Transaction } from 'fedapay';
+import { serverImg } from '../../utils/helpers';
 
 FedaPay.setApiKey(env.FEDAPAY_API_KEY);
 FedaPay.setEnvironment('sandbox');
@@ -14,6 +15,25 @@ function remove(req, res) {
 }
 
 async function get(req, res) {
+    // req.session.cart.splice(req.session.cart.findIndex(item => item.type === 'hosting'), 1);
+
+    if (!req.session.cart.some(item => item.type === 'hosting')) {
+        req.session.cart.push({
+            _id: 'default hosting plan',
+            images: [serverImg],
+            price: req.session.currency.value * 25,
+            originalPrice: 25,
+            currency: req.session.currency.code,
+            originalCurrency: 'EUR',
+            linkTo: '/checkout',
+            type: 'hosting',
+            title: 'default hosting solution',
+            service: 'hosting'
+        });
+    }
+
+    console.log(req.session.cart);
+
     return res.render('index/checkout', {
         title: 'Checkout',
         user: req.user,

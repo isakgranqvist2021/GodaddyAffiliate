@@ -146,4 +146,5 @@ export function getPriceTemplate(price, currency) {
     return Math.round(price * currency.value);
 }
 
-export const wwwImage = 'https://res.cloudinary.com/isak-tech/image/upload/v1627328884/www-purchase.jpg';
+export const keyImg = 'https://res.cloudinary.com/isak-tech/image/upload/v1627337790/pexels-pixabay-279810_htczxl.jpg';
+export const serverImg = 'https://res.cloudinary.com/isak-tech/image/upload/v1627337790/pexels-brett-sayles-2881224_wojdeo.jpg';

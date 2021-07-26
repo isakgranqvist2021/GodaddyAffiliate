@@ -1,12 +1,19 @@
 import React from 'react';
+import http from '../../Utils/http';
 
 function HireComponent(props) {
     const [tabIndex, setTabIndex] = React.useState(0);
     const [formData, setFormData] = React.useState({});
     const tabs = 3;
 
-    const submit = (formData) => {
+    const submit = async () => {
         console.log(formData);
+        const response = await http.POST('/create-meeting', JSON.stringify(formData));
+        window.alert(response.message);
+
+        if (response.success) {
+            window.location.href = '/';
+        }
     }
 
     return (
@@ -26,7 +33,7 @@ function HireComponent(props) {
             </header>
             <form onSubmit={(e) => e.preventDefault()} className="w-100 d-flex flex-column justify-content-between">
                 <StepperComponent
-                    setFormData={setFormData}
+                    setFormData={(val) => setFormData(val)}
                     tabIndex={tabIndex}
                     setTabIndex={setTabIndex}
                 />
@@ -36,15 +43,13 @@ function HireComponent(props) {
                         <span className="material-icons-outlined skiptranslate">chevron_left</span>
                         <span>Previous</span>
                     </button>
-
-                    {tabIndex < tabs - 1 ?
-                        <button className="btn btn-primary ms-3 d-flex align-items-center" type="button" onClick={() => setTabIndex(tabIndex + 1)}>
-                            <span>Next</span>
-                            <span className="material-icons-outlined skiptranslate">chevron_right</span>
-                        </button> :
-                        <button className="btn btn-success ms-3" type="button" onClick={submit}>
-                            Submit
-                        </button>}
+                    <button className="btn btn-primary ms-3 d-flex align-items-center" type="button" disabled={tabIndex > tabs - 1} onClick={() => setTabIndex(tabIndex + 1)}>
+                        <span>Next</span>
+                        <span className="material-icons-outlined skiptranslate">chevron_right</span>
+                    </button>
+                    <button className="btn btn-success ms-auto d-block" type="button" onClick={() => submit()}>
+                        Submit
+                    </button>
                 </div>
             </form>
         </div>
@@ -53,7 +58,7 @@ function HireComponent(props) {
 
 function StepperComponent(props) {
     const [formData, setFormData] = React.useState({
-        name: '',
+        businessName: '',
         description: '',
         socialLinks: [],
         phone: '',
@@ -94,8 +99,8 @@ function StepperComponent(props) {
                 <div>
                     <div className="form-group mb-4">
                         <label className="form-label">Name of your business</label>
-                        <input className="form-control" value={formData.name} onChange={(e) =>
-                            setFormData({ ...formData, name: e.target.value })} />
+                        <input className="form-control" value={formData.businessName} onChange={(e) =>
+                            setFormData({ ...formData, businessName: e.target.value })} />
                     </div>
                     <div className="form-group mb-4">
                         <label className="form-label">Brief description of your business</label>

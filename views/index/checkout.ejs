@@ -11,14 +11,15 @@
                 <ul class="list-group cart">
                     <% cart.forEach((item, i) => { %>
                     <li class="list-group-item d-flex">
-                        <div class="me-3" style="width:100px;height:100px;">
-                            <img  class="w-100 h-100" src="<%= item.images[0] %>" alt="" style="object-fit: contain;"/>
-                        </div>
-                        <div class="d-flex flex-column justify-content-between">
-                           <div class="d-flex flex-column">
+                        <a href="<%= item.linkTo %>" class="me-3" style="width:100px;height:100px;">
+                            <img class="w-100 h-100 rounded-3" src="<%= item.images[0] %>" alt="" style="object-fit: contain;"/>
+                        </a>
+                        <div class="d-flex flex-column justify-content-between w-100">
+                            <div class="d-flex flex-column">
                                 <a class="text-decoration-none" href="<%= item.linkTo %>"><%= item.title %></a>
                                 <span><%= currency.code %> <%= Math.round(item.price) %></span>
-                           </div>
+                                <span><%= item.type %></span>
+                            </div>
 
                             <a class="text-muted d-flex align-items-center text-decoration-none" href="/remove/<%= i %>">
                                 <span>Remove</span>
@@ -43,7 +44,7 @@
 
         <div class="col-md-1"></div>
 
-        <div class="col-md-4 bg-white p-4 shadow-sm rounded">
+        <div class="col-md-4 bg-white p-4 shadow-sm rounded d-flex flex-column justify-content-between">
             <ul class="list-group mb-3">
                 <div class="list-group-item d-flex justify-content-between align-items-center">
                     <span>Total Cost:</span>

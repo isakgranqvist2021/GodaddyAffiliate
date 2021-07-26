@@ -1,4 +1,4 @@
-const env = 'a';
+const env = 'development';
 const serverAddr = env === 'development' ? 'http://localhost:8080/api' : 'https://marina-media.herokuapp.com/api';
 
 async function GET(url) {
@@ -24,8 +24,6 @@ async function POST(url, body, headers = { 'Content-Type': 'application/json' })
 
         return await response.json();
     } catch (err) {
-        console.log('error');
-        console.log(err);
         return Promise.reject(err);
     }
 }
@@ -37,8 +35,6 @@ async function PUT(url, body, headers = { 'Content-Type': 'application/json' }) 
             body: body,
             headers: headers
         });
-
-        console.log(response.status);
 
         return await response.json();
     } catch (err) {

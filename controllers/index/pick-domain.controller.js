@@ -1,5 +1,5 @@
 import domains from '../../utils/domains';
-import { wwwImage, getPriceDomain, multiplier } from '../../utils/helpers';
+import { keyImg, getPriceDomain, multiplier } from '../../utils/helpers';
 
 async function get(req, res) {
     console.log(req.session);
@@ -14,7 +14,7 @@ async function post(req, res) {
 
     req.session.cart.push({
         _id: domain.domain,
-        images: [wwwImage],
+        images: [keyImg],
         price: getPriceDomain(domain.price, req.session.currency),
         originalPrice: Math.round(domain.price * multiplier * 0.000001),
         currency: req.session.currency.code,
