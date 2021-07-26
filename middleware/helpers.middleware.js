@@ -65,18 +65,12 @@ function styles(path) {
         case '/users/orders': return ['/public/css/orders.min.css'];
         case '/admin/orders': return ['/public/css/orders.min.css'];
         case '/admin/view-templates': return ['/public/css/view-templates.min.css'];
+        case '/talk-to-an-expert': return ['/public/css/hire-expert.min.css'];
         default: return [];
     }
 }
 
 function scripts(path) {
-    // if (/\/users\/order\/[a-zA-Z0-9]+/.test(path)) {
-    //     return [
-    //         '/public/libs/socket.io.js',
-    //         '/public/js/io.js'
-    //     ];
-    // }
-
     if (/\/admin\/view-template\/[a-zA-Z0-9]+/.test(path)) {
         return [];
     }
@@ -90,6 +84,10 @@ function scripts(path) {
 
     switch (path) {
         case '/pick-tag': return ['/public/js/form.js'];
+        case '/checkout': return [
+            '/public/libs/fedapay.js',
+            '/public/js/checkout.js'
+        ];
         default: return [];
     }
 }

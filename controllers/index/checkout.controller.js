@@ -1,6 +1,10 @@
 import stripeLib from 'stripe';
 import env from '../../utils/env';
 import orderModel from '../../models/order.model';
+import { FedaPay, Transaction } from 'fedapay';
+
+FedaPay.setApiKey(env.FEDAPAY_API_KEY);
+FedaPay.setEnvironment('sandbox');
 
 let stripe = stripeLib(env.STRIPE_KEY);
 
@@ -21,9 +25,36 @@ async function get(req, res) {
     });
 }
 
-async function success(req, res) {
-    console.log(req.session);
+async function pay_stripe(req, res) {
+    const session = await stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        mode: 'payment',
+        success_url: env.SERVER_URL + '/checkout-success',
+        cancel_url: env.SERVER_URL + '/checkout',
+        line_items: req.session.cart.map(item => {
+            return {
+                quantity: 1,
+                price_data: {
+                    currency: req.session.currency.code,
+                    unit_amount: Math.round(item.price * 100),
+                    product_data: {
+                        name: item.title,
+                        images: item.images
+                    }
+                }
+            }
+        })
+    });
 
+    req.session.cid = session.id;
+    return res.redirect(303, session.url);
+}
+
+async function pay_fedapay(req, res) {
+    return res.redirect(req.headers.referer);
+}
+
+async function success(req, res) {
     if (!req.session.cid) {
         return res.redirect('/checkout');
     }
@@ -65,29 +96,4 @@ async function success(req, res) {
     }
 }
 
-async function post(req, res) {
-    const session = await stripe.checkout.sessions.create({
-        payment_method_types: ['card'],
-        mode: 'payment',
-        success_url: env.SERVER_URL + '/checkout-success',
-        cancel_url: env.SERVER_URL + '/checkout',
-        line_items: req.session.cart.map(item => {
-            return {
-                quantity: 1,
-                price_data: {
-                    currency: req.session.currency.code,
-                    unit_amount: Math.round(item.price * 100),
-                    product_data: {
-                        name: item.title,
-                        images: item.images
-                    }
-                }
-            }
-        })
-    });
-
-    req.session.cid = session.id;
-    return res.redirect(303, session.url);
-}
-
-export default { get, post, success, remove };
+export default { get, success, remove, pay_stripe, pay_fedapay };

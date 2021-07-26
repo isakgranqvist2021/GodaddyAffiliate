@@ -6,30 +6,31 @@
     
         <% if(cart.length > 0) { %>
         <div class="inventory">
-            <form method="POST" action="/checkout">
-                <section class="mt-4">
-                    <ul class="list-group cart">
-                        <% cart.forEach((item, i) => { %>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <a class="remove-item" href="/remove/<%= i %>"><span class="material-icons-outlined skiptranslate">delete</span></a>
-                                <a class="text-decoration-none" href="<%= item.linkTo %>"><%= item.title %></a>
-                                <span><%= currency.code %> <%= Math.round(item.price) %></span>
-                            </li>
-                        <% }) %>
-                    </ul>
-                </section>
-    
-                <div class="form-footer d-flex justify-content-between mt-5">
-                    <p>Total Cost: <%= currency.code %> <%= cost %></p>
-                    <% if(!user) { %>
-                    <div id="ModalComponent"></div>
-                    <% } else { %>
-                    <div>
-                        <button class="btn btn-primary" type="submit">Continue To Checkout</button>
-                    </div>
-                    <% } %>
+            <section class="mt-4">
+                <ul class="list-group cart">
+                    <% cart.forEach((item, i) => { %>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a class="remove-item" href="/remove/<%= i %>"><span class="material-icons-outlined skiptranslate">delete</span></a>
+                            <a class="text-decoration-none" href="<%= item.linkTo %>"><%= item.title %></a>
+                            <span><%= currency.code %> <%= Math.round(item.price) %></span>
+                        </li>
+                    <% }) %>
+                </ul>
+            </section>
+
+            <div class="form-footer d-flex justify-content-between mt-5">
+                <p>Total Cost: <%= currency.code %> <%= cost %></p>
+                <% if(!user) { %>
+                <div id="ModalComponent"></div>
+                <% } else { %>
+                <div class="d-flex align-items-center">
+                    <form method="POST" action="/checkout/stripe">
+                        <button class="btn btn-primary" type="submit">Pay With Card</button>
+                    </form>
+                    <button class="btn btn-secondary fpay ms-3" type="button">Pay With FedaPay</button>
                 </div>
-            </form>
+                <% } %>
+            </div>
         </div>
         <% } else { %>
         <div class="d-flex flex-column justify-content-center align-items-center mt-5">

@@ -35,7 +35,10 @@ router.get('/pick-domain', pickDomainController.get);
 router.post('/pick-domain', pickDomainController.post);
 
 router.get('/checkout', checkoutController.get);
-router.post('/checkout', checkoutController.post);
+
+router.post('/checkout/stripe', checkoutController.pay_stripe);
+router.post('/checkout/fedapay', checkoutController.pay_fedapay);
+
 router.get('/checkout-success', checkoutController.success);
 router.get('/remove/:index', checkoutController.remove);
 
