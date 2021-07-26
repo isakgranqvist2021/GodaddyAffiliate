@@ -1,51 +1,65 @@
+<div class="d-flex justify-content-end mb-5">
+    <div id="CurrComponent"></div>
+</div>
+
 <div class="d-flex flex-column">
-    <section class="col-md-12 flex-grow-1 h-100 w-100 d-flex flex-column">
-        <header class="d-flex justify-content-end align-items-center mb-3">
-            <div id="CurrComponent"></div>
-        </header>
-    
-        <% if(cart.length > 0) { %>
-        <div class="inventory">
-            <section class="mt-4">
+    <div class="row bg-light p-4 rounded">
+        <div class="col-md-7">
+            <div class="bg-white p-4 shadow-sm rounded">
+                <h2 class="mb-3">Cart (<%= cart.length %> item)</h2>
+                <% if(cart.length > 0) { %>
                 <ul class="list-group cart">
                     <% cart.forEach((item, i) => { %>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a class="remove-item" href="/remove/<%= i %>"><span class="material-icons-outlined skiptranslate">delete</span></a>
-                            <a class="text-decoration-none" href="<%= item.linkTo %>"><%= item.title %></a>
-                            <span><%= currency.code %> <%= Math.round(item.price) %></span>
-                        </li>
+                    <li class="list-group-item d-flex">
+                        <img height="100" class="me-3" src="<%= item.images[0] %>" alt="" style="object-fit: contain;"/>
+                        <div class="d-flex flex-column justify-content-between">
+                           <div class="d-flex flex-column">
+                                <a class="text-decoration-none" href="<%= item.linkTo %>"><%= item.title %></a>
+                                <span><%= currency.code %> <%= Math.round(item.price) %></span>
+                           </div>
+
+                            <a class="text-muted d-flex align-items-center text-decoration-none" href="/remove/<%= i %>">
+                                <span>Remove</span>
+                                <span class="material-icons-outlined skiptranslate ms-1" style="font-size: inherit;">delete</span>
+                            </a>
+                        </div>
+                    </li>
                     <% }) %>
                 </ul>
-            </section>
-
-            <div class="form-footer d-flex justify-content-between mt-5">
-                <p>Total Cost: <%= currency.code %> <%= cost %></p>
-                <% if(!user) { %>
-                <div id="ModalComponent"></div>
-                <% } else { %>
-                <div class="d-flex align-items-center">
-                    <form method="POST" action="/checkout/stripe">
-                        <button class="btn btn-primary" type="submit">Pay With Card</button>
-                    </form>
-                    <button class="btn btn-secondary fpay ms-3" type="button">Pay With FedaPay</button>
-                </div>
                 <% } %>
             </div>
+            <div class="bg-white p-4 mt-4 shadow-sm rounded">
+                <h2>We Accept</h2>
+                <div class="d-flex">
+                    <img src="/public/img/payment_methods/american-express.png" alt="American Express" />
+                    <img src="/public/img/payment_methods/discover.png" alt="Discover" />
+                    <img src="/public/img/payment_methods/mastercard.png" alt="Mastercard" />
+                    <img src="/public/img/payment_methods/visa.png" alt="Visa" />
+                </div>
+            </div>  
         </div>
-        <% } else { %>
-        <div class="d-flex flex-column justify-content-center align-items-center mt-5">
-            <p class="display-6">Your cart is empty</p>
-            <div class="d-flex mt-3">
-                <a class="btn btn-primary me-2" href="/pick-tag">Build a website</a>
-                <a class="btn btn-secondary ms-2" href="/pick-domain">Find A Domain</a>
-            </div>
+
+        <div class="col-md-1"></div>
+
+        <div class="col-md-4 bg-white p-4 shadow-sm rounded">
+            <ul class="list-group mb-3">
+                <div class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>Total Cost:</span>
+                    <span><%= currency.code %> <%= cost %></span>
+                </div>
+            </ul>
+            <% if(!user) { %>
+            <div id="ModalComponent"></div>
+            <% } else { %>
+            <form class="w-100" method="POST" action="/checkout/stripe">
+                <button class="btn btn-primary w-100" type="submit">Continue To Checkout</button>
+            </form>
+            <% } %>
         </div>
-        <% } %>
-    </section> 
-    
-    
+    </div>
+
     <hr class="featured-hr">
-    
+
     <div class="container px-4 mt-5" id="featured-3">
         <div class="row g-4 row-cols-1 row-cols-lg-3">
             <div class="feature col">
@@ -54,7 +68,8 @@
                 </div>
                 <h2>Security</h2>
                 <p>
-                    Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and
+                    Paragraph of text beneath the heading to explain the heading. We'll add onto it with another
+                    sentence and
                     probably just keep going until we run out of words.
                 </p>
             </div>
@@ -64,7 +79,8 @@
                 </div>
                 <h2>Speed</h2>
                 <p>
-                    Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and
+                    Paragraph of text beneath the heading to explain the heading. We'll add onto it with another
+                    sentence and
                     probably just keep going until we run out of words.
                 </p>
             </div>
@@ -74,7 +90,8 @@
                 </div>
                 <h2>Customer Oriented</h2>
                 <p>
-                    Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and
+                    Paragraph of text beneath the heading to explain the heading. We'll add onto it with another
+                    sentence and
                     probably just keep going until we run out of words.
                 </p>
             </div>
