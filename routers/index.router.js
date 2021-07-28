@@ -12,7 +12,7 @@ import pickTemplateController from '../controllers/index/pick-template.controlle
 import pickDomainController from '../controllers/index/pick-domain.controller'
 import checkoutController from '../controllers/index/checkout.controller';
 import directionController from '../controllers/index/direction.controller';
-
+import hostingController from '../controllers/index/pick-hosting.controller';
 import viewTemplateController from '../controllers/index/view-template';
 import hireController from '../controllers/index/hire.controller';
 
@@ -35,6 +35,9 @@ router.get('/pick-domain', pickDomainController.get);
 router.post('/pick-domain', pickDomainController.post);
 
 router.get('/checkout', checkoutController.get);
+
+router.get('/pick-hosting', hostingController.get);
+router.post('/pick-hosting', hostingController.post);
 
 router.post('/checkout/stripe', checkoutController.pay_stripe);
 router.post('/checkout/fedapay', checkoutController.pay_fedapay);

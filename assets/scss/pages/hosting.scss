@@ -1,0 +1,22 @@
+.container {
+    max-width: 960px;
+}
+
+.pricing-header {
+    max-width: 700px;
+}
+
+table {
+    .large {
+        width: 34%;
+    }
+
+    td,
+    th {
+        width: 22%;
+    }
+
+    * {
+        vertical-align: middle;
+    }
+}

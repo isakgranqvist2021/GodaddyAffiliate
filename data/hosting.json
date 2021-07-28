@@ -1,0 +1,32 @@
+[
+    {
+        "_id": "standard",
+        "originalPrice": 29,
+        "title": "standard hosting solution",
+        "linkTo": "/pick-hosting",
+        "originalCurrency": "EUR",
+        "type": "hosting",
+        "service": "hosting",
+        "includes": [true, false, false]
+    },
+    {
+        "_id": "pro",
+        "originalPrice": 49,
+        "title": "pro hosting solution",
+        "linkTo": "/pick-hosting",
+        "originalCurrency": "EUR",
+        "type": "hosting",
+        "service": "hosting",
+        "includes": [true, true, false]
+    },
+    {
+        "_id": "enterprise",
+        "originalPrice": 129,
+        "title": "enterprise hosting solution",
+        "linkTo": "/pick-hosting",
+        "originalCurrency": "EUR",
+        "type": "hosting",
+        "service": "hosting",
+        "includes": [true, true, true]
+    }
+]

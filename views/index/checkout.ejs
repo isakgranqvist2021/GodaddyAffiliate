@@ -6,7 +6,7 @@
     <div class="row bg-light p-4 rounded">
         <div class="col-md-7">
             <div class="bg-white p-4 shadow-sm rounded">
-                <h2 class="mb-3">Cart (<%= cart.length %> item)</h2>
+                <h2 class="mb-3">Cart (<%= cart.length > 0 ? `${cart.length} ${cart.length > 1 ? 'items' : 'item'}` : 'Empty'%>)</h2>
                 <% if(cart.length > 0) { %>
                 <ul class="list-group cart">
                     <% cart.forEach((item, i) => { %>
@@ -21,18 +21,24 @@
                                 <span><%= item.type %></span>
                             </div>
 
-                            <% if(item.type !== 'hosting') { %>
                             <a class="text-muted d-flex align-items-center text-decoration-none" href="/remove/<%= i %>">
                                 <span>Remove</span>
                                 <span class="material-icons-outlined skiptranslate ms-1" style="font-size: inherit;">delete</span>
                             </a>
-                            <% } %>
                         </div>
                     </li>
                     <% }) %>
                 </ul>
                 <% } %>
             </div>
+            <% if(!cart.some(item => item.type === 'hosting')) { %>
+                <div class="bg-white p-4 mt-4 shadow-sm rounded">
+                    <h2>Hosting Plans</h2>
+                    <p>You have not selected a hosting plan</p>
+                    <a href="/pick-hosting" class="btn btn-secondary">Pick A Plan</a>
+                </div>  
+            <% } %>
+
             <div class="bg-white p-4 mt-4 shadow-sm rounded">
                 <h2>We Accept</h2>
                 <div class="d-flex">
