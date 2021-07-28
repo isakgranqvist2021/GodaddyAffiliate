@@ -19,18 +19,18 @@
             </thead>
             <tbody>
             <% templates.forEach((template, i) => { %>
-                <tr onclick="window.location.href = '/admin/view-template/<%= template._id %>'" title="Edit Template">
-                <td><%= i + 1 %></td>
-                <td><%= template.title %></td>
-                <td><%= template.description.substring(0, 25) %>...</td>
-                <td>$<%= template.price %></td>
-                <td><%= template.active %></td>
-                <td><%= template.service %></td>
-                <td><%= template.createdAt.toLocaleString() %></td>
-                <td><%= template.updatedAt !== null ? template.updatedAt.toLocaleString() : 'not available' %></td>
-                <td><%= template.orders %></td>
-                <td><%= template.tags[0] %></td>
-                <td><%= template.images.length %></td>
+                <tr title="Edit Template" data-id="<%= template._id %>">
+                    <td><%= i + 1 %></td>
+                    <td><%= template.title %></td>
+                    <td><%= template.description.substring(0, 25) %>...</td>
+                    <td>$<%= template.price %></td>
+                    <td><%= template.active %></td>
+                    <td><%= template.service %></td>
+                    <td><%= template.createdAt.toLocaleString() %></td>
+                    <td><%= template.updatedAt !== null ? template.updatedAt.toLocaleString() : 'not available' %></td>
+                    <td><%= template.orders %></td>
+                    <td><%= template.tags[0] %></td>
+                    <td><%= template.images.length %></td>
                 </tr>
             <% }) %>
             </tbody>

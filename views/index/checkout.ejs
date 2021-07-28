@@ -21,10 +21,12 @@
                                 <span><%= item.type %></span>
                             </div>
 
+                            <% if(item.type !== 'hosting') { %>
                             <a class="text-muted d-flex align-items-center text-decoration-none" href="/remove/<%= i %>">
                                 <span>Remove</span>
                                 <span class="material-icons-outlined skiptranslate ms-1" style="font-size: inherit;">delete</span>
                             </a>
+                            <% } %>
                         </div>
                     </li>
                     <% }) %>

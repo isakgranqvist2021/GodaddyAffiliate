@@ -194,8 +194,7 @@ function CreateComponent(props) {
                         onDragOver={(e) => dragEvent(e, 'over')}
                         onDragLeave={(e) => dragEvent(e, 'leave')}
                         onDrop={(e) => dragEvent(e, 'drop')}>
-                        <span className="material-icons-outlined">file_upload</span>
-                        <p className="mb-0">Drop Files Here Or Click To Select Files</p>
+                        <span className="material-icons-outlined text-muted skiptranslate" style={{ fontSize: '5rem' }}>file_upload</span>
                     </div>
                     <input disabled={loading} type="file" id="upload" accept="image/jpg, image/jpeg, image/png" onChange={(e) => upload(e.target.files)} ref={uploadRef} multiple />
                 </section>

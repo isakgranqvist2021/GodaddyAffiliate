@@ -12,9 +12,10 @@ async function get(req, res) {
 }
 
 function post(req, res) {
+    let r = req.query.r === 'true' ? true : false;
     req.session.tag = req.body.tag;
 
-    return res.redirect('/direction');
+    return res.redirect(r ? '/direction' : req.headers.referer);
 }
 
 function set(req, res) {

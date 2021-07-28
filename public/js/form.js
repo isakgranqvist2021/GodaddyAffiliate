@@ -7,3 +7,12 @@ function appendToForm(val) {
     form.appendChild(input);
     form.submit();
 }
+
+(function () {
+    document.querySelectorAll('.select-tag')
+        .forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                appendToForm(btn.getAttribute('data-tag'));
+            });
+        });
+})();

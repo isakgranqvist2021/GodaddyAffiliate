@@ -1,10 +1,12 @@
-<form id="form" method="POST" action="/pick-tag"></form>
+<form id="form" method="POST" action="/pick-tag?r=true"></form>
 
 <section class="m-auto pt-5 col-xl-10 col-12">
     <h1 class="display-3 mb-4 text-center text-muted">Choose a tag for your website</h1>
     <div class="tags m-auto d-flex flex-wrap mt-4">
         <% tags.forEach(tag => { %>
-            <button class="btn btn-primary p-5 flex-grow-1 m-2" type="button" onclick="appendToForm('<%= tag %>')"><%= tag %></button>
+            <button class="btn btn-primary p-5 flex-grow-1 m-2 select-tag" type="button" data-tag="<%= tag %>">
+                <%= tag %>
+            </button>
         <% }) %>
     </div>
 </section>

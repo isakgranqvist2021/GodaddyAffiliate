@@ -1,8 +1,22 @@
+<form id="form" method="POST" action="/pick-tag?r=false">
+    <input type="hidden" name="tag" id="tag-input" value="<%= tags.find(t => t.selected).value %>">
+</form>
+
 <section>
     <header class="d-flex justify-content-between align-items-center">
-        <a href="/pick-tag">Go Back</a>
+        <div class="input-group">
+            <a class="input-group-text btn btn-primary" href="/pick-tag">Go Back</a>
+            <select class="form-control" id="select-tag">
+                <% tags.forEach(tag => { %>
+                    <option value="<%= tag.value %>" <% if(tag.selected) { %> selected <% } %> >
+                        <%= tag.value %>
+                    </option>
+                <% }) %>
+            </select>
+        </div>
         <div id="CurrComponent"></div>
     </header>
 
-    <div id="PickComponent" style="width:100%"></div>
+    <div id="PickComponent"></div>
 </section>
+

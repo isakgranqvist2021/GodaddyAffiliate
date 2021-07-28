@@ -1,7 +1,11 @@
 import templateModel from "../../models/template.model";
 import { getPriceTemplate } from "../../utils/helpers";
+import fs from 'fs';
+import path from 'path';
 
 function get(req, res) {
+    let tags = JSON.parse(fs.readFileSync(path.resolve('.', path.join('./data/tags.json'))));
+
     if (!req.session.tag) {
         req.session.alert = { type: 'error', message: 'please pick a tag before you proceed' };
         return res.redirect('/pick-tag');
@@ -9,6 +13,7 @@ function get(req, res) {
 
     return res.render('index/pick-template', {
         title: 'Pick Template',
+        tags: tags.map(tag => ({ value: tag, selected: req.session.tag === tag })),
         user: req.user
     });
 }
