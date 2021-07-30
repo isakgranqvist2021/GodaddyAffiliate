@@ -33,5 +33,8 @@ export default {
     FIXER_API_KEY: process.env.FIXER_API_KEY,
 
     FEDAPAY_API_KEY: process.env.FEDAPAY_API_KEY,
-    FEDAPAY_API_SECRET: process.env.FEDAPAY_API_SECRET
+    FEDAPAY_API_SECRET: process.env.FEDAPAY_API_SECRET,
+
+    LOGO_API_KEY: process.env.LOGO_API_KEY,
+    LOGO_API_SECRET: process.env.LOGO_API_SECRET
 };

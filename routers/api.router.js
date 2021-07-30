@@ -18,6 +18,7 @@ import updateTemplateController from '../controllers/api/update-template.control
 import currenciesController from '../controllers/api/currencies.controller';
 import fileController from '../controllers/api/file.controller';
 import meetingController from '../controllers/api/meeting.controller';
+import logoController from '../controllers/api/logo.controller';
 
 router.get('/tags', tagsController);
 router.get('/find-templates', findTemplatesController);
@@ -45,5 +46,6 @@ router.get('/currencies', currenciesController.get);
 router.get('/set-currency/:code', currenciesController.set);
 
 router.post('/create-meeting', meetingController.create)
+router.post('/create-logo', logoController.post);
 
 export default router;

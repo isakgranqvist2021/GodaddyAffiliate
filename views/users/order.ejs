@@ -1,6 +1,6 @@
 <input type="hidden" id="orderId" value="<%= order._id %>" />
 
-<div class="col-md-12 mb-5">
+<div class="col-md-12 mb-5 bg-white shadow-sm rounded p-5">
     <header class="d-flex justify-content-between align-items-center">
         <h3 class="mb-3">Order Details</h3>
         <span title="Order Created Date" class="fw-bold"><%= order.createdAt.toLocaleString() %></span>
@@ -26,8 +26,13 @@
     </ul>
 </div>
 
+<% if(order.cart.some(item => item.type === 'logo')) { %>
+    <div class="col-md-12 mb-5 shadow-sm rounded p-5">
+        <div id="LogoComponent"></div>
+    </div>
+<% } %>
 <div class="col-md-12 mb-5">
-    <div class="bg-white">
+    <div class="bg-white shadow-sm rounded p-5">
         <h2 class="mb-3">Cart (<%= order.cart.length %> items)</h2>
         <ul class="list-group cart">
             <% order.cart.forEach((item, i) => { %>
@@ -48,12 +53,12 @@
     </div>
 </div>
 
-<div class="col-md-12 mb-5">
+<div class="col-md-12 mb-5 bg-white shadow-sm rounded p-5">
     <h3 class="mb-3">Order Requirements</h3>
     <div id="OrderComponent"></div>
 </div>
 
-<div class="col-md-12 mb-5">
+<div class="col-md-12 mb-5 bg-white shadow-sm rounded p-5">
     <h3 class="mb-3">Uploaded Files</h3>
     <div id="FilesComponent"></div>
 </div>
