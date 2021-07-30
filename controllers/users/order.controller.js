@@ -19,7 +19,6 @@ async function get(req, res) {
             messages: messages
         });
     } catch (err) {
-        console.log(err);
         req.session.alert = { type: 'error', message: 'an error has occured' };
         return res.redirect('/');
     }

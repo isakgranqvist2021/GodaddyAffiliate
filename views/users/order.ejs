@@ -12,6 +12,10 @@
             <p class="mb-0"><%= order._id %></p>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span>Email Address</span>
+            <p class="mb-0" id="email-addr"><%= order.email %></p>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
             <span>Total Cost</span>
             <p class="mb-0"><%= order.currency.toUpperCase() %> <%= order.amount / 100 %></p>
         </li>
@@ -31,6 +35,7 @@
         <div id="LogoComponent"></div>
     </div>
 <% } %>
+
 <div class="col-md-12 mb-5">
     <div class="bg-white shadow-sm rounded p-5">
         <h2 class="mb-3">Cart (<%= order.cart.length %> items)</h2>
