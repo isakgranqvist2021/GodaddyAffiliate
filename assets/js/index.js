@@ -11,6 +11,7 @@ import CurrComponent from './src/Components/Curr/CurrComponent';
 import OrderComponent from './src/Components/Order/OrderComponent';
 import FilesComponent from './src/Components/Order/FilesComponent';
 import HireComponent from './src/Components/Hire/HireComponent';
+import LogoComponent from './src/Components/Logo/LogoComponent';
 
 const components = [
     { selector: '#PickComponent', Component: PickComponent },
@@ -22,7 +23,8 @@ const components = [
     { selector: '#CurrComponent', Component: CurrComponent },
     { selector: '#OrderComponent', Component: OrderComponent },
     { selector: '#FilesComponent', Component: FilesComponent },
-    { selector: '#HireComponent', Component: HireComponent }
+    { selector: '#HireComponent', Component: HireComponent },
+    { selector: '#LogoComponent', Component: LogoComponent }
 ];
 
 (function main() {

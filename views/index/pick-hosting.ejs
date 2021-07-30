@@ -1,14 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-    <symbol id="check" viewBox="0 0 16 16">
-        <title>Check</title>
-        <path
-            d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
-    </symbol>
-</svg>
+<% 
+    function currencySymbol() {
+        switch(currency.code) {
+            case 'EUR': return '€';
+            case 'USD': return '$';
+            case 'SEK': return 'kr';
+            case 'XOF': return 'CFA';
+            default: return '';
+        }
+    }
+%> 
 
+<div class="d-flex justify-content-end">
+    <div id="CurrComponent"></div>
+</div>
 <header>
     <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-        <h1 class="display-4 fw-normal">Pricing</h1>
+        <h1 class="display-4 fw-normal">Hosting Plans</h1>
         <p class="fs-5 text-muted">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi est explicabo eum ad ea, impedit itaque aliquid tempora quo reprehenderit obcaecati, quibusdam necessitatibus, ab consequuntur.
         </p>
@@ -23,7 +30,7 @@
             </div>
             <div class="card-body">
                 <h1 class="card-title pricing-card-title">
-                    <%= plan.price %>
+                   <%= currencySymbol() %><%= Math.round(plan.price) %>
                     <small class="text-muted fw-light">/mo</small>
                 </h1>
                 <ul class="list-unstyled mt-3 mb-4">
@@ -32,7 +39,12 @@
                     <li>Email support</li>
                     <li>Help center access</li>
                 </ul>
-                <button type="button" class="w-100 btn btn-lg btn-outline-primary">Choose Plan</button>
+                <form method="POST" action="/pick-hosting">
+                    <input type="hidden" name="plan" value="<%= plan._id %>">
+                    <button type="submit" class="w-100 btn btn-lg btn-outline-primary">
+                        Choose Plan
+                    </button>
+                </form>
             </div>
         </div>
     </div>

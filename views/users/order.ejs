@@ -27,18 +27,25 @@
 </div>
 
 <div class="col-md-12 mb-5">
-    <h3>Cart</h3>
-    <ul class="list-group">
-        <% order.cart.forEach(item => { %>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <a class="text-decoration-none" href="<%= item.linkTo %>"><%= item.title %></a>
-                <span>
-                    <%= item.currency %>
-                    <%= item.price %>
-                </span>
+    <div class="bg-white">
+        <h2 class="mb-3">Cart (<%= order.cart.length %> items)</h2>
+        <ul class="list-group cart">
+            <% order.cart.forEach((item, i) => { %>
+            <li class="list-group-item d-flex">
+                <a href="<%= item.linkTo %>" class="me-3" style="width:100px;height:100px;">
+                    <img class="w-100 h-100 rounded-3" src="<%= item.images[0] %>" alt="" style="object-fit: contain;"/>
+                </a>
+                <div class="d-flex flex-column justify-content-between w-100">
+                    <div class="d-flex flex-column">
+                        <a class="text-decoration-none" href="<%= item.linkTo %>"><%= item.title %></a>
+                        <span><%= item.currency %> <%= Math.round(item.price) %></span>
+                        <span><%= item.type %></span>
+                    </div>
+                </div>
             </li>
-        <% }) %>
-    </ul>
+            <% }) %>
+        </ul>
+    </div>
 </div>
 
 <div class="col-md-12 mb-5">

@@ -15,6 +15,7 @@ import directionController from '../controllers/index/direction.controller';
 import hostingController from '../controllers/index/pick-hosting.controller';
 import viewTemplateController from '../controllers/index/view-template';
 import hireController from '../controllers/index/hire.controller';
+import logoController from '../controllers/index/logo.controller';
 
 router.get('/', indexController.get);
 
@@ -44,6 +45,8 @@ router.post('/checkout/fedapay', checkoutController.pay_fedapay);
 
 router.get('/checkout-success', checkoutController.success);
 router.get('/remove/:index', checkoutController.remove);
+
+router.get('/checkout/logo-add', logoController.add);
 
 router.get('/login', loggedOut, loginController.get);
 

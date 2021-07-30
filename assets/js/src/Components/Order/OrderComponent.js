@@ -32,7 +32,7 @@ function ModalComponent(props) {
     return <div className="ModalComponent">
         <div className={open ? 'c-modal open' : 'c-modal'} onClick={(e) => setOpen(false)}>
             <div className="c-modal-content w-50 h-50" onClick={(e) => e.stopPropagation()}>
-                {props.open && <form className="d-flex flex-column h-100">
+                {props.open && <form className="d-flex flex-column h-100 p-4 bg-white rounded">
                     <h3 className="mb-3">{props.label}</h3>
                     <textarea className="form-control flex-grow-1" value={val} onChange={(e) => setVal(e.target.value)}></textarea>
                     <div className="d-flex justify-content-end mt-3">

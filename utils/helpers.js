@@ -107,7 +107,14 @@ export function constructItem(data, currency) {
     }
 }
 
+// markup for domains (price * 1.4)
 export const multiplier = 1.4;
+
+/* 
+    fetch pricing data for currencies and write output to file 
+    250 api calls per month for free
+    should be updated (250 / 30) times per month
+*/
 
 export async function getPricingData() {
     try {
@@ -138,6 +145,7 @@ export async function getPricingData() {
     }
 }
 
+/* nessecary because godaddy and stripe uses different amount of zeros */
 export function getPriceDomain(price, currency) {
     return Math.round(price * multiplier * 0.000001 * currency.value);
 }
@@ -146,5 +154,7 @@ export function getPriceTemplate(price, currency) {
     return Math.round(price * currency.value);
 }
 
+/* just for decorative purposes */
 export const keyImg = 'https://res.cloudinary.com/isak-tech/image/upload/v1627337790/pexels-pixabay-279810_htczxl.jpg';
 export const serverImg = 'https://res.cloudinary.com/isak-tech/image/upload/v1627337790/pexels-brett-sayles-2881224_wojdeo.jpg';
+export const logoImg = 'https://res.cloudinary.com/isak-tech/image/upload/v1627576029/pexels-scott-webb-430205_qqzmaq.jpg';
