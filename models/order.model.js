@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 import templateModel from './template.model';
+import userModel from './user.model';
+
 const Schema = mongoose.Schema;
 
 const orderSchema = new Schema({
@@ -28,6 +30,13 @@ async function createOrder(data) {
                 $inc: { orders: 1 }
             });
         });
+
+        await userModel.updateUser({ _id: data.belongsTo }, {
+            $inc: {
+                logoCredits: data.cart.map(item =>
+                    item.type === 'logo' ? 1 : 0).reduce((a, cv) => a += cv)
+            }
+        })
 
         return await new OrderModel(data).save();
     } catch (err) {

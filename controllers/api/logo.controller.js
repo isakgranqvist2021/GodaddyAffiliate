@@ -1,5 +1,6 @@
 import fetch from 'node-fetch';
 import orderModel from '../../models/order.model';
+import userModel from '../../models/user.model';
 import env from '../../utils/env';
 
 const baseUrl = 'https://api.logo.com/api/v2';
@@ -62,12 +63,8 @@ async function post(req, res) {
     });
 
     const token = await getToken();
-    const order = await orderModel.findOrder({ _id: req.body.orderId });
-
-    console.log(token);
-
-    const response = await createUser(order._id, order.email, token.access_token);
-    let user = response.statusCode === 409 ? await getUser(req.body.orderId, token.access_token) : response;
+    const response = await createUser(req.session.uid, order.email, token.access_token);
+    let user = response.statusCode === 409 ? await getUser(req.session.uid, token.access_token) : response;
 
 }
 
