@@ -1,4 +1,4 @@
-const env = 'development';
+const env = 'a';
 const serverAddr = env === 'development' ? 'http://localhost:8080/api' : 'https://marina-media.herokuapp.com/api';
 
 async function GET(url) {
