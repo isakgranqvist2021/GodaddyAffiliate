@@ -9,7 +9,7 @@
     </thead>
     <tbody>
         <% orders.forEach(order => { %>
-            <tr data-id="<%= order._id %>">
+            <tr data-id="<%= order._id %>" onclick="window.location.href='/users/order/<%= order._id %>'">
                 <td><%= order.createdAt %></td>
                 <td><span class="text-uppercase"><%= order.currency %></span> <%= order.amount / 100 %></td>
                 <td><%= order.status %></td>
