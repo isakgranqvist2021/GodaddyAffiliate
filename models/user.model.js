@@ -9,7 +9,7 @@ const userSchema = new Schema({
     updatedAt: { type: Date, default: null },
     userInfo: { type: Object, required: true },
     email: { type: String, required: false, unique: true, default: null },
-    phone: { type: String, required: false, unique: true, default: null },
+    phone: { type: String, required: false, default: null },
     admin: { type: Boolean, default: false },
     logoCredits: [String]
 });
