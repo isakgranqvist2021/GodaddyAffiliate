@@ -17,31 +17,23 @@ const userSchema = new Schema({
 const UserModel = mongoose.model('User', userSchema);
 
 async function register(data) {
-    try {
-        let userInfo = await getUserInfo();
-        return await new UserModel({
-            ...data,
-            userInfo: userInfo
-        }).save();
-    } catch (err) {
-        return Promise.reject(err.code === 11000 ? 'seems like you already have an account' : 'caught error');
-    }
+    let userInfo = await getUserInfo();
+    return await new UserModel({
+        ...data,
+        userInfo: userInfo
+    }).save();
 }
 
 async function login(data, filter) {
-    try {
-        let user = await UserModel.findOne(filter);
+    let user = await UserModel.findOne(filter);
 
-        if (user !== null) {
-            user.lastLogin = new Date();
-            await user.save();
-            return Promise.resolve(user);
-        }
-
-        return Promise.resolve(await register(data))
-    } catch (err) {
-        return Promise.reject(typeof (err) === 'string' ? err : 'caught error');
+    if (user !== null) {
+        user.lastLogin = new Date();
+        await user.save();
+        return Promise.resolve(user);
     }
+
+    return Promise.resolve(await register(data))
 }
 
 async function findUser(filter) {
