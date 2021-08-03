@@ -1,4 +1,4 @@
-.container {
+.container.pick-hosting {
     max-width: 960px;
 }
 
@@ -18,5 +18,15 @@ table {
 
     * {
         vertical-align: middle;
+    }
+}
+
+.example-logos {
+    gap: 1rem;
+
+    img {
+        padding: 1rem;
+        object-fit: contain;
+        flex-grow: 1;
     }
 }

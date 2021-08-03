@@ -10,63 +10,63 @@
     }
 %> 
 
-<div class="d-flex justify-content-end">
-    <div id="CurrComponent"></div>
-</div>
-<header>
-    <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-        <h1 class="display-4 fw-normal">Hosting Plans</h1>
-        <p class="fs-5 text-muted">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi est explicabo eum ad ea, impedit itaque aliquid tempora quo reprehenderit obcaecati, quibusdam necessitatibus, ab consequuntur.
-        </p>
+<div class="container pick-hosting">
+    <div class="d-flex justify-content-end">
+        <div id="CurrComponent"></div>
     </div>
-</header>
-<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-    <% plans.forEach(plan => { %>
-    <div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm">
-            <div class="card-header py-3">
-                <h4 class="my-0 fw-normal text-capitalize"><%= plan._id %></h4>
-            </div>
-            <div class="card-body">
-                <h1 class="card-title pricing-card-title">
-                   <%= currencySymbol() %><%= Math.round(plan.price) %>
-                    <small class="text-muted fw-light">/mo</small>
-                </h1>
-                <ul class="list-unstyled mt-3 mb-4">
-                    <li>10 users included</li>
-                    <li>2 GB of storage</li>
-                    <li>Email support</li>
-                    <li>Help center access</li>
-                </ul>
-                <form method="POST" action="/pick-hosting">
-                    <input type="hidden" name="plan" value="<%= plan._id %>">
-                    <button type="submit" class="w-100 btn btn-lg btn-outline-primary">
-                        Choose Plan
-                    </button>
-                </form>
+    <header>
+        <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+            <h1 class="display-4 fw-normal">Hosting Plans</h1>
+            <p class="fs-5 text-muted">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi est explicabo eum ad ea, impedit itaque aliquid tempora quo reprehenderit obcaecati, quibusdam necessitatibus, ab consequuntur.
+            </p>
+        </div>
+    </header>
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        <% plans.forEach((plan, i) => { %>
+        <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+                <div class="card-header py-3 <%= i === 1 ? 'bg-primary text-white' : '' %>">
+                    <h4 class="my-0 fw-normal text-capitalize"><%= plan._id %></h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title">
+                        <%= currencySymbol() %><%= Math.round(plan.price) %>
+                        <small class="text-muted fw-light">/mo</small>
+                    </h1>
+                    <ul class="list-unstyled mt-3 mb-4">
+                        <li>Something</li>
+                        <li>Something Else</li>
+                        <li>Something Else</li>
+                        <li>Another Thing</li>
+                    </ul>
+                    <form method="POST" action="/pick-hosting">
+                        <input type="hidden" name="plan" value="<%= plan._id %>">
+                        <button type="submit" class="w-100 btn btn-lg <%= i === 1 ? 'btn-primary' : 'btn-outline-primary' %>">
+                            Choose Plan
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
+        <% }) %>
     </div>
-    <% }) %>
-</div>
-
-<h2 class="display-6 text-center mb-4">Compare plans</h2>
-
-<div class="table-responsive">
-    <table class="table text-center">
-        <thead>
-            <tr>
-                <th class="large"></th><% plans.forEach(plan => { %>
-                <th class="text-capitalize"><%= plan._id %></th><% }) %> 
-            </tr>
-        </thead>
-
-        <tbody><% compare.forEach(row => { %>
-            <tr>
-                <td class="fw-bold text-start large text-capitalize"><%= row.label %></td><% row.values.forEach(v => { %>
-                <td><% if(v) { %><span class="material-icons-outlined skiptranslate">done</span><% } %></td><% }) %>
-            </tr><% }) %>
-        </tbody>
-    </table>
+    
+    <div class="table-responsive">
+        <table class="table text-center">
+            <thead>
+                <tr>
+                    <th class="large"></th><% plans.forEach(plan => { %>
+                    <th class="text-capitalize"><%= plan._id %></th><% }) %> 
+                </tr>
+            </thead>
+    
+            <tbody><% compare.forEach(row => { %>
+                <tr>
+                    <td class="fw-bold text-start large text-capitalize"><%= row.label %></td><% row.values.forEach(v => { %>
+                    <td><% if(v) { %><span class="material-icons-outlined skiptranslate">done</span><% } %></td><% }) %>
+                </tr><% }) %>
+            </tbody>
+        </table>
+    </div>
 </div>

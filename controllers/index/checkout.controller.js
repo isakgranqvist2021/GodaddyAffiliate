@@ -27,6 +27,11 @@ async function get(req, res) {
 }
 
 async function pay_stripe(req, res) {
+    if (!req.session.cart || req.session.cart.length <= 0) {
+        req.session.alert = { type: 'error', message: 'please add an item to your cart before checking out' };
+        return res.redirect(req.headers.referer);
+    }
+
     const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
         mode: 'payment',

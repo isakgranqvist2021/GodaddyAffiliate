@@ -1,0 +1,32 @@
+[
+    {
+        "_id": "basic-kit",
+        "originalPrice": 30,
+        "title": "Basic Logo Plan",
+        "linkTo": "/build-a-logo",
+        "originalCurrency": "EUR",
+        "type": "logo",
+        "service": "logo",
+        "includes": [true, false, false]
+    },
+    {
+        "_id": "launch-kit",
+        "originalPrice": 90,
+        "title": "Lanuch Logo Plan",
+        "linkTo": "/build-a-logo",
+        "originalCurrency": "EUR",
+        "type": "logo",
+        "service": "logo",
+        "includes": [true, true, false]
+    },
+    {
+        "_id": "designer-kit",
+        "originalPrice": 150,
+        "title": "Designer Logo Plan",
+        "linkTo": "/build-a-logo",
+        "originalCurrency": "EUR",
+        "type": "logo",
+        "service": "logo",
+        "includes": [true, true, true]
+    }
+]

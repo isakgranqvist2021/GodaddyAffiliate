@@ -20,3 +20,33 @@ section.grid {
         line-height: 0;
     }
 }
+
+.logo-credits {
+    position: relative;
+
+    .logo-credit {
+        cursor: url('/public/img/icons8-clipboard-24.png'), auto;
+    }
+
+    .clipboard-popup {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        background-color: rgba(51, 51, 51, 0.712);
+        border-radius: .2rem;
+        color: #fff;
+        padding: 7px;
+        margin: 5px 0 0 5px;
+        transition: all 300ms ease;
+
+        &.open {
+            transform: translate(-50%, 0);
+            opacity: 1;
+        }
+
+        &.closed {
+            transform: translate(-50%, 100px);
+            opacity: 0;
+        }
+    }
+}

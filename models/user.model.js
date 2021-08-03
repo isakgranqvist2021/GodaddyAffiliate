@@ -11,7 +11,7 @@ const userSchema = new Schema({
     email: { type: String, required: false, unique: true, default: null },
     phone: { type: String, required: false, unique: true, default: null },
     admin: { type: Boolean, default: false },
-    logoCredits: { type: Number, default: 0 }
+    logoCredits: [String]
 });
 
 const UserModel = mongoose.model('User', userSchema);
@@ -56,6 +56,7 @@ async function updateUser(filter, update) {
     try {
         return await UserModel.findOneAndUpdate(filter, update);
     } catch (err) {
+        console.log(err);
         return Promise.reject('caught error');
     }
 }

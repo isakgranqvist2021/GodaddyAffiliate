@@ -67,6 +67,7 @@ function styles(path) {
         case '/admin/view-templates': return ['/public/css/view-templates.min.css'];
         case '/talk-to-an-expert': return ['/public/css/hire-expert.min.css'];
         case '/pick-hosting': return ['/public/css/hosting.min.css'];
+        case '/build-a-logo': return ['/public/css/hosting.min.css'];
         default: return [];
     }
 }

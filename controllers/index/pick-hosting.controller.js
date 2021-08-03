@@ -2,8 +2,6 @@ import { serverImg } from "../../utils/helpers";
 import fs from 'fs';
 import path from 'path';
 
-
-
 function get(req, res) {
     const raw = JSON.parse(fs.readFileSync(path.resolve('.', path.join('./data/hosting.json'))));
 

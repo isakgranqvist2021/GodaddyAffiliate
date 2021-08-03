@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import templateModel from './template.model';
 import userModel from './user.model';
+import { issueCredit, getToken, createUser } from '../utils/logo';
 
 const Schema = mongoose.Schema;
 
@@ -31,15 +32,25 @@ async function createOrder(data) {
             });
         });
 
-        await userModel.updateUser({ _id: data.belongsTo }, {
-            $inc: {
-                logoCredits: data.cart.map(item =>
-                    item.type === 'logo' ? 1 : 0).reduce((a, cv) => a += cv)
-            }
-        })
+        let logo = data.cart.find(item => item.type === 'logo');
+
+        if (logo !== null && logo !== undefined) {
+            const token = await getToken();
+            await createUser(data.belongsTo, data.email, token.access_token);
+            let credit = await issueCredit(token.access_token, logo._id);
+
+            console.log(credit);
+
+            await userModel.updateUser({ _id: data.belongsTo }, {
+                $push: {
+                    logoCredits: credit.id
+                }
+            });
+        }
 
         return await new OrderModel(data).save();
     } catch (err) {
+        console.log(err);
         return Promise.reject('caught error');
     }
 }

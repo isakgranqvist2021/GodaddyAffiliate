@@ -31,6 +31,7 @@
                 </ul>
                 <% } %>
             </div>
+            
             <% if(!cart.some(item => item.type === 'hosting')) { %>
                 <div class="bg-white p-4 mt-4 shadow-sm rounded">
                     <h2>Hosting Plans</h2>
@@ -43,7 +44,7 @@
                 <div class="bg-white p-4 mt-4 shadow-sm rounded">
                     <h2>Logo Builder</h2>
                     <p>You're cart is missing a logo</p>
-                    <a href="/checkout/logo-add" class="btn btn-secondary">Add To Cart</a>
+                    <a href="/build-a-logo" class="btn btn-secondary">Build A Logo</a>
                 </div>  
             <% } %>
 

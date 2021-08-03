@@ -1,22 +1,51 @@
 import { logoImg } from "../../utils/helpers";
+import fs from 'fs';
+import path from 'path';
 
-function add(req, res) {
-    if (!req.session.cart.some(item => item.type === 'logo')) {
-        req.session.cart.push({
-            _id: 'logo',
-            originalPrice: 40,
-            title: 'standard logo plan',
-            linkTo: '/checkout',
-            originalCurrency: 'EUR',
-            type: 'logo',
-            service: 'logo',
-            images: [logoImg],
-            currency: req.session.currency.code,
-            price: 40 * req.session.currency.value
-        });
-    }
+function get(req, res) {
+    const raw = JSON.parse(fs.readFileSync(path.resolve('.', path.join('./data/logo-plans.json'))));
 
-    return res.redirect(req.headers.referer);
+    const plans = raw.map(plan => ({
+        ...plan,
+        images: [logoImg],
+        currency: req.session.currency.code,
+        price: plan.originalPrice * req.session.currency.value
+    }));
+
+    const compare = [
+        'Full Customization',
+        'PNG/JPEG',
+        'SVG Format'
+    ].map((feature, i) => {
+        return {
+            label: feature,
+            values: plans.map(p => p.includes[i])
+        }
+    });
+
+    return res.render('index/build-a-logo', {
+        title: 'Build A Logo',
+        plans: plans,
+        compare: compare,
+        user: req.user,
+        currency: req.session.currency
+    });
 }
 
-export default { add };
+function add(req, res) {
+    const raw = JSON.parse(fs.readFileSync(path.resolve('.', path.join('./data/logo-plans.json'))));
+
+    let plan = raw.find(plan => plan._id === req.body.plan);
+    console.log(plan);
+
+    req.session.cart.push({
+        images: [logoImg],
+        currency: req.session.currency.code,
+        price: plan.originalPrice * req.session.currency.value,
+        ...plan
+    });
+
+    return res.redirect('/checkout');
+}
+
+export default { add, get };

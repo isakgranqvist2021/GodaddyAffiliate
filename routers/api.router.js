@@ -45,7 +45,9 @@ router.post('/create-template', isAdmin_v2, createTemplateController);
 router.get('/currencies', currenciesController.get);
 router.get('/set-currency/:code', currenciesController.set);
 
-router.post('/create-meeting', meetingController.create)
+router.post('/create-meeting', meetingController.create);
+router.get('/my-logo-credits', logoController.get);
 router.post('/create-logo', logoController.post);
+router.post('/remove-logo-credit', logoController.remove);
 
 export default router;

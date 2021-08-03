@@ -46,7 +46,8 @@ router.post('/checkout/fedapay', checkoutController.pay_fedapay);
 router.get('/checkout-success', checkoutController.success);
 router.get('/remove/:index', checkoutController.remove);
 
-router.get('/checkout/logo-add', logoController.add);
+router.get('/build-a-logo', logoController.get);
+router.post('/build-a-logo', logoController.add);
 
 router.get('/login', loggedOut, loginController.get);
 
