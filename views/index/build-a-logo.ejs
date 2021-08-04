@@ -1,79 +1,150 @@
-<% 
-    function currencySymbol() {
-        switch(currency.code) {
-            case 'EUR': return '€';
-            case 'USD': return '$';
-            case 'SEK': return 'kr';
-            case 'XOF': return 'CFA';
-            default: return '';
-        }
-    }
-%>
+<% function currencySymbol() { switch(currency.code) { case 'EUR' : return '€' ; case 'USD' : return '$' ; case 'SEK' :
+    return 'kr' ; case 'XOF' : return 'CFA' ; default: return '' ; } } %>
 
-<div class="container pick-hosting">
-    <div class="col-md-12 mb-5">
-        <div class="d-flex justify-content-end">
-            <div id="CurrComponent"></div>
-        </div>
-        <header>
-            <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-                <h1 class="display-4 fw-normal">Our Logo Plans</h1>
-                <p class="fs-5 text-muted">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi est explicabo eum ad ea, impedit itaque
-                    aliquid tempora quo reprehenderit obcaecati, quibusdam necessitatibus, ab consequuntur.
-                </p>
+    <div class="container pick-hosting">
+        <div class="col-md-12 mb-5">
+            <div class="d-flex justify-content-end">
+                <div id="CurrComponent"></div>
             </div>
-        </header>
-        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-            <% plans.forEach((plan, i) => { %>
-            <div class="col">
-                <div class="card mb-4 rounded-3 shadow-sm">
-                    <div class="card-header py-3 <%= i === 1 ? 'bg-primary text-white' : '' %>">
-                        <h4 class="my-0 fw-normal text-capitalize"><%= plan.title %></h4>
-                    </div>
-                    <div class="card-body">
-                        <h1 class="card-title pricing-card-title">
-                            <%= currencySymbol() %><%= Math.round(plan.price) %>
-                        </h1>
-                        <ul class="list-unstyled mt-3 mb-4">
-                            <li>Something</li>
-                            <li>Something Else</li>
-                            <li>Something Else</li>
-                            <li>Another Thing</li>
-                        </ul>
-                        <form method="POST" action="/build-a-logo">
-                            <input type="hidden" name="plan" value="<%= plan._id %>">
-                            <button type="submit"
-                                class="w-100 btn btn-lg <%= i === 1 ? 'btn-primary' : 'btn-outline-primary' %>">
-                                Choose Plan
-                            </button>
-                        </form>
-                    </div>
+            <header>
+                <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+                    <h1 class="display-4 fw-normal">Our Logo Plans</h1>
+                    <p class="fs-5 text-muted">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi est explicabo eum ad ea, impedit
+                        itaque
+                        aliquid tempora quo reprehenderit obcaecati, quibusdam necessitatibus, ab consequuntur.
+                    </p>
                 </div>
+            </header>
+            <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                <% plans.forEach((plan, i)=> { %>
+                    <div class="col">
+                        <div class="card mb-4 rounded-3 shadow-sm">
+                            <div class="card-header py-3 <%= i === 1 ? 'bg-primary text-white' : '' %>">
+                                <h4 class="my-0 fw-normal text-capitalize">
+                                    <%= plan.title %>
+                                </h4>
+                            </div>
+                            <div class="card-body">
+                                <h1 class="card-title pricing-card-title">
+                                    <%= currencySymbol() %>
+                                        <%= Math.round(plan.price) %>
+                                </h1>
+                                <ul class="list-unstyled mt-3 mb-4">
+                                    <% plan.includes.forEach(item=> { %>
+                                        <li class="mb-1">
+                                            <%= item %>
+                                        </li>
+                                        <% }) %>
+                                </ul>
+                                <form method="POST" action="/build-a-logo">
+                                    <input type="hidden" name="plan" value="<%= plan._id %>">
+                                    <button type="submit"
+                                        class="w-100 btn btn-lg <%= i === 1 ? 'btn-primary' : 'btn-outline-primary' %>">
+                                        Choose Plan
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
             </div>
-            <% }) %>
         </div>
+
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="large text-left"></th>
+                        <th class="text-capitalize">Basic Logo Plan</th>
+                        <th class="text-capitalize">Launch Logo Plan</th>
+                        <th class="text-capitalize">Designer Logo Plan</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td class="text-start large text-capitalize">Instant Logo Access</td>
+                        <td><span class="material-icons-outlined skiptranslate text-success">done</span></td>
+                        <td><span class="material-icons-outlined skiptranslate text-success">done</span></td>
+                        <td><span class="material-icons-outlined skiptranslate text-success">done</span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-start large text-capitalize">Full Logo Ownership</td>
+                        <td><span class="material-icons-outlined skiptranslate text-success">done</span></td>
+                        <td><span class="material-icons-outlined skiptranslate text-success">done</span></td>
+                        <td><span class="material-icons-outlined skiptranslate text-success">done</span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-start large text-capitalize">Logo Brand Dashboard</td>
+                        <td><span class="material-icons-outlined skiptranslate text-success">done</span></td>
+                        <td><span class="material-icons-outlined skiptranslate text-success">done</span></td>
+                        <td><span class="material-icons-outlined skiptranslate text-success">done</span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-start large text-capitalize">Satisfaction Guaranteed</td>
+                        <td><span class="material-icons-outlined skiptranslate text-success">done</span></td>
+                        <td><span class="material-icons-outlined skiptranslate text-success">done</span></td>
+                        <td><span class="material-icons-outlined skiptranslate text-success">done</span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-start large text-capitalize">High Res & Vector Images</td>
+                        <td><span class="material-icons-outlined skiptranslate text-success">done</span></td>
+                        <td><span class="material-icons-outlined skiptranslate text-success">done</span></td>
+                        <td><span class="material-icons-outlined skiptranslate text-success">done</span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-start large text-capitalize">Business Card Templates</td>
+                        <td><span class="material-icons-outlined skiptranslate text-success">done</span></td>
+                        <td><span class="material-icons-outlined skiptranslate text-success">done</span></td>
+                        <td><span class="material-icons-outlined skiptranslate text-success">done</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="text-start large text-capitalize">Brand Showcase</td>
+                        <td><span class="material-icons-outlined skiptranslate text-success">done</span></td>
+                        <td><span class="material-icons-outlined skiptranslate text-success">done</span></td>
+                        <td><span class="material-icons-outlined skiptranslate text-success">done</span></td>
+                    </tr>
+
+                    <tr>
+                        <td class="text-start large text-capitalize">Stock Photo & Icon Library</td>
+                        <td><span class="material-icons-outlined skiptranslate text-danger">close</span></td>
+                        <td><span class="material-icons-outlined skiptranslate text-success">done</span></td>
+                        <td><span class="material-icons-outlined skiptranslate text-success">done</span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-start large text-capitalize">Brand Guidelines</td>
+                        <td><span class="material-icons-outlined skiptranslate text-danger">close</span></td>
+                        <td><span class="material-icons-outlined skiptranslate text-success">done</span></td>
+                        <td><span class="material-icons-outlined skiptranslate text-success">done</span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-start large text-capitalize">Business Card Builder</td>
+                        <td><span class="material-icons-outlined skiptranslate text-danger">close</span></td>
+                        <td><span class="material-icons-outlined skiptranslate text-success">done</span></td>
+                        <td><span class="material-icons-outlined skiptranslate text-success">done</span></td>
+                    </tr>
+                    <tr>
+                        <td class="text-start large text-capitalize">Design & Print Files</td>
+                        <td><span class="material-icons-outlined skiptranslate text-danger">close</span></td>
+                        <td><span class="material-icons-outlined skiptranslate text-danger">close</span></td>
+                        <td><span class="material-icons-outlined skiptranslate text-success">done</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <% const logos=[ '6087f7f9e5ecc6bf493ecbbf_logo-example1.svg' , '6087f7f9e5ecc6623f3ecbbe_logo-example2.svg'
+            , '6087f7f9e5ecc663413ecbc7_logo-example6.svg' , '6087f7f9e5ecc61f273ecbbd_logo-example4.svg'
+            , '6087f7f9e5ecc6e0633ecbc0_logo-example3.svg' , '6087f7f9e5ecc612593ecbc1_logo-example5.svg'
+            , '6087f7f9e5ecc680d23ecbc6_logo-example7.svg' , '6087f7f9e5ecc6d2c83ecbc8_logo-example8.svg'
+            , '6087f7f9e5ecc6fac83ecbc4_logo-example9.svg' , '6087f7f9e5ecc6140c3ecbc3_logo-example10.svg'
+            , '6087f7f9e5ecc648353ecbc2_logo-example11.svg' , '6087f7f9e5ecc63f883ecbc5_logo-example12.svg' ] %>
+            <div class="example-logos d-flex flex-wrap mt-5">
+                <% logos.forEach(logo=> { %>
+                    <img src="https://global-uploads.webflow.com/5e157547d6f791d34ea4e2bf/<%= logo %>" class="shadow-sm"
+                        loading="lazy" alt="">
+                    <% }) %>
+            </div>
     </div>
-    
-    <%
-    const logos = [
-        '6087f7f9e5ecc6bf493ecbbf_logo-example1.svg',
-        '6087f7f9e5ecc6623f3ecbbe_logo-example2.svg',
-        '6087f7f9e5ecc663413ecbc7_logo-example6.svg',
-        '6087f7f9e5ecc61f273ecbbd_logo-example4.svg',
-        '6087f7f9e5ecc6e0633ecbc0_logo-example3.svg',
-        '6087f7f9e5ecc612593ecbc1_logo-example5.svg',
-        '6087f7f9e5ecc680d23ecbc6_logo-example7.svg',
-        '6087f7f9e5ecc6d2c83ecbc8_logo-example8.svg',
-        '6087f7f9e5ecc6fac83ecbc4_logo-example9.svg',
-        '6087f7f9e5ecc6140c3ecbc3_logo-example10.svg',
-        '6087f7f9e5ecc648353ecbc2_logo-example11.svg',
-        '6087f7f9e5ecc63f883ecbc5_logo-example12.svg'
-    ]
-    %>
-    <div class="example-logos d-flex flex-wrap mt-5">
-        <% logos.forEach(logo => { %>
-            <img src="https://global-uploads.webflow.com/5e157547d6f791d34ea4e2bf/<%= logo %>" class="shadow-sm" loading="lazy" alt="">
-        <% }) %>
-    </div>
-</div>

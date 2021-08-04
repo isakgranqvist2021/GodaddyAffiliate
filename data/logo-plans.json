@@ -7,7 +7,11 @@
         "originalCurrency": "EUR",
         "type": "logo",
         "service": "logo",
-        "includes": [true, false, false]
+        "includes": [
+            "Basic PNGs",
+            "Full Logo Ownership",
+            "High Res & Vector Images"
+        ]
     },
     {
         "_id": "launch-kit",
@@ -17,7 +21,12 @@
         "originalCurrency": "EUR",
         "type": "logo",
         "service": "logo",
-        "includes": [true, true, false]
+        "includes": [
+            "Basic PNGs",
+            "Full Logo Ownership",
+            "High Res & Vector Images",
+            "Business Card Builder"
+        ]
     },
     {
         "_id": "designer-kit",
@@ -27,7 +36,11 @@
         "originalCurrency": "EUR",
         "type": "logo",
         "service": "logo",
-        "includes": [true, true, true]
+        "includes": [
+            "Basic PNGs",
+            "Full Logo Ownership",
+            "High Res & Vector Images",
+            "Business Card Builder"
+        ]
     }
 ]
-
