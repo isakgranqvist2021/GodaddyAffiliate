@@ -48,8 +48,20 @@ function ResultsComponent(props) {
                 </div>
             )}
             {searchState.domain === null && (
-                <div>
-                    {new Array(5).fill(0).map((_, i) => <PlaceholderComponent key={i} />)}
+                <div className="col-12 col-sm-10 col-md-6 m-auto pt-5">
+                    <h3 className="text-muted text-center">
+                        Choose from a wide selection of domains.
+                        Checking domain name availability has never been easier
+                    </h3>
+                    <div className="d-flex justify-content-center mt-3">
+                        {[
+                            '.com', '.net', '.org', '.io', '.co', '.ai', '.biz'
+                        ].map((str, i) => 
+                            <span key={i} className="bg-primary text-white p-3 rounded me-3 flex-grow-1 text-center">
+                                {str}
+                            </span>
+                        )}
+                    </div>
                 </div>
             )}
         </div>
