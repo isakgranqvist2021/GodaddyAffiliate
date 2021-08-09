@@ -5,8 +5,6 @@ const messages = document.querySelector('.messages');
 const template = document.querySelector('template');
 
 function createMessage(data) {
-    console.log(data);
-    console.log(new Date().toLocaleString())
     let newItem = document.createElement('li');
     newItem.className = 'list-group-item';
     newItem.innerHTML = `<div class="message-header">

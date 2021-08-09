@@ -37,7 +37,6 @@ async function email(req, res) {
             data: null
         });
     } catch (err) {
-        console.log(err);
         return res.json({
             message: err,
             success: false,

@@ -31,8 +31,6 @@ export async function sendEmail(to, message) {
         subject: 'Verification Code',
         html: message
     });
-
-    console.log(info);
 }
 
 export function getCode() {
@@ -140,7 +138,6 @@ export async function getPricingData() {
         fs.writeFileSync(path.resolve('.', path.join('./data/currencies.json')), JSON.stringify(output, null, 4));
         return Promise.resolve('currencies have been updated');
     } catch (err) {
-        console.log(err);
         return Promise.reject('unable to update currencies');
     }
 }

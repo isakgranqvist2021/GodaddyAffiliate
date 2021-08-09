@@ -2,7 +2,6 @@ import domains from '../../utils/domains';
 import { keyImg, getPriceDomain, multiplier } from '../../utils/helpers';
 
 async function get(req, res) {
-    console.log(req.session);
     return res.render('index/pick-domain', {
         title: 'Pick Domain',
         user: req.user

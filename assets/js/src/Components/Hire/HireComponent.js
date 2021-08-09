@@ -7,7 +7,6 @@ function HireComponent(props) {
     const tabs = 3;
 
     const submit = async () => {
-        console.log(formData);
         const response = await http.POST('/create-meeting', JSON.stringify(formData));
         window.alert(response.message);
 

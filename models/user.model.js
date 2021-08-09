@@ -24,7 +24,6 @@ async function register(data) {
             userInfo: userInfo
         }).save();
     } catch (err) {
-        console.log(err);
         return Promise.reject(err.code === 11000 ? 'seems like you already have an account' : 'caught error');
     }
 }
@@ -57,7 +56,6 @@ async function updateUser(filter, update) {
     try {
         return await UserModel.findOneAndUpdate(filter, update);
     } catch (err) {
-        console.log(err);
         return Promise.reject('caught error');
     }
 }

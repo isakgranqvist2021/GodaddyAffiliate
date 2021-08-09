@@ -36,7 +36,6 @@ function add(req, res) {
     const raw = JSON.parse(fs.readFileSync(path.resolve('.', path.join('./data/logo-plans.json'))));
 
     let plan = raw.find(plan => plan._id === req.body.plan);
-    console.log(plan);
 
     req.session.cart.push({
         images: [logoImg],

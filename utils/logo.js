@@ -16,7 +16,6 @@ export async function getToken() {
             }
         }).then(res => res.json());
     } catch (err) {
-        console.log(err);
         return Promise.reject('caught error');
     }
 }

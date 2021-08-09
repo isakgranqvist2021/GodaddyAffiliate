@@ -27,7 +27,6 @@ async function get(req, res) {
         });
 
     } catch (err) {
-        console.log(err);
         return res.json({
             message: 'an error has occured',
             success: false,

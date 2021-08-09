@@ -39,8 +39,6 @@ async function createOrder(data) {
             await createUser(data.belongsTo, data.email, token.access_token);
             let credit = await issueCredit(token.access_token, logo._id);
 
-            console.log(credit);
-
             await userModel.updateUser({ _id: data.belongsTo }, {
                 $push: {
                     logoCredits: credit.id
@@ -50,7 +48,6 @@ async function createOrder(data) {
 
         return await new OrderModel(data).save();
     } catch (err) {
-        console.log(err);
         return Promise.reject('caught error');
     }
 }
