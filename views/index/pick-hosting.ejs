@@ -32,13 +32,12 @@
                 <div class="card-body">
                     <h1 class="card-title pricing-card-title">
                         <%= currencySymbol() %><%= Math.round(plan.price) %>
-                        <small class="text-muted fw-light">/mo</small>
+                        <small class="text-muted fw-light">/<%= plan.time %></small>
                     </h1>
                     <ul class="list-unstyled mt-3 mb-4">
-                        <li>Something</li>
-                        <li>Something Else</li>
-                        <li>Something Else</li>
-                        <li>Another Thing</li>
+                        <% plan.includes.forEach(p => { %>
+                            <li class="mb-1"><%= p %></li>
+                        <% }) %>
                     </ul>
                     <form method="POST" action="/pick-hosting">
                         <input type="hidden" name="plan" value="<%= plan._id %>">
@@ -50,23 +49,5 @@
             </div>
         </div>
         <% }) %>
-    </div>
-    
-    <div class="table-responsive">
-        <table class="table text-center">
-            <thead>
-                <tr>
-                    <th class="large"></th><% plans.forEach(plan => { %>
-                    <th class="text-capitalize"><%= plan._id %></th><% }) %> 
-                </tr>
-            </thead>
-    
-            <tbody><% compare.forEach(row => { %>
-                <tr>
-                    <td class="fw-bold text-start large text-capitalize"><%= row.label %></td><% row.values.forEach(v => { %>
-                    <td><% if(v) { %><span class="material-icons-outlined skiptranslate">done</span><% } %></td><% }) %>
-                </tr><% }) %>
-            </tbody>
-        </table>
     </div>
 </div>

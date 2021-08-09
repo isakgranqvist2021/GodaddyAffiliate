@@ -12,21 +12,9 @@ function get(req, res) {
         price: plan.originalPrice * req.session.currency.value
     }));
 
-    const compare = [
-        'hosting',
-        '24/7 support',
-        'money back guarantee'
-    ].map((feature, i) => {
-        return {
-            label: feature,
-            values: plans.map(p => p.includes[i])
-        }
-    });
-
     return res.render('index/pick-hosting', {
         title: 'Pick Hosting',
         plans: plans,
-        compare: compare,
         user: req.user,
         currency: req.session.currency
     })
