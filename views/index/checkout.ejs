@@ -32,6 +32,22 @@
                 <% } %>
             </div>
             
+            <% if(!cart.some(item => item.type === 'template')) { %>
+                <div class="bg-white p-4 mt-4 shadow-sm rounded">
+                    <h2>Templates</h2>
+                    <p>You have not selected a template</p>
+                    <a href="/pick-tag" class="btn btn-secondary">Pick A Template</a>
+                </div>  
+            <% } %>
+
+            <% if(!cart.some(item => item.type === 'domain')) { %>
+                <div class="bg-white p-4 mt-4 shadow-sm rounded">
+                    <h2>Domains</h2>
+                    <p>You have not selected a domain</p>
+                    <a href="/pick-domain" class="btn btn-secondary">Pick A domain</a>
+                </div>  
+            <% } %>
+
             <% if(!cart.some(item => item.type === 'hosting')) { %>
                 <div class="bg-white p-4 mt-4 shadow-sm rounded">
                     <h2>Hosting Plans</h2>
@@ -70,7 +86,7 @@
             </ul>
             <% if(!user) { %>
             <div id="ModalComponent"></div>
-            <% } else { %>
+            <% } else if(cart.some(item => item.type === 'template') && cart.some(item => item.type === 'domain') && cart.some(item => item.type === 'hosting') && cart.some(item => item.type === 'logo')) { %>
             <form class="w-100" method="POST" action="/checkout/stripe">
                 <button class="btn btn-primary w-100" type="submit">Continue To Checkout</button>
             </form>
