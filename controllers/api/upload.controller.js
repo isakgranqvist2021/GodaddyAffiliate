@@ -14,6 +14,7 @@ async function upload(req, res) {
             data: files
         });
     } catch(err) {
+        console.log(err);
         return res.json({
             message: `upload failed`,
             success: false,

@@ -24,11 +24,17 @@ function CreateComponent(props) {
 
         try {
             const response = await http.POST('/upload', fd, {});
+            setLoading(false);
+
             if (response.success && response.data.length > 0) {
                 setFormData({ ...formData, images: [...formData.images, ...response.data] });
                 uploadRef.current.value = null;
-                setLoading(false);
             }
+
+            if(!response.success) {
+                window.alert(response.message);
+            }
+
         } catch (err) {
             setLoading(false);
         }
