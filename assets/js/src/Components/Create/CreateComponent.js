@@ -24,7 +24,6 @@ function CreateComponent(props) {
 
         try {
             const response = await http.POST('/upload', fd, {});
-
             if (response.success && response.data.length > 0) {
                 setFormData({ ...formData, images: [...formData.images, ...response.data] });
                 uploadRef.current.value = null;
@@ -110,7 +109,7 @@ function CreateComponent(props) {
     }
 
     React.useEffect(() => {
-        if (window.location.href !== '/admin/create-template') {
+        if (window.location.pathname !== '/admin/create-template') {
             fetchExisting();
         }
 
