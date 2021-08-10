@@ -27,6 +27,8 @@ async function post(req, res) {
             data: null
         });
     } catch (err) {
+        console.log(err);
+        
         return res.json({
             message: err.code === 21211 ? 'invalid phone number' : 'caught an error',
             success: false,

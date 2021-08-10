@@ -17,7 +17,7 @@ function HireComponent(props) {
         if (response.success) {
             window.location.href = '/talk-to-an-expert/exit';
         }
-    } 
+    }   
 
     return (
         <div className="col-12 col-sm-10 col-md-8 h-100 pb-5 min-vh-100 m-auto" id="hire-component">

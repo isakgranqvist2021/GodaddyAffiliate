@@ -152,6 +152,6 @@ export function getPriceTemplate(price, currency) {
 }
 
 /* just for decorative purposes */
-export const keyImg = 'https://res.cloudinary.com/isak-tech/image/upload/v1627337790/pexels-pixabay-279810_htczxl.jpg';
-export const serverImg = 'https://res.cloudinary.com/isak-tech/image/upload/v1627337790/pexels-brett-sayles-2881224_wojdeo.jpg';
-export const logoImg = 'https://res.cloudinary.com/isak-tech/image/upload/v1627576029/pexels-scott-webb-430205_qqzmaq.jpg';
+export const keyImg = 'https://res.cloudinary.com/marinamedia/image/upload/v1628631673/pexels-pixabay-279810_htczxl_qvb3ow.jpg';
+export const serverImg = 'https://res.cloudinary.com/marinamedia/image/upload/v1628631695/pexels-brett-sayles-2881224_wojdeo_at3h1q.jpg';
+export const logoImg = 'https://res.cloudinary.com/marinamedia/image/upload/v1628631698/pexels-scott-webb-430205_qqzmaq_vovdtk.jpg';

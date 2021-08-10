@@ -1,4 +1,11 @@
+# server
 /node_modules
 /.env
+
+# client
 /assets/js/node_modules
+
+# misc
 /desc.txt
+/dep.txt
+/.vscode

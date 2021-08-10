@@ -19,15 +19,24 @@ function SearchComponent(props) {
         if (urlRegex.test(query)) {
             const response = await http.GET(`/search/${query}`);
 
-            searchStore.dispatch({
-                type: 'set-all',
-                payload: {
-                    ...response.data,
-                    loading: false
-                }
-            });
+            if(response.success) {
+                searchStore.dispatch({
+                    type: 'set-all',
+                    payload: {
+                        ...response.data,
+                        loading: false
+                    }
+                });
 
-            setLoading(false);
+                setLoading(false);
+            } else {
+                setLoading(false);
+                searchStore.dispatch({
+                    type: 'set-loading',
+                    payload: false
+                });
+                window.alert(response.message);
+            }
 
         } else {
             if (query.trim().length === 0) {
@@ -74,7 +83,7 @@ function SearchComponent(props) {
                     onChange={(e) => setQuery(e.target.value)}
                 />
 
-                <button className="btn btn-primary" type="button" ref={submitBtn} onClick={search} disabled={loading}>
+                <button className="btn btn-primary d-flex align-items-center" type="button" ref={submitBtn} onClick={search} disabled={loading}>
                     <span className="material-icons-outlined skiptranslate">search</span>
                 </button>
             </form>

@@ -13,7 +13,7 @@ function exit(req, res) {
 }
 
 function post(req, res) {
-    if(!req.body.domain && !req.body.logo) return res.redirect('/pick-tag');
+    if(!req.body.domain && !req.body.logo) return res.redirect('/pick-domain');
     if(!req.body.domain) return res.redirect('/pick-domain');
     if(!req.body.logo) return res.redirect('/build-a-logo');
     
