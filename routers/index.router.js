@@ -20,6 +20,8 @@ import logoController from '../controllers/index/logo.controller';
 router.get('/', indexController.get);
 
 router.get('/talk-to-an-expert', hireController.get);
+router.get('/talk-to-an-expert/exit', hireController.exit);
+router.post('/talk-to-an-expert/exit', hireController.post);
 
 router.get('/pick-tag', pickTagController.get);
 router.get('/set-tag', pickTagController.set);

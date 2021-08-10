@@ -1,1 +1,9 @@
-{"version":3,"sourceRoot":"","sources":["../../assets/scss/pages/view-template.scss"],"names":[],"mappings":"AAAA,YACI,WAEA,4BACI,WACA,YAEA,gCACI,WAKZ,mBACI,WACA","file":"view-template.min.css.map"}
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,WAAW,AAAC,CACR,KAAK,CAAE,IAAI,CAUd,AAXD,AAGI,WAHO,CAGP,eAAe,AAAC,CACZ,KAAK,CAAE,IAAI,CACX,MAAM,CAAE,IAAI,CAKf,AAVL,AAOQ,WAPG,CAGP,eAAe,CAIX,GAAG,AAAC,CACA,KAAK,CAAE,IAAI,CACd,AAIT,AAAA,cAAc,CAAC,GAAG,AAAC,CACf,KAAK,CAAE,IAAI,CACX,MAAM,CAAE,IAAI,CACf",
+    "sources": [
+        "../../assets/scss/pages/view-template.scss"
+    ],
+    "names": [],
+    "file": "view-template.min.css"
+}

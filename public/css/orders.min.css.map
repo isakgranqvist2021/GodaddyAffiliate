@@ -1,1 +1,9 @@
-{"version":3,"sourceRoot":"","sources":["../../assets/scss/pages/orders.scss"],"names":[],"mappings":"AAAA,MACI,gBACA,yBACA,WAEA,YACI,gBAEA,eACI,eAEA,qBACI,yBAKZ,kBAEI,aACA","file":"orders.min.css.map"}
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,AAAC,CACF,UAAU,CAAE,IAAI,CAChB,eAAe,CAAE,QAAQ,CACzB,KAAK,CAAE,IAAI,CAmBd,AAtBD,AAKI,KALC,CAKD,KAAK,AAAC,CACF,SAAS,CAAE,KAAK,CASnB,AAfL,AAQQ,KARH,CAKD,KAAK,CAGD,EAAE,AAAC,CACC,MAAM,CAAE,OAAO,CAKlB,AAdT,AAWY,KAXP,CAKD,KAAK,CAGD,EAAE,AAGG,MAAM,AAAC,CACJ,gBAAgB,CAAE,OAAkB,CACvC,AAbb,AAiBI,KAjBC,CAiBD,EAAE,CAjBN,KAAK,CAkBD,EAAE,AAAC,CACC,OAAO,CAAE,IAAI,CACb,aAAa,CAAE,GAAG,CAAC,KAAK,CAAC,OAAkB,CAC9C",
+    "sources": [
+        "../../assets/scss/pages/orders.scss"
+    ],
+    "names": [],
+    "file": "orders.min.css"
+}

@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,gBAAgB,AAAC,CACb,gBAAgB,CAAE,IAAI,CACzB",
+    "sources": [
+        "../../assets/js/src/Components/Search/SearchComponent.scss"
+    ],
+    "names": [],
+    "file": "SearchComponent.min.css"
+}

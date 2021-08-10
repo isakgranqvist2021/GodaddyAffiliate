@@ -1,1 +1,9 @@
-{"version":3,"sourceRoot":"","sources":["../../assets/scss/pages/view-templates.scss"],"names":[],"mappings":"AAEI,kBAEI,mBAIA,eACI","file":"view-templates.min.css.map"}
+{
+    "version": 3,
+    "mappings": "AAAA,AAEI,KAFC,CAED,EAAE,CAFN,KAAK,CAGD,EAAE,AAAC,CACC,WAAW,CAAE,MAAM,CACtB,AALL,AAQQ,KARH,CAOD,KAAK,CACD,EAAE,AAAC,CACC,MAAM,CAAE,2BAA2B,CAAE,IAAI,CAC5C",
+    "sources": [
+        "../../assets/scss/pages/view-templates.scss"
+    ],
+    "names": [],
+    "file": "view-templates.min.css"
+}

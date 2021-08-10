@@ -1,1 +1,9 @@
-{"version":3,"sourceRoot":"","sources":["../../assets/scss/pages/default-layout.scss"],"names":[],"mappings":"AAAA,QACI,eAEA,WACI,cACA","file":"default-layout.min.css.map"}
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,OAAO,AAAC,CACJ,OAAO,CAAE,MAAM,CAMlB,AAPD,AAGI,OAHG,CAGH,EAAE,AAAC,CACC,KAAK,CAAE,OAAkB,CACzB,SAAS,CAAE,IAAI,CAClB",
+    "sources": [
+        "../../assets/scss/pages/default-layout.scss"
+    ],
+    "names": [],
+    "file": "default-layout.min.css"
+}

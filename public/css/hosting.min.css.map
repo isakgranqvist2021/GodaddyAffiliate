@@ -1,1 +1,9 @@
-{"version":3,"sourceRoot":"","sources":["../../assets/scss/pages/hosting.scss"],"names":[],"mappings":"AAAA,wBACI,gBAGJ,gBACI,gBAIA,aACI,UAGJ,kBAEI,UAGJ,QACI,sBAIR,eACI,SAEA,mBACI,aACA,mBACA","file":"hosting.min.css.map"}
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,UAAU,AAAA,aAAa,AAAC,CACpB,SAAS,CAAE,KAAK,CACnB,AAED,AAAA,eAAe,AAAC,CACZ,SAAS,CAAE,KAAK,CACnB,AAED,AACI,KADC,CACD,MAAM,AAAC,CACH,KAAK,CAAE,GAAG,CACb,AAHL,AAKI,KALC,CAKD,EAAE,CALN,KAAK,CAMD,EAAE,AAAC,CACC,KAAK,CAAE,GAAG,CACb,AARL,AAUI,KAVC,CAUD,CAAC,AAAC,CACE,cAAc,CAAE,MAAM,CACzB,AAGL,AAAA,cAAc,AAAC,CACX,GAAG,CAAE,IAAI,CAOZ,AARD,AAGI,cAHU,CAGV,GAAG,AAAC,CACA,OAAO,CAAE,IAAI,CACb,UAAU,CAAE,OAAO,CACnB,SAAS,CAAE,CAAC,CACf",
+    "sources": [
+        "../../assets/scss/pages/hosting.scss"
+    ],
+    "names": [],
+    "file": "hosting.min.css"
+}

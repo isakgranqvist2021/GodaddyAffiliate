@@ -1,23 +1,27 @@
 import React from 'react';
 import http from '../../Utils/http';
 
+import './HireComponent.scss';
+
 function HireComponent(props) {
     const [tabIndex, setTabIndex] = React.useState(0);
     const [formData, setFormData] = React.useState({});
     const tabs = 3;
 
     const submit = async () => {
+        console.log('submit', formData);
+
         const response = await http.POST('/create-meeting', JSON.stringify(formData));
         window.alert(response.message);
 
         if (response.success) {
-            window.location.href = '/';
+            window.location.href = '/talk-to-an-expert/exit';
         }
-    }
+    } 
 
     return (
-        <div className="col-12 col-sm-10 col-md-8 h-100 pb-5 min-vh-100">
-            <header className="mb-4">
+        <div className="col-12 col-sm-10 col-md-8 h-100 pb-5 min-vh-100 m-auto" id="hire-component">
+            <header>
                 <h1 className="display-5">{
                     (() => {
                         switch (tabIndex) {
@@ -28,7 +32,26 @@ function HireComponent(props) {
                         }
                     })()
                 }</h1>
-                {tabIndex === 0 && <p>Before we can assist you we need some extra <br />information from you regarding your business.</p>}
+                {tabIndex === 0 && (
+                    <p>
+                        Before we can assist you we need some 
+                        extra information from you regarding your business.
+                    </p>
+                )}  
+
+                {tabIndex === 1 && (
+                    <p>
+                        Do you have any social media links that you'd like to have available 
+                        on your new website?
+                    </p>
+                )}  
+
+                {tabIndex === 2 && (
+                    <p>
+                        Please pick a couple of dates when you're available to discuss the details
+                        of your website. We are here to help you!
+                    </p>
+                )}  
             </header>
             <form onSubmit={(e) => e.preventDefault()} className="w-100 d-flex flex-column justify-content-between">
                 <StepperComponent
@@ -66,21 +89,14 @@ function StepperComponent(props) {
     });
 
     const [socialLink, setSocialLink] = React.useState('');
-    const [dates, setDates] = React.useState({
-        date: new Date().toISOString().split('T')[0],
-        time: "00:00"
-    });
+    const [date, setDate] = React.useState();
 
     const addDateToList = () => {
-        if (formData.dates.map(d => {
-            return d.date + d.time
-        }).includes(dates.date + dates.time)) {
-            return;
-        }
+        if(formData.dates.includes(date)) return;
 
         setFormData({
             ...formData,
-            dates: [...formData.dates, dates]
+            dates: [...formData.dates, date]
         });
     }
 
@@ -154,14 +170,7 @@ function StepperComponent(props) {
             {props.tabIndex === 2 && (
                 <div>
                     <div className="form-group d-flex align-items-end">
-                        <div className="form-group me-3 w-100">
-                            <label className="form-label">Date</label>
-                            <input type="date" className="form-control" value={dates.date} onChange={(e) => setDates({ ...dates, date: e.target.value })} />
-                        </div>
-                        <div className="form-group me-3 w-100">
-                            <label className="form-label">Time</label>
-                            <input type="time" className="form-control" value={dates.time} onChange={(e) => setDates({ ...dates, time: e.target.value })} />
-                        </div>
+                        <input type="datetime-local" className="form-control me-2" onChange={(e) => setDate(e.target.value)}/>
                         <button type="button" onClick={addDateToList} className="btn btn-primary d-flex align-items-center justify-content-center">
                             <span className="material-icons-outlined skiptranslate">add</span>
                         </button>
@@ -174,9 +183,7 @@ function StepperComponent(props) {
                             <ul className="list-group">
                                 {formData.dates.map((d, i) => <li key={i} className="list-group-item d-flex justify-content-between align-items-center">
                                     <div>
-                                        <span className="me-1">{d.date}</span>
-                                        <span>-</span>
-                                        <span className="ms-1">{d.time}</span>
+                                        <span className="me-1">{new Date(d).toLocaleString()}</span>
                                     </div>
                                     <span className="material-icons-outlined skiptranslate" style={{ cursor: 'pointer' }} onClick={() => {
                                         let d = formData.dates;

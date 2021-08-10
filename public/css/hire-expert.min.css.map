@@ -1,1 +1,9 @@
-{"version":3,"sourceRoot":"","sources":["../../assets/scss/pages/hire-expert.scss"],"names":[],"mappings":"AAAA,iBACI","file":"hire-expert.min.css.map"}
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,IAAI,CAAC,KAAK,CAAC,KAAK,AAAC,CACb,cAAc,CAAE,YAAY,CAC/B",
+    "sources": [
+        "../../assets/scss/pages/hire-expert.scss"
+    ],
+    "names": [],
+    "file": "hire-expert.min.css"
+}
