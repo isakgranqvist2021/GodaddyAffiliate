@@ -1,17 +1,17 @@
 .LoginComponent {
-    form {
-        margin: 10rem auto 0 auto;
-        width: 550px;
-        position: relative;
-        background-color: #fff;
-        padding: 2rem !important;
-    }
+  form {
+    margin: 10rem auto 0 auto;
+    width: 550px;
+    position: relative;
+    background-color: #fff;
+    padding: 2rem !important;
+  }
 }
 
-@media only screen and(max-width: 670px) {
-    .LoginComponent {
-        form {
-            width: 90%;
-        }
+@media only screen and (max-width: 670px) {
+  .LoginComponent {
+    form {
+      width: 90%;
     }
+  }
 }
