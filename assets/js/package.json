@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-calendar": "^3.4.0",
+    "react-calendar": "^4.0.0",
     "react-dom": "^18.2.0",
     "react-simple-image-slider": "^2.1.2",
     "redux": "^4.1.0",
